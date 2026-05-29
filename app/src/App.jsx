@@ -1,5 +1,7 @@
+import InteractiveUMAP from "./page/InteractiveUMAP"
+
 function App() {
-     return <div>Hello World!</div>
+     return <InteractiveUMAP />
 }
 
 export default App
