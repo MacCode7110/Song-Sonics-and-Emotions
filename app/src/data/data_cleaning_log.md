@@ -20,5 +20,4 @@ As music_preference_survey_data_master_cleaned is a small dataset and contains o
 
 ### Steps Executed:
 
-1. **[Removal]** 
-2. **[Correction]** 
+1. **[Addition]** Added column [track_id] preceding [song_name], [artist_name], and [primary_feeling] columns.
