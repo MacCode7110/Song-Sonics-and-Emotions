@@ -13,7 +13,7 @@ As music_preference_survey_data_master_cleaned is a small dataset and contains o
 2. **[Correction]** Standardized 22 null values to display NA.
 3. **[Removal]** Deleted 7 rows each containing all NA values.
 
-## [2026-6-16] - [Matthew McAlarney - Web Developer, Data Researcher]
+## [2026-6-17] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_cleaned.csv` -> `music_preference_survey_data_master_cleaned.csv`
 - **Purpose:** [Complete Quality Sweep - Manual Context Review]
@@ -21,3 +21,10 @@ As music_preference_survey_data_master_cleaned is a small dataset and contains o
 ### Steps Executed:
 
 1. **[Addition]** Added column [track_id] preceding [song_name], [artist_name], and [primary_feeling] columns.
+2. **[Data Quality Sweep]** Processed all rows to remove invalid data and correct information:
+    a. [Removal] Deleted invalid rows based on fundamental quality standards:
+        I. _ rows removed because the submitted song and artist information lacks sufficient written context to correct.
+        II. _ rows removed because the submitted song is connected to insufficient data in the Spotify Web API.
+    b. [Data Enrichment] Processed all remaining rows to correct information and add data from the Spotify Web API:
+        I. Corrected information in [song_name] and [artist_name] columns for _ remaining rows in the sequence. 
+        II. Added the track_id from the Spotify Web API to the [track_id] column for _ remaining rows in the sequence.
