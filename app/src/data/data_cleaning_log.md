@@ -32,4 +32,6 @@ As music_preference_survey_data_master_cleaned is a small dataset and contains o
 
     a. [Removal] _ rows deleted because the submitted song and artist information lacks sufficient written context to correct.
 
-    b. [Correction] Corrected information in [song_name] and [artist_name] columns for _ remaining rows in the sequence.
+    b. [Removal] _ rows deleted because the submitted song and artist information is connected to insufficient data in Youtube Music.
+
+    c. [Correction] Corrected information in [song_name] and [artist_name] columns for _ remaining rows in the sequence.
