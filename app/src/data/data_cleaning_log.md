@@ -2,7 +2,7 @@
 
 Web Developer and Data Researcher: Matthew McAlarney (Web Developer, Data Researcher)
 
-As music_preference_survey_data_master_cleaned is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python scripts are executed to build music_preference_survey_data_master_cleaned to add WAV files and sonic features for each song.
+As music_preference_survey_data_master_cleaned is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python scripts are executed to build music_preference_survey_data_master_cleaned to add WAV files and sonic features through Essentia for each song.
 
 ## [2026-6-18 - V1] - [Matthew McAlarney - Web Developer, Data Researcher]
 
