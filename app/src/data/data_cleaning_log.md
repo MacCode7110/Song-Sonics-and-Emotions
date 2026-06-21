@@ -8,7 +8,7 @@ As music_preference_survey_data_master_cleaned is a small dataset and contains o
 
 - **Target File:** `music_preference_survey_data_master_raw.csv` -> `music_preference_survey_data_master_cleaned_v1.csv`
 - **Data Shape Change:** 277 rows * 19 columns -> 269 rows * 3 columns
-- **Purpose:** [Initial Quality Sweep - Manual Review]
+- **Purpose:** [Initial Quality Sweep - Manual Context Review]
 
 ### Steps Executed:
 
@@ -28,10 +28,12 @@ As music_preference_survey_data_master_cleaned is a small dataset and contains o
 
 ### Steps Executed:
 
-1. **[Data Quality Sweep]** Processed all rows to remove invalid data and correct information:
+1. **[Complete Quality Sweep]** Processed all rows to remove invalid data and correct information:
 
-    a. [Removal] _ rows deleted because the submitted song and artist information lacks sufficient written context to correct.
+    a. [Removal] 5 rows deleted because the submitted song and artist information lacks sufficient written context to correct.
 
-    b. [Removal] _ rows deleted because the submitted song and artist information is connected to insufficient data in Youtube Music.
+    b. [Removal] _ rows deleted because the submitted song and artist information is a duplication of previously corrected song and artist information.
 
-    c. [Correction] Corrected information in [song_name] and [artist_name] columns for _ remaining rows in the sequence.
+    c. [Removal] 2 rows deleted because the submitted song and artist information is connected to insufficient data in Youtube Music.
+
+    d. [Correction] Corrected information in [song_name] and [artist_name] columns for 12 remaining rows in the sequence.
