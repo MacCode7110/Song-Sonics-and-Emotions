@@ -30,13 +30,13 @@ As music_preference_survey_data_master_cleaned is a small dataset and contains o
 
 1. **[Complete Quality Sweep]** Processed remaining rows to remove invalid data and correct information:
 
-    a. [Removal] 5 rows deleted because the submitted song and artist information lacks sufficient written context to correct.
+    a. [Removal] 5 rows deleted because the submitted song, artist and primary feeling information lacks sufficient written context to correct.
 
     b. [Removal] 0 rows deleted because the submitted song and artist information is a duplication of previously corrected song and artist information.
 
     c. [Removal] 2 rows deleted because the submitted song and artist information is connected to insufficient data in Youtube Music.
 
-    d. [Correction] Corrected information in [song_name] and [artist_name] columns for 12 remaining rows in the sequence.
+    d. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 12 remaining rows in the sequence.
 
 ## [2026-6-21 - V2] - [Matthew McAlarney - Web Developer, Data Researcher]
 
@@ -46,12 +46,12 @@ As music_preference_survey_data_master_cleaned is a small dataset and contains o
 
 ### Steps Executed:
 
-1. **[Complete Quality Sweep]** Processed all rows to remove invalid data and correct information:
+1. **[Complete Quality Sweep]** Processed remaining rows to remove invalid data and correct information:
 
-    a. [Removal] 5 rows deleted because the submitted song and artist information lacks sufficient written context to correct.
+    a. [Removal] 18 rows deleted because the submitted song, artist and primary feeling information lacks sufficient written context to correct.
 
-    b. [Removal] 0 rows deleted because the submitted song and artist information is a duplication of previously corrected song and artist information.
+    b. [Removal] 1 row deleted because the submitted song and artist information is a duplication of previously corrected song and artist information.
 
-    c. [Removal] 2 rows deleted because the submitted song and artist information is connected to insufficient data in Youtube Music.
+    c. [Removal] 10 rows deleted because the submitted song and artist information is connected to insufficient data in Youtube Music.
 
-    d. [Correction] Corrected information in [song_name] and [artist_name] columns for 14 remaining rows in the sequence.
+    d. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 50 remaining rows in the sequence.
