@@ -5,20 +5,38 @@ Web Developer and Data Researcher: Matthew McAlarney (Web Developer, Data Resear
 As music_preference_survey_data_master_cleaned is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python scripts are executed to build music_preference_survey_data_master_cleaned to add WAV files and sonic features through Essentia for each song.
 
 Details to understand different song releases and situations:
+
     1. An official release of a song is an Audio Object in Youtube Music, which is different from a Music Video Object.
+    
     2. An original release of a song is the single release or first standard recording (LP or EP) release containing the song.
+    
     3. If a single was released before the first standard recording (LP or EP) release containing the song, the single release is the original release of the song.
+    
     4. If a single was released after the first standard recording (LP or EP) release containing the song, then the first standard recording release is the original release of the song.
+    
     5. If no single was released, then the first standard recording (LP or EP) release containing the song is the original release of the song.
+    
     6. Later pressings of an original standard recording (LP OR EP) release that are renamed qualify as the original standard recording (LP OR EP).
+    
     7. Later pressings of an original single release that are renamed qualify as the original single.
+
+Details to understand data correction rules:
+
+    1. Correct song, artist, and primary feeling data when there is an obvious formatting issue:
+        Example: Changing a song with a leading space, " 7 Words" to a song without a leading space, "7 Words".
+    
+    2. Correct song, artist, and primary feeling data when there is an obvious logical issue:
+        Example: Changing an artist field from “DeFTONes” to “Deftones”.
+    
+    3. Correct primary feeling data when there is an obvious formal equivalent:
+        Example: Changing a primary feeling field from "Fire" to "Energized".
 
 To guarantee a reliable and accurate procedure for sonic feature extraction throughout all songs, the PCA Plot requires official and original releases of all songs.
 
 ## [2026-6-22 - V1] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_raw.csv` -> `music_preference_survey_data_master_cleaned_v1.csv`
-- **Data Shape Change:** 277 rows * 19 columns -> 269 rows * 3 columns
+- **Data Shape Change:** 277 rows (2 header rows + 275 data rows) * 19 columns -> 269 (1 header row + 268 data rows) rows * 3 columns
 - **Purpose:** [Initial Quality Sweep - Manual Context Review]
 
 ### Steps Executed:
@@ -34,15 +52,15 @@ To guarantee a reliable and accurate procedure for sonic feature extraction thro
 ## [2026-6-22 - V2] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_cleaned_v1.csv` -> `music_preference_survey_data_master_cleaned_v2.csv`
-- **Data Shape Change:** 269 rows * 3 columns -> _ rows * 3 columns
+- **Data Shape Change:** 269 (1 header row + 268 data rows) rows * 3 columns -> _ rows * 3 columns
 - **Purpose:** [Dataset Truncation (Chronological Slicing) - Manual Context Review]
 - **Initial Raw Submissions:** 275 total survey responses
-- **Methodology:** To maintain an efficient manual data-cleaning workflow and prevent arbitrary selection bias, a Chronological Slicing (First-Come, First-Served) method was applied. The first 85 consecutive survey responses were selected, maintaining the original chronological submission order. All subsequent 190 survey responses were excluded from this phase of analysis.
-- **Resulting Batch Size:** 85 rows
+- **Methodology:** To maintain an efficient manual data-cleaning workflow and prevent arbitrary selection bias, a Chronological Slicing (First-Come, First-Served) method was applied. Working from bottom (oldest survey responses) to top (most recent survey responses), the first 85 consecutive survey responses (data rows 185 - 269) in the sequence were selected, maintaining the original chronological submission order. All subsequent 183 survey responses (data rows 2 - 184) were excluded from this phase of analysis.
+- **Resulting Batch Size:** 85 data rows
 
 ### Steps Executed:
 
-1. **[Removal]** Deleted all subsequent 190 survey responses submitted after the first 85 consecutive survey responses according to the original chronological submission order.
+1. **[Removal]** Deleted all subsequent 183 survey responses (encompassing data rows 2 - 184) submitted after the first 85 consecutive survey responses in the sequence according to the original chronological submission order.
 
 ## [2026-6-22 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
 
@@ -54,7 +72,7 @@ To guarantee a reliable and accurate procedure for sonic feature extraction thro
 
 1. **[Complete Quality Sweep]** Processed remaining 85 rows to remove invalid data and correct information:
 
-    a. [Removal] _ rows deleted because the submitted song, artist and primary feeling information lacks sufficient written context to correct to achieve at least one of the following standards:
+    a. [Removal] _ rows deleted because the submitted song, artist and primary feeling information lacks sufficient written context to correct as a means of achieving at least one of the following standards:
         I. An official and original song release by the submitted artist.
         II. A valid and formal primary feeling.
 
