@@ -2,11 +2,13 @@
 
 Web Developer and Data Researcher: Matthew McAlarney (Web Developer, Data Researcher)
 
+## Data Collection & Management Summary
+
 The *Music Preference Survey - Independent Study 2026* survey was administered to a targeted 250 full-time employees in the United States through Survey Monkey during May and June 2026. A total 275 survey responses from full-time employees were collected and downloaded to music_preference_survey_data_master_raw.csv.
 
-As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python programs are executed to build music_preference_survey_data_master_cleaned_v1, music_preference_survey_data_master_cleaned_v2, music_preference_survey_data_master_cleaned_v3, music_preference_survey_data_master_cleaned_v4, and music_preference_survey_data_master_cleaned_v5 to add WAV files and sonic features through Essentia for each song.
+As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python programs are executed to build music_preference_survey_data_master_cleaned_v1, music_preference_survey_data_master_cleaned_v2, music_preference_survey_data_master_cleaned_v3, music_preference_survey_data_master_cleaned_v4, and music_preference_survey_data_master_cleaned_v5 to add WAV files from Youtube Music and sonic features through Essentia for each song.
 
-Music Release Concepts:
+## Music Release Concepts
 
     1. An official release of a song is an Audio Object in Youtube Music, which is different from a Music Video Object in Youtube Music.
     
@@ -28,7 +30,7 @@ Music Release Concepts:
     
     10. Later pressings of an original single release that are renamed qualify as the original single.
 
-Data Correction Rules:
+## Data Correction Rules
 
     1. Correct song, artist, and primary feeling data when there is an obvious formatting issue:
         Example: Changing a song with a leading space, " 7 Words" to a song without a leading space, "7 Words".
@@ -39,7 +41,12 @@ Data Correction Rules:
     3. Correct primary feeling data when there is an obvious formal equivalent:
         Example: Changing a primary feeling field from "Fire" to "Energized".
 
-To guarantee a robust procedure for sonic feature extraction throughout all songs, official and original song releases from standard recording LPs, standard recording EPs, and singles are obtained. The PCA Plot presents unique sonic representations of each song.
+
+## Song Identification Method
+
+To guarantee a fair procedure for sonic feature extraction throughout all songs, only official and original song releases from standard recording LPs, standard recording EPs, and singles are obtained. The PCA Plot presents unique sonic representations of each song.
+
+## Pipeline Limitations
 
 By utilizing untampered song files through various release types (singles, standard recording EPs, and standard recording LPs), the Essentia sonic feature extraction process introduces a systematic production bias. Since singles, standard recording EPs, and standard recording LPs frequently undergo differing mastering processes and structural alterations, the resulting Essentia sonic features represent differences in commercial audio engineering as well as the musical qualities of the songs. Consequently, data clustering in the PCA Plot may partially group songs based on release type rather than similar musical and structural aspects.
 
