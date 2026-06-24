@@ -6,7 +6,7 @@ Web Developer and Data Researcher: Matthew McAlarney (Web Developer, Data Resear
 
 The *Music Preference Survey - Independent Study 2026* survey was administered to a targeted 250 full-time employees in the United States through Survey Monkey during May and June 2026. A total 275 survey responses from full-time employees were collected and downloaded to music_preference_survey_data_master_raw.csv.
 
-As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python programs are executed to build music_preference_survey_data_master_cleaned_v1, music_preference_survey_data_master_cleaned_v2, music_preference_survey_data_master_cleaned_v3, music_preference_survey_data_master_cleaned_v4, and music_preference_survey_data_master_cleaned_v5 to add WAV files from Youtube Music and sonic features through Essentia for each song.
+As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python programs are executed to build music_preference_survey_data_master_cleaned_v1, music_preference_survey_data_master_cleaned_v2, music_preference_survey_data_master_cleaned_v3, music_preference_survey_data_master_cleaned_v4, and music_preference_survey_data_master_cleaned_v5 to add WAV files from Youtube Music using yt-dlp and sonic features through Essentia for each song.
 
 ## Music Release Concepts
 
@@ -44,11 +44,11 @@ As music_preference_survey_data_master_raw is a small dataset and contains open-
 
 ## Song Identification Method
 
-To guarantee a fair procedure for sonic feature extraction throughout all songs, only official and original song releases from standard recording LPs, standard recording EPs, and singles are obtained. The PCA Plot presents unique sonic representations of each song.
+To guarantee a fair procedure for sonic feature extraction throughout all songs, only official song releases from standard recording LPs, standard recording EPs, and singles are obtained. The PCA Plot presents unique sonic representations of each song.
 
 ## Pipeline Limitations
 
-1. The yt-dlp Python library is utilized to download and extract the highest quality available compressed audio from Youtube Music. Then, yt-dlp uses FFmpeg to tranform the compressed audio into an uncompressed WAV file. There is some probability that the subset of selected songs are associated with WAV files containing different levels of audio quality. As a result, data clustering in the PCA Plot may partially reflect musical qualities that do not accurately characterize the sonic makeup of certain songs.
+1. The yt-dlp Python library is utilized to download and extract the highest quality available compressed audio from Youtube Music. Then, yt-dlp uses FFmpeg to transform the compressed audio into an uncompressed WAV file. There is some probability that the subset of selected songs are associated with WAV files containing different levels of audio quality and distortion. As a result, data clustering in the PCA Plot may partially reflect musical qualities that do not accurately characterize the sonic makeup of certain songs.
 
 2. By utilizing untampered song files through various release types (singles, standard recording EPs, and standard recording LPs), the Essentia sonic feature extraction process introduces a systematic production bias. Since singles, standard recording EPs, and standard recording LPs frequently undergo differing mastering processes and structural alterations, the resulting Essentia sonic features represent differences in commercial audio engineering as well as the musical qualities of the songs. Consequently, data clustering in the PCA Plot may partially group songs based on release type rather than similar musical and structural aspects.
 
@@ -91,7 +91,7 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 1. **[Complete Quality Sweep]** Processed remaining 85 rows to remove invalid data and correct information:
 
-    a. [Removal] _ rows deleted because the submitted song, artist and primary feeling information lacks sufficient written context to correct as a means of achieving at least one of the following standards:
+    a. [Removal] _ rows deleted because the submitted song, artist and primary feeling information lacks sufficient written context to correct as a means of achieving at least one of the succeeding standards:
         I. An official and original song release by the submitted artist.
         II. A valid and formal primary feeling.
 
