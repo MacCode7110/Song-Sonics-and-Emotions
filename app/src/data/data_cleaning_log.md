@@ -6,7 +6,7 @@ The *Music Preference Survey - Independent Study 2026* survey was administered t
 
 As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python programs are executed to build music_preference_survey_data_master_cleaned_v1, music_preference_survey_data_master_cleaned_v2, music_preference_survey_data_master_cleaned_v3, music_preference_survey_data_master_cleaned_v4, and music_preference_survey_data_master_cleaned_v5 to add WAV files and sonic features through Essentia for each song.
 
-Song Release Concepts:
+Music Release Concepts:
 
     1. An official release of a song is an Audio Object in Youtube Music, which is different from a Music Video Object in Youtube Music.
     
@@ -18,9 +18,9 @@ Song Release Concepts:
     
     5. If no single was released, then the first standard recording LP release containing the song is the original release of the song.
 
-    6. There is some probability that the single release of a song is sonically different compared to the song featured in the standard recording LP release.
+    6. There is some probability that the single release of a song is sonically different compared to the song featured in any standard recording EP release, and any standard recording LP release.
 
-    7. There is some probability that the standard recording EP release of a song is sonically different compared to the song featured in the standard recording LP release.
+    7. There is some probability that the standard recording EP release of a song is sonically different compared to the song featured in any standard recording LP release, and in any single release.
     
     8. Later pressings of an original standard recording LP release that are renamed qualify as the original standard recording LP.
 
@@ -60,15 +60,15 @@ To guarantee a robust procedure for sonic feature extraction throughout all song
 ## [2026-6-24 - V2] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_cleaned_v1.csv` -> `music_preference_survey_data_master_cleaned_v2.csv`
-- **Data Shape Change:** 269 (1 header row + 268 data rows) rows * 3 columns -> _ rows * 3 columns
+- **Data Shape Change:** 269 (1 header row + 268 data rows) rows * 3 columns -> 86 rows * 3 columns
 - **Purpose:** [Dataset Truncation (Simple Random Sampling) - Python Program Execution]
 - **Initial Raw Submissions:** 275 total survey responses
-- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the whole full-time employee respondent pool, a Simple Random Sampling method was applied. Using the simple_random_sampling.py Python program with a constant random seed (random_state=85), 85 unique survey responses were randomly selected from the 268 data rows. All non-selected responses were omitted from this phase of analysis.
+- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the whole full-time employee respondent pool, a Simple Random Sampling method was applied. Using the simple_random_sampling.py Python program with a constant random seed (random_state=85) to enforce reproducibility, 85 unique survey responses were randomly selected from the 268 data rows. All non-selected responses were omitted from this phase of analysis.
 - **Resulting Batch Size:** 85 data rows
 
 ### Steps Executed:
 
-1. **[Removal]** Executed simple_random_sample.py to randomly select 85 unique survey responses from the 268 data rows, omitting 183 remaining survey responses.
+1. **[Removal]** Executed simple_random_sample.py to randomly select 85 unique survey responses from the 268 data rows, omitting 183 remaining data rows.
 
 ## [2026-6-24 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
 
