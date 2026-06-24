@@ -2,25 +2,33 @@
 
 Web Developer and Data Researcher: Matthew McAlarney (Web Developer, Data Researcher)
 
-As music_preference_survey_data_master_cleaned is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python scripts are executed to build music_preference_survey_data_master_cleaned to add WAV files and sonic features through Essentia for each song.
+The *Music Preference Survey - Independent Study 2026* survey was administered to a targeted 250 full-time employees in the United States through Survey Monkey during May and June 2026. A total 275 survey responses from full-time employees were collected and downloaded to music_preference_survey_data_master_raw.csv.
 
-Details to understand different song releases and situations:
+As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python programs are executed to build music_preference_survey_data_master_cleaned_v1, music_preference_survey_data_master_cleaned_v2, music_preference_survey_data_master_cleaned_v3, music_preference_survey_data_master_cleaned_v4, and music_preference_survey_data_master_cleaned_v5 to add WAV files and sonic features through Essentia for each song.
 
-    1. An official release of a song is an Audio Object in Youtube Music, which is different from a Music Video Object.
-    
-    2. An original release of a song is the single release or first standard recording (LP or EP) release containing the song.
-    
-    3. If a single was released before the first standard recording (LP or EP) release containing the song, the single release is the original release of the song.
-    
-    4. If a single was released after the first standard recording (LP or EP) release containing the song, then the first standard recording release is the original release of the song.
-    
-    5. If no single was released, then the first standard recording (LP or EP) release containing the song is the original release of the song.
-    
-    6. Later pressings of an original standard recording (LP OR EP) release that are renamed qualify as the original standard recording (LP OR EP).
-    
-    7. Later pressings of an original single release that are renamed qualify as the original single.
+Song Release Concepts:
 
-Details to understand data correction rules:
+    1. An official release of a song is an Audio Object in Youtube Music, which is different from a Music Video Object in Youtube Music.
+    
+    2. An original release of a song is the single release or first standard recording LP release containing the song.
+    
+    3. If a single was released before the first standard recording LP release containing the song, the single release is the original release of the song.
+    
+    4. If a single was released after the first standard recording LP release containing the song, then the first standard recording LP release is the original release of the song.
+    
+    5. If no single was released, then the first standard recording LP release containing the song is the original release of the song.
+
+    6. There is some probability that the single release of a song is sonically different compared to the song featured in the standard recording LP release.
+
+    7. There is some probability that the standard recording EP release of a song is sonically different compared to the song featured in the standard recording LP release.
+    
+    8. Later pressings of an original standard recording LP release that are renamed qualify as the original standard recording LP.
+
+    9. Later pressings of an original standard recording EP release that are renamed qualify as the original standard recording EP.
+    
+    10. Later pressings of an original single release that are renamed qualify as the original single.
+
+Data Correction Rules:
 
     1. Correct song, artist, and primary feeling data when there is an obvious formatting issue:
         Example: Changing a song with a leading space, " 7 Words" to a song without a leading space, "7 Words".
@@ -31,7 +39,7 @@ Details to understand data correction rules:
     3. Correct primary feeling data when there is an obvious formal equivalent:
         Example: Changing a primary feeling field from "Fire" to "Energized".
 
-To guarantee a robust procedure for sonic feature extraction throughout all songs, official and original song releases are obtained. The PCA Plot presents accurate sonic representations of all songs and fair comparisons.
+To guarantee a robust procedure for sonic feature extraction throughout all songs, official and original song releases from standard recording LPs, standard recording EPs, and singles are obtained. The PCA Plot presents unique, accurate sonic representations of each song and fair comparisons.
 
 ## [2026-6-22 - V1] - [Matthew McAlarney - Web Developer, Data Researcher]
 
@@ -49,20 +57,20 @@ To guarantee a robust procedure for sonic feature extraction throughout all song
 3. **[Correction]** Standardized 22 null values to display NA.
 4. **[Removal]** Deleted 7 rows each containing all NA values.
 
-## [2026-6-22 - V2] - [Matthew McAlarney - Web Developer, Data Researcher]
+## [2026-6-24 - V2] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_cleaned_v1.csv` -> `music_preference_survey_data_master_cleaned_v2.csv`
 - **Data Shape Change:** 269 (1 header row + 268 data rows) rows * 3 columns -> _ rows * 3 columns
-- **Purpose:** [Dataset Truncation (Chronological Slicing) - Manual Context Review]
+- **Purpose:** [Dataset Truncation (Simple Random Sampling) - Python Program Execution]
 - **Initial Raw Submissions:** 275 total survey responses
-- **Methodology:** To maintain an efficient manual data-cleaning workflow and prevent arbitrary selection bias, a Chronological Slicing (First-Come, First-Served) method was applied. Working from bottom (oldest survey responses) to top (most recent survey responses), the first 85 consecutive survey responses (data rows 185 - 269) in the sequence were selected, maintaining the original chronological submission order. All subsequent 183 survey responses (data rows 2 - 184) were excluded from this phase of analysis.
+- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the whole full-time employee respondent pool, a Simple Random Sampling method was applied. Using the simple_random_sampling.py Python program with a constant random seed (random_state=85), 85 unique survey responses were randomly selected from the 268 data rows. All non-selected responses were omitted from this phase of analysis.
 - **Resulting Batch Size:** 85 data rows
 
 ### Steps Executed:
 
-1. **[Removal]** Deleted all subsequent 183 survey responses (encompassing data rows 2 - 184) submitted after the first 85 consecutive survey responses in the sequence according to the original chronological submission order.
+1. **[Removal]** Executed simple_random_sample.py to randomly select 85 unique survey responses from the 268 data rows, omitting 183 remaining survey responses.
 
-## [2026-6-23 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
+## [2026-6-24 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_cleaned_v2.csv` -> `music_preference_survey_data_master_cleaned_v3.csv`
 - **Data Shape Change:** _ rows * 3 columns -> _ rows * 3 columns
@@ -78,8 +86,12 @@ To guarantee a robust procedure for sonic feature extraction throughout all song
 
     b. [Removal] _ rows deleted because the submitted song and artist information is a duplication of song and artist information previously corrected in the Complete Quality Sweep.
 
-    c. [Removal] _ rows deleted because the submitted song and artist information is connected to insufficient data in Youtube Music. Insufficient data in Youtube Music achieves at least one of the following conditions:
-        I. The song was officially and originally released as a single. The official and original single release and the first standard recording (which is one of an LP OR EP) to feature the official single are not in Youtube Music.
-        II. The song was officially and originally released as part of a standard recording (which is one of an LP OR EP).The official and original standard recording release and any subsequent official single release are not in Youtube Music.
+    c. [Removal] _ rows deleted because the submitted song and artist information is connected to insufficient data in Youtube Music. Insufficient data in Youtube Music achieves one of the succeeding conditions:
+        
+        I. The song was officially and originally released within a standard recording LP, and the official and original standard recording LP release containing the song is not in Youtube Music. Any alternative official standard recording EP release containing the song is not in Youtube Music, and any alternative official single release is not in Youtube Music.
+
+        II. The song was officially and originally released within a standard recording EP, and the official and original standard recording EP release containing the song is not in Youtube Music. Any alternative official standard recording LP release containing the song is not in Youtube Music, and any alternative official single release is not in Youtube Music.
+        
+        III. The song was officially and originally released as a single, and the official and original single release is not in Youtube Music. Any alternative official standard recording EP release containing the song is not in Youtube Music, and any alternative official standard recording LP release containing the song is not in Youtube Music.
 
     d. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for _ remaining rows in the sequence.
