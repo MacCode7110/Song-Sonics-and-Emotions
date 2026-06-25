@@ -68,7 +68,7 @@ As music_preference_survey_data_master_raw is a small dataset and contains open-
 
 ## Song Identification Method
 
-To guarantee a fair procedure for sonic feature extraction throughout all songs, only official song releases from standard recording LPs, standard recording EPs, and singles are obtained. Standard recording LPs, standard recording EPs, and singles represent the primary commercial formats where song writing and arrangement is purposeful and produced for a holistic listening experience. The PCA Plot presents unique sonic representations of each selected song.
+To guarantee a fair procedure for sonic feature extraction throughout all songs, only official song releases from standard recording LPs, standard recording EPs, and singles are obtained. Standard recording LPs, standard recording EPs, and singles represent the primary commercial formats where song writing and arrangement is purposeful and originally produced for a holistic listening experience. The PCA Plot presents unique sonic representations of each selected song.
 
 ## Pipeline Limitations
 
