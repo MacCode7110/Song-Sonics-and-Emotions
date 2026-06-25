@@ -58,13 +58,13 @@ As music_preference_survey_data_master_raw is a small dataset and contains open-
 ## Data Correction Standards
 
     1. Correct song, artist, and primary feeling data when there is an obvious formatting issue:
-        Example: Changing a song field with a leading space, " 7 Words" to a song field without a leading space, "7 Words".
+        a. Example: Changing a song field with a leading space, " 7 Words" to a song field without a leading space, "7 Words".
 
     2. Correct song, artist, and primary feeling data when there is an obvious logical issue:
-        Example: Changing an artist field from “DeFTONes” to “Deftones”.
+        a. Example: Changing an artist field from “DeFTONes” to “Deftones”.
 
     3. Correct primary feeling data when the written presentation is informal, and there is a primary feeling that is formal and demonstrates the closest meaning:
-        Example: Changing a primary feeling field from "Fire" to "Energized".
+        a. Example: Changing a primary feeling field from "Fire" to "Energized".
 
 ## Song Identification Method
 
