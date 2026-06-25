@@ -96,9 +96,9 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 - **Target File:** `music_preference_survey_data_master_cleaned_v1.csv` -> `music_preference_survey_data_master_cleaned_v2.csv`
 - **Data Shape Change:** 269 (1 header row + 268 data rows) rows * 3 columns -> 86 (1 header row + 85 data rows) rows * 3 columns
-- **Purpose:** [Dataset Truncation (Simple Random Sampling) - Python Program Execution, Select Representative Subset of Dataset]
+- **Purpose:** [Dataset Truncation (Simple Random Sampling) - Python Program Execution, Select Representative Subset of Valid Dataset]
 - **Initial Raw Submissions:** 275 total survey responses
-- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the whole full-time employee respondent pool, a Simple Random Sampling method was applied. Using the simple_random_sampling.py Python program with a constant random seed (random_state=85) to enforce reproducibility, 85 unique survey responses were randomly selected from the 268 data rows. All non-selected responses were omitted from this phase of analysis.
+- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the valid full-time employee respondent pool, a Simple Random Sampling method was applied. Using the simple_random_sampling.py Python program with a constant random seed (random_state=0) to enforce reproducibility, 85 unique survey responses were randomly selected from the 268 data rows. The sample size represents approximately 31.7% of the valid full-time employee respondent pool, which asserts a 95% confidence level and a marginal error less than 9%. All non-selected responses were omitted from this phase of analysis.
 - **Resulting Batch Size:** 85 data rows
 
 ### Steps Executed:
