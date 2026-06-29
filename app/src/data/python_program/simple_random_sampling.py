@@ -22,7 +22,7 @@ df = pd.read_csv(input_csv_path)
 sampled_df = df.sample(n=85, random_state=50)
 
 # Store the sampled data in output_csv
-sampled_df.to_csv(output_csv_path, index=False)
+sampled_df.to_csv(output_csv_path, na_rep="NA", index=False)
 
 # Print a message demonstrating a successful sampling operation
 print(f"Successfully sampled {len(sampled_df)} rows and saved to {output_csv_path}")
