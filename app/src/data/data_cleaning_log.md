@@ -1,6 +1,6 @@
 # Data Cleaning Log
 
-Web Developer and Data Researcher: Matthew McAlarney (Web Developer, Data Researcher)
+Web Developer and Data Researcher: Matthew McAlarney
 
 ## Technologies: Python, Pandas, yt-dlp, FFmpeg, Essentia Audio Analysis, PCA (Principal Component Analysis)
 
@@ -54,7 +54,7 @@ As music_preference_survey_data_master_raw is a small dataset and contains open-
 
     4. An official release of a song is an Audio Object in Youtube Music, which is different from a Music Video Object in Youtube Music. A song is officially released through any one of the release format groups detailed in Item 1. A song is not officially released as a music video.
 
-    5. There is some probability that the release of a song in one particular format is sonically different compared to the release of a song in a different particular format.
+    5. There is some probability that the release of a song in one particular format contains different engineering output and musical qualities compared to the release of a song in a different particular format.
 
     6. An original release of a song is the release format where the song is first available. A song is first available through any one of the release format groups detailed in Item 1.
 
@@ -90,15 +90,15 @@ As music_preference_survey_data_master_raw is a small dataset and contains open-
 
 ## Song Identification Method
 
-To guarantee a fair procedure for sonic feature extraction throughout all songs, only official song releases through structurally correct standard recording LPs, standard recording EPs, and singles are obtained. Standard recording LPs, standard recording EPs, and singles represent the primary initiatives where song writing and arrangement is purposeful and originally produced for a holistic listening experience. In contrast, release formats belonging to the specialized audio editions and re-release, specialized compilation, soundtrack, and alternative performance and recording groups represent secondary initiatives that differ from the established identification method. Restricting the pipeline to consume song releases from standard recording LPs, standard recording EPs, and singles establishes a sonic control variable. The restriction enables the PCA Plot clustering to reflect differences in musical qualities with higher accuracy rather than differences in release formats and engineering outputs. The PCA Plot presents unique sonic representations of each selected song.
+To guarantee a fair procedure for sonic feature extraction throughout all songs, only official song releases through structurally correct standard recording LPs, standard recording EPs, and singles are obtained. Standard recording LPs, standard recording EPs, and singles represent the primary initiatives where song writing and arrangement is purposeful and originally produced for a holistic listening experience. In contrast, release formats belonging to the specialized audio editions and re-release, specialized compilation, soundtrack, and alternative performance and recording groups represent secondary initiatives that differ from the established identification method. Restricting the pipeline to consume song releases from standard recording LPs, standard recording EPs, and singles establishes a sonic control variable. The restriction enables the PCA Plot clustering to reflect differences in musical qualities with higher accuracy rather than differences in release formats and engineering output. The PCA Plot presents unique sonic representations of each selected song.
 
 ## Pipeline Limitations
 
 1. The yt-dlp Python library is utilized to download and extract the highest quality available compressed audio from Youtube Music. Subsequently, yt-dlp uses FFmpeg to transform the compressed audio into an uncompressed WAV file. There is some probability that the subset of selected songs are associated with WAV files containing different levels of audio quality and distortion. As a result, data clustering in the PCA Plot may partially reflect musical qualities that do not accurately represent the original musical qualities of certain songs.
 
-2. By utilizing untampered WAV files through standard recording LPs, standard recording EPs, and singles, the Essentia sonic feature extraction process introduces a systematic production bias. Since standard recording LPs, standard recording EPs, and singles frequently experience differing mastering procedures and structural modifications, the resulting Essentia sonic features represent differences in release format and audio engineering output as well as the musical qualities of the songs. Consequently, data clustering in the PCA Plot may partially group songs based on release format and audio engineering output rather than similar musical qualities.
+2. By utilizing untampered WAV files through standard recording LPs, standard recording EPs, and singles, the Essentia sonic feature extraction process introduces a systematic production bias. Since standard recording LPs, standard recording EPs, and singles frequently experience differing mastering procedures and structural modifications, the resulting Essentia sonic features represent differences in release format and engineering output as well as the musical qualities of the songs. Consequently, data clustering in the PCA Plot may partially group songs based on release format and engineering output rather than similar musical qualities.
 
-3. When Youtube Music offers certain standard recording LPs, standard recording EPs, and singles containing songs that also have been remastered, there is a greater probability that the audio streamed through this particular subset of standard recording LPs, standard recording EPs, and singles is sourced from remastered modifications of the songs. The acquisition of songs from standard recording LPs, standard recording EPs, and singles in Youtube Music also creates a systematic production bias.Consequently, data clustering in the PCA Plot may partially group songs based on audio engineering output rather than similar musical qualities.
+3. When Youtube Music offers certain standard recording LPs, standard recording EPs, and singles containing songs that also have been remastered, there is a greater probability that the audio streamed through this particular subset of standard recording LPs, standard recording EPs, and singles is sourced from remastered modifications of the songs. The acquisition of songs from standard recording LPs, standard recording EPs, and singles in Youtube Music also creates a systematic production bias.Consequently, data clustering in the PCA Plot may partially group songs based on engineering output rather than similar musical qualities.
 
 ---
 
