@@ -8,7 +8,7 @@ Web Developer and Data Researcher: Matthew McAlarney (Web Developer, Data Resear
 
 The _Music Preference Survey - Independent Study 2026_ survey was administered to a targeted 250 full-time employees in the United States through Survey Monkey from May 28th, 2026 - June 5th, 2026. A total 275 survey responses from full-time employees were collected and downloaded to `music_preference_survey_data_master_raw.csv`.
 
-As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to remove and correct song and artist information using human evaluation and decision. Python programs are executed to build `music_preference_survey_data_master_cleaned_v1`, `music_preference_survey_data_master_cleaned_v2`, `music_preference_survey_data_master_cleaned_v3`, `music_preference_survey_data_master_cleaned_v4`, and `music_preference_survey_data_master_cleaned_v5` to add WAV files from Youtube Music using yt-dlp and sonic features through Essentia for each song.
+As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to systematically remove and correct song and artist information using human evaluation and decision. Python programs are executed to build `music_preference_survey_data_master_cleaned_v1`, `music_preference_survey_data_master_cleaned_v2`, `music_preference_survey_data_master_cleaned_v3`, `music_preference_survey_data_master_cleaned_v4`, `music_preference_survey_data_master_cleaned_v5`, and `music_preference_survey_data_master_cleaned_v6`.
 
 ## Music Release Context
 
@@ -100,6 +100,8 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 3. When Youtube Music offers certain singles, standard recording EPs, and standard recording LPs containing songs that also have been remastered, there is a greater probability that the audio streamed through this particular subset of singles, standard recording EPs, and standard recording LPs is sourced from remastered modifications of the encompassing songs. The acquisition of songs from singles, standard recording EPs, and standard recording LPs in Youtube Music also carries a systematic production bias. Consequently, data clustering in the PCA Plot may partially group songs based on audio engineering output rather than similar musical qualities and structural aspects.
 
+---
+
 ## [2026-6-22 - V1] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_raw.csv` -> `music_preference_survey_data_master_cleaned_v1.csv`
@@ -116,6 +118,8 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 3. **[Correction]** Standardized 22 null values to display NA.
 4. **[Removal]** Deleted 7 rows each containing exclusively NA values.
 
+---
+
 ## [2026-6-25 - V2] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_cleaned_v1.csv` -> `music_preference_survey_data_master_cleaned_v2.csv`
@@ -128,6 +132,8 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 ### Steps Executed:
 
 1. **[Removal]** Executed `simple_random_sample.py` to randomly select 85 unique survey responses from the 268 data rows, omitting 183 remaining data rows.
+
+---
 
 ## [2026-6-29 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
 
@@ -165,3 +171,5 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
      d. [Removal] _ rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, and the song and artist pairing is connected to sufficient data in Youtube Music, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
 
      e. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for _ remaining rows in the sequence.
+
+---
