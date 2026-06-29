@@ -15,10 +15,10 @@ As music_preference_survey_data_master_raw is a small dataset and contains open-
     1. Music is released to different audiences through the following format groups:
         a. Primary Release Formats:
             I. Standard Recording LP (Long Play): A full-length presentation of songs, which usually consists of at least seven songs.
-            II. Standard Recording EP (Extended Play): Usually consists of four to six songs and is longer than a single.
-            III. Single: Usually consists of one to three songs with a focus on a lead promotional song.
-            IV. Maxi-Single: A specific collection frequently utilized in Dance, Electronic, and Hip Hop music that contains a lead single and an array of remix recordings, instrumental recordings, and B-sides.
-            V. Double LP: A collection consisting of a pair of distinct volumes released within the same product. This is also a subset of the standard recording LP release type.
+            II. Double LP (Double Long Play): A collection consisting of a pair of distinct volumes released within the same product. A Double LP is a Standard Recording LP.
+            III. Standard Recording EP (Extended Play): Usually consists of four to six songs and is longer than a single.
+            IV. Single: Usually consists of one to three songs with a focus on a lead promotional song.
+            V. Maxi-Single: A specific collection frequently utilized in Dance, Electronic, and Hip Hop music that contains a lead single and an array of remix recordings, instrumental recordings, and B-sides.
         b. Specialized Audio Editions and Re-release Formats:
             I. Deluxe: An extended reissue of an existing standard recording LP containing bonus songs, demo songs, and/or b-side songs.
             II. Remastered: A song that is sonically optimized through contemporary technology, which usually encompasses increasing volume and modifying dynamic range.
@@ -131,14 +131,13 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 1.   **[Complete Quality Sweep]** Processed remaining 85 rows to remove invalid data and systematically correct information:
 
-     a. [Removal] 5 rows deleted because the song, artist and primary feeling lacked sufficient written context to satisfy all of the following standards:
+     a. [Removal] 10 rows deleted because the song, artist and primary feeling lacked sufficient written context to achieve both of the following standards:
 
-        I. A specific song officially released by a specific artist where the intention of the respondent is completely clear in the written response.
+        I. A song officially and originally released by the artist where the intention of the respondent is completely clear in the written response.
 
-        II. A primary feeling that satisfies the following standard:
-            a. A primary feeling that is one word, completely grammatically correct, completely reflects natural speech, and communicates a reasonably accurate meaning with complete clarity.
+        II. A primary feeling that is one word, completely grammatically correct, completely reflects natural speech, and communicates a reasonably accurate meaning with complete clarity.
 
-     b. [Removal] 2 rows deleted because although there was sufficient written context to verify that the artist officially released the song, the artist did not officially and originally release the song through any of the following formats:
+     b. [Removal] 2 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song, the artist did not officially and originally release the song through any of the following formats:
 
         I. Standard Recording LP
         
@@ -146,15 +145,15 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
         III. Single
 
-     c. [Removal] _ rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, the song and artist pairing is connected to insufficient data in Youtube Music. Insufficient data in Youtube Music satisfies one of the following conditions:
+     c. [Removal] 4 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, the song and artist pairing is connected to insufficient data in Youtube Music. Insufficient data in Youtube Music achieves one of the following findings:
 
-         I. The song was officially and originally released within a standard recording LP, and the official and original standard recording LP release containing the song is not in Youtube Music. Any alternative official standard recording EP release containing the official song is not in Youtube Music, and any alternative official single release is not in Youtube Music.
+         I. The song was officially and originally released within a standard recording LP, and the official and original standard recording LP release containing the song is not in Youtube Music. There is not an official standard recording EP release containing the official song in Youtube Music, and there is not an official single release in Youtube Music.
 
-         II. The song was officially and originally released within a standard recording EP, and the official and original standard recording EP release containing the song is not in Youtube Music. Any alternative official standard recording LP release containing the official song is not in Youtube Music, and any alternative official single release is not in Youtube Music.
+         II. The song was officially and originally released within a standard recording EP, and the official and original standard recording EP release containing the song is not in Youtube Music. There is not an official standard recording LP release containing the official song in Youtube Music, and there is not an official single release in Youtube Music.
 
-         III. The song was officially and originally released as a single, and the official and original single release is not in Youtube Music. Any alternative official standard recording EP release containing the official song is not in Youtube Music, and any alternative official standard recording LP release containing the official song is not in Youtube Music.
+         III. The song was officially and originally released as a single, and the official and original single release is not in Youtube Music. There is not an official standard recording EP release containing the official song in Youtube Music, and there is not an official standard recording LP release containing the official song in Youtube Music.
 
 
-     d. [Removal] _ rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, and the song and artist pairing is connected to sufficient data in Youtube Music, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
+     d. [Removal] 1 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, and the song and artist pairing is connected to sufficient data in Youtube Music, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
 
-     e. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 9 remaining rows in the sequence.
+     e. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 14 remaining rows in the sequence.
