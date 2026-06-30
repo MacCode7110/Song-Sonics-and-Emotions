@@ -39,13 +39,13 @@ As music_preference_survey_data_master_raw is a small dataset and contains open-
             II. Original Score: Consists only of background instrumental songs produced to synchronize with on-screen movement and build tone. At least one composer executes the production. The production frequently contains electronic, ambient, and orchestral elements.
             III. Mixed Soundtrack: Hybrid collections that contain both sourced and/or specifically produced songs for the media product and a subset of instrumental songs.
             IV. Cast Recordings: Studio and/or live recordings of the actors performing the musical numbers featured in a distinct production.
-            V. Inspirational Recordings: Recordings that companion media products and contain songs that may not feature in the media product. The particular songs are inspired by the concept and/or characters of the media product. The recording frequently operates as a marketing effort to accompany the release of the media product. 
+            V. Inspirational Recordings: Recordings that accompany a media product and may contain songs that do not feature in the media product. The particular songs are inspired by the concept and/or characters of the media product. The recording frequently operates as a marketing effort to accompany the release of the media product. 
         e. Alternative Performance and Recording Formats:
             I. Acoustic: Features simplified instrumentation, which encompasses acoustic equipment rather than electronic equipment.
             II. Unplugged: A particular subset of acoustic performance recorded live facing an audience.
             III. Live: Audio captured directly from a performance, which consists of room acoustics, audience sounds, and real-time differences from recorded songs.
             IV. Cover: A distinct recording of a song originally written and performed by a different artist.
-            V. Demo Recording: A raw collection presenting unpolished, minimally produced songs.
+            V. Demo Recording: A collection presenting raw songs with sparse production.
             VI. Mashup: A recording where at least two songs are sonically combined to construct a new song.
 
     2. A standard recording LP is the official version of a Long Play.
@@ -134,7 +134,7 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 ---
 
-## [2026-6-29 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
+## [2026-6-30 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preference_survey_data_master_cleaned_v2.csv` -> `music_preference_survey_data_master_cleaned_v3.csv`
 - **Data Shape Change:** 86 (1 header row + 85 data rows) rows * 3 columns -> _ rows * 3 columns
@@ -145,9 +145,9 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 1.   **[Complete Quality Sweep]** Processed remaining 85 rows to remove invalid data and systematically correct information:
 
-     a. [Removal] _ rows deleted because the song, artist, and primary feeling contained exclusively NA values.
+     a. [Removal] 1 rows deleted because the song, artist, and primary feeling contained exclusively NA values.
 
-     b. [Removal] _ rows deleted because although the song, artist and primary feeling did not contain exclusively NA values, the song, artist, and primary feeling lacked sufficient written context to achieve both of the following standards:
+     b. [Removal] 2 rows deleted because although the song, artist and primary feeling did not contain exclusively NA values, the song, artist, and primary feeling lacked sufficient written context to achieve both of the following standards:
 
         I. A song officially and originally released by the artist where the intention of the respondent is completely clear in the written response.
 
@@ -172,6 +172,6 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
      e. [Removal] _ rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, and the song and artist pairing is connected to sufficient data in YouTube Music, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
 
-     f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for _ remaining rows in the sequence.
+     f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 10 remaining rows in the sequence.
 
 ---
