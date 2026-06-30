@@ -6,7 +6,7 @@ Web Developer and Data Researcher: Matthew McAlarney
 
 ## Data Collection & Management Summary
 
-The _Music Preference Survey - Independent Study 2026_ survey was administered to a targeted 250 full-time employees in the United States through Survey Monkey from May 28th, 2026 - June 5th, 2026. A total of 275 survey responses from full-time employees were collected and downloaded to `music_preference_survey_data_master_raw.csv`.
+The _Music Preference Survey_ survey was administered to a targeted 250 full-time employees in the United States through Survey Monkey from May 28th, 2026 - June 5th, 2026. A total of 275 survey responses from full-time employees were collected and downloaded to `music_preference_survey_data_master_raw.csv`.
 
 As music_preference_survey_data_master_raw is a small dataset and contains open-response survey data that represents human thought and writing, certain steps are manually executed to systematically remove and correct song and artist information using human evaluation and decision. Python programs are executed to build `music_preference_survey_data_master_cleaned_v1`, `music_preference_survey_data_master_cleaned_v2`, `music_preference_survey_data_master_cleaned_v3`, `music_preference_survey_data_master_cleaned_v4`, `music_preference_survey_data_master_cleaned_v5`, and `music_preference_survey_data_master_cleaned_v6`.
 
