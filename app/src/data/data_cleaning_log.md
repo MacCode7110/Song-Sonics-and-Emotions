@@ -147,7 +147,7 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 1.   **[Complete Quality Sweep]** Processed remaining 85 rows to remove invalid data and systematically correct information:
 
-     a. [Removal] 1 rows deleted because the song, artist, and primary feeling contained exclusively NA values.
+     a. [Removal] 1 row deleted because the song, artist, and primary feeling contained exclusively NA values.
 
      b. [Removal] 13 rows deleted because although the song, artist and primary feeling did not contain exclusively NA values, the song, artist, and primary feeling lacked sufficient written context to achieve both of the succeeding measures:
 
@@ -172,7 +172,7 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
          III. The song was officially and originally released as a single, and the official, original, and structurally correct single release is not in YouTube Music. There is not an official, structurally correct standard recording EP release containing the song in YouTube Music, and there is not an official, structurally correct LP release containing the song in YouTube Music.
 
 
-     e. [Removal] 1 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, and the song and artist pairing is connected to sufficient data in YouTube Music, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
+     e. [Removal] 1 row deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, and the song and artist pairing is connected to sufficient data in YouTube Music, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
 
      f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 33 remaining rows in the sequence.
 
