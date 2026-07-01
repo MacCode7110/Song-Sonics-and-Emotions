@@ -136,7 +136,7 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 ---
 
-## [2026-6-30 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
+## [2026-7-1 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preferences_and_feelings_survey_data_master_cleaned_v2.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v3.csv`
 - **Data Shape Change:** 86 (1 header row + 85 data rows) rows * 3 columns -> _ rows * 3 columns
@@ -147,15 +147,15 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 1.   **[Complete Quality Sweep]** Processed remaining 85 rows to remove invalid data and systematically correct information:
 
-     a. [Removal] 1 row deleted because the song, artist, and primary feeling contained exclusively NA values.
+     a. [Removal] _ row deleted because the song, artist, and primary feeling contained exclusively NA values.
 
-     b. [Removal] 13 rows deleted because although the song, artist and primary feeling did not contain exclusively NA values, the song, artist, and primary feeling lacked sufficient written context to achieve both of the succeeding measures:
+     b. [Removal] _ rows deleted because although the song, artist and primary feeling did not contain exclusively NA values, the song, artist, and primary feeling lacked sufficient written context to achieve both of the succeeding measures:
 
         I. A song officially and originally released by the artist where the intention of the respondent is completely clear in the written response.
 
         II. A primary feeling that is one word, completely grammatically correct, completely reflects natural speech, and communicates a completely understandable, reasonably accurate meaning.
 
-     c. [Removal] 3 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song, the artist did not officially and originally release the song through any of the succeeding formats:
+     c. [Removal] _ rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song, the artist did not officially and originally release the song through any of the succeeding formats:
 
         I. Standard Recording LP
         
@@ -163,7 +163,7 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
         III. Single
 
-     d. [Removal] 0 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, the song and artist pairing is connected to insufficient data in YouTube Music. Insufficient data in YouTube Music achieves one of the succeeding findings:
+     d. [Removal] _ rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, the song and artist pairing is connected to insufficient data in YouTube Music. Insufficient data in YouTube Music achieves one of the succeeding findings:
 
          I. The song was officially and originally released within a standard recording LP, and the official, original, and structurally correct standard recording LP release containing the song is not in YouTube Music. There is not an official, structurally correct standard recording EP release containing the song in YouTube Music, and there is not an official, structurally correct single release containing the song in YouTube Music.
 
@@ -172,8 +172,8 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
          III. The song was officially and originally released as a single, and the official, original, and structurally correct single release is not in YouTube Music. There is not an official, structurally correct standard recording EP release containing the song in YouTube Music, and there is not an official, structurally correct LP release containing the song in YouTube Music.
 
 
-     e. [Removal] 1 row deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, and the song and artist pairing is connected to sufficient data in YouTube Music, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
+     e. [Removal] _ row deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a Standard Recording LP, Standard recording EP, or as a Single, and the song and artist pairing is connected to sufficient data in YouTube Music, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
 
-     f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 33 remaining rows in the sequence.
+     f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for _ remaining rows in the sequence.
 
 ---
