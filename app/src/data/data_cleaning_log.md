@@ -86,11 +86,31 @@ Since `music_preferences_and_feelings_survey_data_master_raw` is a small dataset
 
     2. Is the current release format (rendered in YouTube Music) the official and original release of the song?
 
-    3. If the song was officially and originally released through a standard recording LP, standard recording EP, or single, then are the relevant standard recording LP, standard recording EP, or single release formats in YouTube Music? Do the relevant standard recording LP, standard recording EP, or single release formats in YouTube Music accurately maintain a corresponding original structure? To accurately maintain a corresponding original structure, a release format preserves the original count, list, and ordering of songs. If a release format accurately maintains a corresponding original structure, then the release format is structurally correct.
+    For questions 3-5, reference the succeeding definitions:
+
+        1. A particular release that maintains the original count, list, and ordering of songs for the release format is structurally correct.
+        
+        2. A particular release that does not maintain the original count, list, and ordering of songs for the release format is structurally incorrect.
+
+    3. If the song was officially and originally released through a standard recording LP, then ->
+        a.  Is the standard recording LP containing the song in YouTube Music? If so, is the standard recording LP containing the song structurally correct?
+        b. If the song was also officially released within a standard recording EP, is the standard recording EP containing the song in YouTube Music? If so, is the standard recording EP containing the song structurally correct?
+        c. If the song was also officially released within a single, is the single in YouTube Music? If so, is the single structurally correct?
+
+    4. If the song was officially and originally released through a standard recording EP, then ->
+        a.  Is the standard recording EP containing the song in YouTube Music? If so, is the standard recording EP containing the song structurally correct?
+        b. If the song was also officially released within a standard recording LP, is the standard recording LP containing the song in YouTube Music? If so, is the standard recording LP containing the song structurally correct?
+        c. If the song was also officially released within a single, is the single in YouTube Music? If so, is the single structurally correct?
+
+    5. If the song was officially and originally released through a single, then ->
+        a.  Is the single in YouTube Music? If so, is the single structurally correct?
+        b. If the song was also officially released within a standard recording EP, is the standard recording EP containing the song in YouTube Music? If so, is the standard recording EP containing the song structurally correct?
+        c. If the song was also officially released within a standard recording LP, is the standard recording LP containing the song in YouTube Music? If so, is the standard recording LP containing the song structurally correct?
+    
 
 ## Song Identification Method
 
-To guarantee a fair procedure for sonic feature extraction throughout all songs, only official song releases through structurally correct standard recording LPs, standard recording EPs, and singles are obtained. Standard recording LPs, standard recording EPs, and singles represent the primary initiatives where song writing and arrangement is purposeful and originally produced for a comprehensive listening experience. In contrast, release formats belonging to the specialized audio editions and re-release, specialized compilation, soundtrack, and alternative performance and recording groups represent secondary initiatives that differ from the established identification method. Restricting the pipeline to consume song releases from standard recording LPs, standard recording EPs, and singles establishes a sonic control variable. The restriction enables the PCA Plot clustering to reflect differences in musical qualities with higher accuracy rather than differences in release formats and engineering output. The PCA Plot presents unique sonic representations of each selected song.
+To guarantee a fair procedure for sonic feature extraction throughout all songs, only official song releases through structurally correct standard recording LPs, standard recording EPs, and singles are obtained. Standard recording LPs, standard recording EPs, and singles represent the primary initiatives where song writing, recording, and arrangement is purposeful and originally produced for a comprehensive listening experience. In contrast, release formats belonging to the specialized audio editions and re-release, specialized compilation, soundtrack, and alternative performance and recording groups represent secondary initiatives that differ from the established identification method. Restricting the pipeline to consume song releases from structurally correct standard recording LPs, standard recording EPs, and singles establishes a sonic control variable. The restriction enables the PCA Plot clustering to reflect differences in musical qualities with higher accuracy rather than differences in release formats and engineering output. The PCA Plot presents unique sonic representations of each selected song.
 
 ## Pipeline Limitations
 
