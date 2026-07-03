@@ -14,7 +14,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 2. V2: [Dataset Truncation (Simple Random Sampling) - Python Program Execution, Select Representative Subset of Dataset] -> `music_preferences_and_feelings_survey_data_master_cleaned_v2.csv`
 
-3. V3: [Song URL Insertion & Complete Quality Sweep - Manual Context Review, Remove Invalid Data and Systematically Correct Information] -> `music_preferences_and_feelings_survey_data_master_cleaned_v3.csv`
+3. V3: [Complete Quality Sweep & Song URL Insertion - Manual Context Review, Remove Invalid Data and Systematically Correct Information] -> `music_preferences_and_feelings_survey_data_master_cleaned_v3.csv`
 
 ## Music Release Context
 
@@ -199,12 +199,12 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
 - **Target File:** `music_preferences_and_feelings_survey_data_master_cleaned_v2.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v3.csv`
 - **Data Shape Change:** 86 (1 header row + 85 data rows) rows * 3 columns -> _ rows * 3 columns
-- **Purpose:** [Song URL Insertion & Complete Quality Sweep - Manual Context Review, Remove Invalid Data and Systematically Correct Information]
+- **Purpose:** [Complete Quality Sweep & Song URL Insertion - Manual Context Review, Remove Invalid Data and Systematically Correct Information]
 - **Statistical Acknowledgement**: While the 85 data rows sampled during the *Dataset Truncation (Simple Random Sampling)* in V2 establishes a 95% confidence level and margin of error less than 9% for the full-time employee pool, the rigid domain constraints enforced in V3 decreased the usable data rows to _. The resulting PCA Plot operates as an exploratory subset of the 85 sampled data rows.
 
 ### Steps Executed:
 
-1.   
+1.   **[Addition]** Appended 1 new column, [youtube_music_url], to record the YouTube Music song URLs for all remaining valid [song_name], [artist_name], and [primary_feeling] row groupings to establish a process control variable for downloading corresponding WAV files from YouTube Music.
 2.   **[Complete Quality Sweep]** Processed remaining 85 rows to remove invalid data and systematically correct information:
 
      a. [Removal] _ row deleted because the song, artist, and primary feeling contained exclusively NA values.
@@ -228,5 +228,7 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
      e. [Removal] _ row deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a standard recording LP, standard recording EP, or as a single, and the song and artist pairing is connected to sufficient data in YouTube Music as detailed in *Data Research Questions* and *Data Evaluation Measures*, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
 
      f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for _ remaining rows in the sequence.
+
+     g. [Addition] Added the corresponding YouTube Music song URL for _ remaining rows in the sequence. 
 
 ---
