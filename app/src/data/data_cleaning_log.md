@@ -229,6 +229,6 @@ To guarantee a fair procedure for sonic feature extraction throughout all songs,
 
      f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for _ remaining rows in the sequence.
 
-     g. [Addition] Added the corresponding YouTube Music song URL for _ remaining rows in the sequence. 
+     g. [Addition] Added the YouTube Music song URL in the [youtube_music_url] column for _ remaining rows in the sequence.
 
 ---
