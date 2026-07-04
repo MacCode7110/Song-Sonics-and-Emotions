@@ -268,13 +268,13 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
      a. [Removal] _ row deleted because the song, artist, and primary feeling contained exclusively NA values.
 
-     b. [Removal] 5 rows deleted because although the song, artist and primary feeling did not contain exclusively NA values, the song, artist, and primary feeling lacked sufficient written context to achieve both of the succeeding measures as presented in *Data Correction Measures*:
+     b. [Removal] 6 rows deleted because although the song, artist and primary feeling did not contain exclusively NA values, the song, artist, and primary feeling lacked sufficient written context to achieve both of the succeeding measures as presented in *Data Correction Measures*:
 
         I. A song officially and originally released by the artist where the intention of the respondent is completely clear in the [song_name] and [artist_name] response columns.
 
         II. A primary feeling that is one word, completely grammatically correct, reasonably reflects natural speech, and communicates an understandable meaning where the intention of the respondent is reasonably clear in the [primary_feeling] response column.
 
-     c. [Removal] 1 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song, the artist did not officially and originally release the song through any of the succeeding formats:
+     c. [Removal] 2 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song, the artist did not officially and originally release the song through any of the succeeding formats:
 
         I. Standard Recording LP
         
@@ -284,10 +284,10 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
      d. [Removal] _ rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a standard recording LP, Standard recording EP, or as a single, the song and artist pairing is connected to insufficient data in YouTube Music as presented in *Data Research Questions* and *Data Evaluation Measures*.
 
-     e. [Removal] _ row deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a standard recording LP, standard recording EP, or as a single, and the song and artist pairing is connected to sufficient data in YouTube Music as presented in *Data Research Questions* and *Data Evaluation Measures*, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
+     e. [Removal] _ rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a standard recording LP, standard recording EP, or as a single, and the song and artist pairing is connected to sufficient data in YouTube Music as presented in *Data Research Questions* and *Data Evaluation Measures*, the song and artist pairing is a duplication of a song and artist pairing corrected prior in the *Complete Quality Sweep*.
 
-     f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 12 remaining rows in the sequence.
+     f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 15 remaining rows in the sequence.
 
-     g. [Addition] Added the YouTube Music song URL in the [youtube_music_url] column for 12 remaining rows in the sequence.
+     g. [Addition] Added the YouTube Music song URL in the [youtube_music_url] column for 15 remaining rows in the sequence.
 
 ---
