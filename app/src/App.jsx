@@ -1,4 +1,4 @@
-import InteractiveUMAP from './page/InteractiveUMAP'
+import InteractiveUMAP from './pages/InteractiveUMAP'
 
 function App() {
      return <InteractiveUMAP />
