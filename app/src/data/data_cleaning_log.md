@@ -259,7 +259,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 - **Target File:** `music_preferences_and_feelings_survey_data_master_cleaned_v1.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v2.csv`
 - **Data Shape Change:** 276 (1 header row + 275 data rows) rows * 3 columns -> 86 (1 header row + 85 data rows) rows * 3 columns
 - **Purpose:** [Dataset Truncation (Simple Random Sampling) - Python Program Execution, Select Representative Subset of Dataset]
-- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the full-time employee respondent pool, a Simple Random Sampling method was applied. Executing the `simple_random_sampling.py` Python program with a constant random seed (random_state=75) to enforce reproducibility, 85 unique survey responses were randomly selected from the 275 data rows following the *Initial Quality Sweep* in V1. The sample size represents approximately 30.9% of the full-time employee respondent pool, which asserts a 95% confidence level and a margin of error less than 9%. All non-selected responses were omitted from this phase of analysis.
+- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the full-time employee respondent pool, a Simple Random Sampling method was applied. Executing `simple_random_sampling.py` with a constant random seed (random_state=75) to enforce reproducibility, 85 unique survey responses were randomly selected from the 275 data rows following the *Initial Quality Sweep* in V1. The sample size represents approximately 30.9% of the full-time employee respondent pool, which asserts a 95% confidence level and a margin of error less than 9%. All non-selected responses were omitted from this phase of analysis.
 - **Resulting Batch Size:** 85 data rows
 
 ### Steps Executed:
@@ -311,13 +311,13 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 - **Target File:** `music_preferences_and_feelings_survey_data_master_cleaned_v3.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v4.csv`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 4 columns -> 46 (1 header row + 45 data rows) rows * 5 columns
 - **Purpose:** [Primary Feeling Mapping - Python Program Execution, Map each corrected primary feeling in the [primary_feeling] column to one of the four quadrants established in Russell's Core Affect Framework]
-- **Methodology:** To build a blueprint for comprehending emotional qualities in comparison to sonic features extracted from Essentia, executing the `primary_feeling_quadrant_mapping.py` Python program maps each corrected primary feeling in the [primary_feeling] column to one of the four quadrants established in Russell's Core Affect Framework. Valence maps to the x-axis. Arousal maps to the y-axis.Through examining the coordinates of Valence and Arousal, emotional qualities are categorically represented within the spatial geometry of the PCA Plot.
+- **Methodology:** To provide a method for understanding the creation of feelings in comparison to sonic features extracted from Essentia, executing `primary_feeling_quadrant_mapping.py` maps each corrected primary feeling in the [primary_feeling] column to one of the four quadrants established in Russell's Core Affect Framework. Valence maps to the x-axis. Arousal maps to the y-axis.Through examining the coordinates of Valence and Arousal, emotional qualities are categorically represented within the spatial geometry of the PCA Plot.
 
 ### Steps Executed:
 
 1. **[Addition]** Appended 1 new column, [core_affect_quadrant], to represent the categorical coordinate mapping for each corresponding primary feeling.
 
-2. **[Mapping Execution]** Executed `primary_feeling_quadrant_mapping.py` Python program to assign each of the 45 corrected primary feelings in the [primary_feeling] column to one of the four quadrants in Russell's Core Affect Framework:
+2. **[Mapping Execution]** Executed the `primary_feeling_quadrant_mapping.py` program to assign each of the 45 corrected primary feelings in the [primary_feeling] column to one of the four quadrants in Russell's Core Affect Framework:
 
     a. Quadrant 1 (Top-Right): High Arousal + Positive Valence
 
