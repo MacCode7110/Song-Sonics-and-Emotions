@@ -327,4 +327,4 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
     d. Quadrant 4 (Bottom-Right): Low Arousal + Positive Valence
 
-3. **[Integrity Verification]** Verified that complex primary feelings (such as the corrected "Awestruck", and "Melancholic") are evaluated through specific measures as a means of preventing skewed categorical representation in the PCA Plot.
+3. **[Integrity Verification]** Verified that complex primary feelings (such as the corrected "Awestruck", and "Melancholic") are evaluated through specific research as a means of preventing skewed categorical representation in the PCA Plot.
