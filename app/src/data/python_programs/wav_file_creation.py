@@ -27,15 +27,15 @@ def download_wav_files(input_csv_path, output_csv_path):
             if "music.youtube.com" in song_url and "watch?v=" in song_url:
                 modified_song_url = song_url.split("&")[0] + "&audio=1"
                 try:
-                    info_dict = ydl.extract_info(modified_song_url, download=False)
+                    information_dictionary = ydl.extract_info(modified_song_url, download=False)
                     
-                    if 'title' in info_dict and info_dict['title']:
-                        info_dict['title'] = info_dict['title'].lower().replace(" ", "")
+                    if 'title' in information_dictionary and information_dictionary['title']:
+                        information_dictionary['title'] = information_dictionary['title'].lower().replace(" ", "")
                     
-                    filename = ydl.prepare_filename(info_dict)
+                    filename = ydl.prepare_filename(information_dictionary)
                     wav_path = Path(filename).with_suffix('.wav')
                     
-                    ydl.process_info(info_dict)
+                    ydl.process_info(information_dictionary)
                     
                     song_download_statuses.append("Success")
                     wav_filenames.append(wav_path.name)
