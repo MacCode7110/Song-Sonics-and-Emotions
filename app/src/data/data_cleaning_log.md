@@ -369,7 +369,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 1. **[Addition]** Appended 12 columns to record sonic features extracted from Essentia:
     a. **Rhythm:** `bpm`, `danceability`, `onset_rate`
     b. **Dynamics:** `average_loudness`, `dynamic_complexity`
-    c. **Spectral & Tonal (Mood Proxies):** `spectral_energy`, `chords_changes_rate`, `pitch_salience`, `spectral_complexity`
+    c. **Spectral & Tonal:** `spectral_energy`, `chords_changes_rate`, `pitch_salience`, `spectral_complexity`
     d. **Texture & Timbre:** `spectral_centroid`, `barkbands_flatness_db`, `zerocrossingrate`
 2. **[Sonic Feature Extraction]** Executed `sonic_feature_extraction.py` to loop through the 45 remaining data rows and process the 12 native, mathematical parameters.`sonic_feature_extraction.py` verified the `song_download_status` and loaded uncompressed WAV files from the `wav_downloads` directory. `sonic_feature_extraction.py` also managed file system exceptions by recording NA values for failed checks.
 
@@ -378,10 +378,16 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 ## [2026-7-8 - V7] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `music_preferences_and_feelings_survey_data_master_sonic_feature_calculations.csv` -> `music_preferences_and_feelings_survey_data_master_sonic_feature_standardization.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 19 columns -> 46 (1 header row + 45 data rows) rows * _ columns
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 19 columns -> 46 (1 header row + 45 data rows) rows * 31 columns
 - **Purpose:** [Sonic Feature Scalar Standardization - Python Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows]
-- **Methodology:** To prepare the 12 sonic scalar values for correct rendering on the PCA Plot, executing `sonic_feature_standardization.py` loops through the 45 remaining data rows and applies a standardization operation to each of the sonic scalar values. The operation utilizes a z-score normalization to transform each of the 12 sonic scalar values resulting in a `mean` of 0 and a `standard deviation` of 1. Since the PCA Plot calculates variance according to magnitude, the geometric relationships between points are accurately presented.
+- **Methodology:** To prepare the 12 sonic scalar values for correct rendering on the PCA Plot, executing `sonic_feature_standardization.py` loops through the 45 remaining data rows and applies a standardization operation to each of the sonic scalar values. The operation utilizes a z-score normalization to transform each of the 12 sonic scalar values assigning a `mean` of 0 and a `standard deviation` of 1. Since the PCA Plot calculates variance according to magnitude, the geometric relationships between points are accurately presented.
 
 ### Steps Executed:
 
-1. 
+1. **[Data Validation]** Verified the integrity of the 12 sonic feature columns from `music_preferences_and_feelings_survey_data_master_sonic_feature_calculations.csv`, scanning for missing sonic feature data to guarantee that `scikit-learn` runs without crashing.
+2. **[Z-Score Normalization]** Implemented the `StandardScaler` module to fit and transform the 12 sonic features (`bpm`, `danceability`, `onset_rate`, `average_loudness`, `dynamic_complexity`, `spectral_energy`, `chords_changes_rate`, `pitch_salience`, `spectral_complexity`, `spectral_centroid`, `barkbands_flatness_db`, and `zerocrossingrate`).
+3. **[Addition]** Appended 12 columns containing the scaled sonic scalar values. Each of the appended columns utlizes the `scaled_` prefix:
+    a. **Rhythm:** `scaled_bpm`, `scaled_danceability`, `scaled_onset_rate`
+    b. **Dynamics:** `scaled_average_loudness`, `scaled_dynamic_complexity`
+    c. **Spectral & Tonal:** `scaled_spectral_energy`, `scaled_chords_changes_rate`, `scaled_pitch_salience`, `scaled_spectral_complexity`
+    d. **Texture & Timbre:** `scaled_spectral_centroid`, `scaled_barkbands_flatness_db`, `scaled_zerocrossingrate`
