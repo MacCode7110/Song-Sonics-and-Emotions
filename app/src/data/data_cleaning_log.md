@@ -10,13 +10,15 @@ The _Music Preferences And Feelings Survey_ was administered to a targeted 250 f
 
 Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dataset and contains open-response survey data that represents human thought and writing, steps are manually executed and executed through Python programs to build the succeeding CSV files:
 
-1. V1: [Initial Quality Sweep - Manual Context Review, Establish Structural Baseline] -> `music_preferences_and_feelings_survey_data_master_cleaned_v1.csv`
+1. V1: [Initial Quality Sweep - Manual Context Review, Establish Structural Base] -> `music_preferences_and_feelings_survey_data_master_structural_base.csv`
 
-2. V2: [Dataset Truncation (Simple Random Sampling) - Python Program Execution, Select Representative Subset of Dataset] -> `music_preferences_and_feelings_survey_data_master_cleaned_v2.csv`
+2. V2: [Dataset Truncation (Simple Random Sampling) - Python Program Execution, Select Representative Subset of Dataset] -> `music_preferences_and_feelings_survey_data_master_sampled.csv`
 
-3. V3: [Complete Quality Sweep & Song URL Insertion - Manual Context Review, Remove Invalid Data and Systematically Correct Information] -> `music_preferences_and_feelings_survey_data_master_cleaned_v3.csv`
+3. V3: [Complete Quality Sweep & Song URL Insertion - Manual Context Review, Remove Invalid Data and Systematically Correct Information] -> `music_preferences_and_feelings_survey_data_master_corrected.csv`
 
-4. V4: [Primary Feeling Mapping - Python Program Execution, Map each data cell in the [primary_feeling] column to a quadrant in Russell's Core Affect Framework] -> `music_preferences_and_feelings_survey_data_master_cleaned_v4.csv`
+4. V4: [Primary Feeling Mapping - Python Program Execution, Map each data cell in the [primary_feeling] column to a quadrant in Russell's Core Affect Framework] -> `music_preferences_and_feelings_survey_data_master_feelings_mapped.csv`
+
+5. V5 [Song Downloading, WAV Conversion - Python Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to WAV] -> `music_preferences_and_feelings_survey_data_master_song_download.csv`
 
 ## Song Release Context
 
@@ -242,9 +244,9 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 ## [2026-7-7 - V1] - [Matthew McAlarney - Web Developer, Data Researcher]
 
-- **Target File:** `music_preferences_and_feelings_survey_data_master_raw.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v1.csv`
+- **Target File:** `music_preferences_and_feelings_survey_data_master_raw.csv` -> `music_preferences_and_feelings_survey_data_master_structural_base.csv`
 - **Data Shape Change:** 277 rows (2 header rows + 275 data rows) * 19 columns -> 276 (1 header row + 275 data rows) rows * 3 columns
-- **Purpose:** [Initial Quality Sweep - Manual Context Review, Establish Structural Baseline]
+- **Purpose:** [Initial Quality Sweep - Manual Context Review, Establish Structural Base]
 - **Initial Raw Submissions:** 275 total survey responses
 
 ### Steps Executed:
@@ -260,7 +262,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 ## [2026-7-7 - V2] - [Matthew McAlarney - Web Developer, Data Researcher]
 
-- **Target File:** `music_preferences_and_feelings_survey_data_master_cleaned_v1.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v2.csv`
+- **Target File:** `music_preferences_and_feelings_survey_data_master_structural_base.csv` -> `music_preferences_and_feelings_survey_data_master_sampled.csv`
 - **Data Shape Change:** 276 (1 header row + 275 data rows) rows * 3 columns -> 86 (1 header row + 85 data rows) rows * 3 columns
 - **Purpose:** [Dataset Truncation (Simple Random Sampling) - Python Program Execution, Select Representative Subset of Dataset]
 - **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the full-time employee respondent pool, a Simple Random Sampling method was applied. Executing `simple_random_sampling.py` with a constant random seed (random_state=75) to enforce reproducibility, 85 unique survey responses were randomly selected from the 275 data rows following the *Initial Quality Sweep* in V1. The sample size represents approximately 30.9% of the full-time employee respondent pool, which asserts a 95% confidence level and a margin of error less than 9%. All non-selected responses were omitted from this phase of analysis.
@@ -274,7 +276,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 ## [2026-7-7 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
 
-- **Target File:** `music_preferences_and_feelings_survey_data_master_cleaned_v2.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v3.csv`
+- **Target File:** `music_preferences_and_feelings_survey_data_master_sampled.csv` -> `music_preferences_and_feelings_survey_data_master_corrected.csv`
 - **Data Shape Change:** 86 (1 header row + 85 data rows) rows * 3 columns -> 46 (1 header row + 45 data rows) rows * 4 columns
 - **Purpose:** [Complete Quality Sweep & Song URL Insertion - Manual Context Review, Remove Invalid Data and Systematically Correct Information]
 - **Statistical Acknowledgement**: While the 85 data rows sampled during the *Dataset Truncation (Simple Random Sampling)* in V2 establishes a 95% confidence level and margin of error less than 9% for the full-time employee pool, the rigid domain constraints enforced in V3 decreased the usable data rows to 45. The resulting PCA Plot operates as an exploratory subset of the 85 sampled data rows.
@@ -312,7 +314,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 ## [2026-7-7 - V4] - [Matthew McAlarney - Web Developer, Data Researcher]
 
-- **Target File:** `music_preferences_and_feelings_survey_data_master_cleaned_v3.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v4.csv`
+- **Target File:** `music_preferences_and_feelings_survey_data_master_corrected.csv` -> `music_preferences_and_feelings_survey_data_master_feelings_mapped.csv`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 4 columns -> 46 (1 header row + 45 data rows) rows * 5 columns
 - **Purpose:** [Primary Feeling Mapping - Python Program Execution, Map each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in Russell's Core Affect Framework]
 - **Methodology:** To provide a method for understanding the creation of feelings in comparison to sonic features extracted from Essentia, executing `primary_feeling_quadrant_mapping.py` maps each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in Russell's Core Affect Framework as described in *Applying Russell's Core Affect Framework*. Valence maps to the x-axis. Arousal maps to the y-axis. Through examining the coordinates of Valence and Arousal, emotional qualities are categorically represented within the spatial geometry of the PCA Plot.
@@ -337,7 +339,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 ## [2026-7-7 - V5] - [Matthew McAlarney - Web Developer, Data Researcher]
 
-- **Target File:** `music_preferences_and_feelings_survey_data_master_cleaned_v4.csv` -> `music_preferences_and_feelings_survey_data_master_cleaned_v5.csv`
+- **Target File:** `music_preferences_and_feelings_survey_data_master_feelings_mapped.csv` -> `music_preferences_and_feelings_survey_data_master_song_download.csv`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 5 columns -> 46 (1 header row + 45 data rows) rows * 7 columns
 - **Purpose:** [Song Downloading, WAV Conversion - Python Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to WAV]
 - **Methodology:** To build a standardized audio collection for sonic feature extraction from Essentia, executing `wav_file_creation.py` utilizes yt-dlp to loop through the 45 remaining data rows and obtain compressed audio streams through the verified song URLs in the [youtube_music_url] column. To enforce consistent file input for sonic feature extraction from Essentia, yt-dlp dictates the underlying FFmpeg processing framework to post-process and transcode the compressed audio streams into uncompressed WAV files.
