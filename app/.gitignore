@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-wav_downloads
+src/data/wav_downloads/
 dist
 dist-ssr
 *.local
