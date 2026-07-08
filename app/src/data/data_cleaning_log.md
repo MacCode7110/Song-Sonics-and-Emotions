@@ -22,7 +22,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 6. V6 [Essentia Sonic Feature Extraction - Python Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the WAV file referenced in the [wav_filename] column] -> `music_preferences_and_feelings_survey_data_master_sonic_feature_calculations.csv`
 
-7. V7 
+7. V7 [Sonic Feature Scalar Standardization - Python Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows] -> `music_preferences_and_feelings_survey_data_master_sonic_feature_standardization.csv`
 
 ## Song Release Context
 
@@ -216,7 +216,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 ## Pipeline Limitations
 
-1. The survey population is bounded completely to full-time employees in the United States. This constraint creates a sampling selection bias, which structurally omits demographics with different music preferences such as full-time students, part-time students, part-time employees, and retired individuals. Consequently, all data points rendered in the PCA Plot reflect the music preferences of a subset of the full-time employee demographic in the United States rather than a general demographic in the United States.
+1. The survey population is completely bounded to full-time employees in the United States. This constraint creates a sampling selection bias, which structurally omits demographics with different music preferences such as full-time students, part-time students, part-time employees, and retired individuals. Consequently, all data points rendered in the PCA Plot reflect the music preferences of a subset of the full-time employee demographic in the United States rather than a general demographic in the United States.
 
 2. The yt-dlp Python library is utilized to download and extract compressed audio from YouTube Music. Subsequently, yt-dlp uses FFmpeg to transform the compressed audio into an uncompressed WAV file. There is some probability that the subset of selected songs are associated with WAV files containing different levels of distortion. When distortion is present in an uncompressed WAV file, there is also some probability that high-frequency overtones (harmonic distortion), Harmonic-to-Noise Ratio (HNR), and compression of dynamic range manipulate the digital audio signal. As a result, data clustering in the PCA Plot may partially reflect manipulated musical qualities that do not accurately represent the authentic musical qualities of some songs.
 
@@ -371,7 +371,17 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
     b. **Dynamics:** `average_loudness`, `dynamic_complexity`
     c. **Spectral & Tonal (Mood Proxies):** `spectral_energy`, `chords_changes_rate`, `pitch_salience`, `spectral_complexity`
     d. **Texture & Timbre:** `spectral_centroid`, `barkbands_flatness_db`, `zerocrossingrate`
-2. **[Sonic Feature Extraction]** Executed `sonic_feature_extraction.py` to loop through the 45 remaining songs and process the 12 native, mathematical parameters. `sonic_feature_extraction.py` verified the `song_download_status` and loaded uncompressed WAV files from the `wav_downloads` directory. `sonic_feature_extraction.py` also managed file system exceptions by recording NA values for failed checks.
+2. **[Sonic Feature Extraction]** Executed `sonic_feature_extraction.py` to loop through the 45 remaining data rows and process the 12 native, mathematical parameters.`sonic_feature_extraction.py` verified the `song_download_status` and loaded uncompressed WAV files from the `wav_downloads` directory. `sonic_feature_extraction.py` also managed file system exceptions by recording NA values for failed checks.
 
 ---
 
+## [2026-7-8 - V7] - [Matthew McAlarney - Web Developer, Data Researcher]
+
+- **Target File:** `music_preferences_and_feelings_survey_data_master_sonic_feature_calculations.csv` -> `music_preferences_and_feelings_survey_data_master_sonic_feature_standardization.csv`
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 19 columns -> 46 (1 header row + 45 data rows) rows * _ columns
+- **Purpose:** [Sonic Feature Scalar Standardization - Python Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows]
+- **Methodology:** To prepare the 12 sonic scalar values for correct rendering on the PCA Plot, executing `sonic_feature_standardization.py` loops through the 45 remaining data rows and applies a standardization operation to each of the sonic scalar values. The operation utilizes a z-score normalization to transform each of the 12 sonic scalar values resulting in a `mean` of 0 and a `standard deviation` of 1. Since the PCA Plot calculates variance according to magnitude, the geometric relationships between points are accurately presented.
+
+### Steps Executed:
+
+1. 
