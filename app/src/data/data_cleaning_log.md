@@ -244,6 +244,12 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 1. To build a standardized audio collection for sonic feature extraction from Essentia, executing yt-dlp accesses the YouTube Music song URLs in the [youtube_music_url] column to obtain the highest quality audio streams offered from YouTube Music. yt-dlp utilizes the FFmpeg processing framework to transcode compressed audio streams into uncompressed WAV files.
 
+## Applying Essentia and Standardization
+
+1. To build a multi-dimensional matrix of sonic features for the PCA Plot, executing Essentia's MusicExtractor program processes each uncompressed WAV file. The extractor obtains 12 native, low-level mathematical scalars spanning four structural bins (Rhythm, Dynamics, Spectral/Tonal, and Texture/Timbre). The extractor also computes scalar averages (`.mean`) for thousands of frame-by-frame time-series measurements.
+
+2. To prepare the sonic features for accurate geometric representation in the PCA Plot, executing a sklearn's StandardScalar program applies z-score normalization to each sonic scalar value. This standardization operation unifies the different units of measurement. For instance, high-magnitude average loudness and low-magnitude spectral energy are converted to assume a uniform mean of 0 and a standard deviation of 1. As a result, large numeric values do not unfairly conquer geometric relationships in the PCA Plot.
+
 ---
 
 ## [2026-7-8 - V1] - [Matthew McAlarney - Web Developer, Data Researcher]
@@ -362,7 +368,7 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 - **Target File:** `music_preferences_and_feelings_survey_data_master_song_download.csv` -> `music_preferences_and_feelings_survey_data_master_sonic_feature_calculations.csv`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 7 columns -> 46 (1 header row + 45 data rows) rows * 19 columns
 - **Purpose:** [Essentia Sonic Feature Extraction - Python Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the WAV file referenced in the [wav_filename] column]
-- **Methodology:** To build a collection of sonic features extracted from Essentia, executing `sonic_feature_extraction.py` obtains 12 native, mathematical parameters. During the process, low-level data transformation reduces thousands of frame-by-frame time-series measurements into scalar averages (`.mean`). The sonic features needed to create a consistent data matrix are recorded to `music_preferences_and_feelings_survey_data_master_sonic_feature_calculations.csv`.
+- **Methodology:** To build a collection of sonic features extracted from Essentia, executing `sonic_feature_extraction.py` obtains 12 native, low-level mathematical parameters. During the process, data transformation reduces thousands of frame-by-frame time-series measurements into scalar averages (`.mean`). The sonic features needed to create a consistent data matrix are recorded to `music_preferences_and_feelings_survey_data_master_sonic_feature_calculations.csv`.
 
 ### Steps Executed:
 
