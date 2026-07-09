@@ -1,5 +1,4 @@
 import InteractiveUMAP from './pages/InteractiveUMAP'
-import NavBar from './components/NavBar'
 
 function App() {
      return (
