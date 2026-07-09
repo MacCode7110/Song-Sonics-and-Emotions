@@ -24,6 +24,8 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
 
 7. V7 [Sonic Feature Scalar Standardization - Python Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows] -> `music_preferences_and_feelings_survey_data_master_sonic_feature_standardization.csv`
 
+8. V8 [PCA Dimensionality Reduction - Python Program Execution, Compress 12 multi-dimensional standardized sonic features into 2 static spatial dimensions (`pca_x` and `pca_y`) for PCA Plot rendering] -> `pca_matrix.json`
+
 ## Song Release Context
 
 1. Songs are released to different audiences through the succeeding format groups:
@@ -397,3 +399,20 @@ Since `music_preferences_and_feelings_survey_data_master_raw.csv` is a small dat
     b. **Dynamics:** `scaled_average_loudness`, `scaled_dynamic_complexity`
     c. **Spectral & Tonal:** `scaled_spectral_energy`, `scaled_chords_changes_rate`, `scaled_pitch_salience`, `scaled_spectral_complexity`
     d. **Texture & Timbre:** `scaled_spectral_centroid`, `scaled_barkbands_flatness_db`, `scaled_zerocrossingrate`
+
+---
+
+## [2026-7-8 - V8] - [Matthew McAlarney - Web Developer, Data Researcher]
+
+- **Target File:**`music_preferences_and_feelings_survey_data_master_sonic_feature_standardization.csv` -> `pca_matrix.json`
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 31 columns -> JSON Array containing 45 Objects * 33 Key-Value Properties
+- **Purpose:** [PCA Dimensionality Reduction - Python Program Execution, Compress 12 multi-dimensional standardized sonic features into 2 static spatial dimensions (`pca_x` and `pca_y`) for PCA Plot rendering]
+- **Methodology:** To map multi-dimensional standardized sonic features onto a 2D scatter plot area, executing `calculate_pca_coordinates.py` applies a linear dimensionality reduction. The reduction projects the 12 standardized sonic features reocrded in `music_preferences_and_feelings_survey_data_master_sonic_feature_standardization.csv` onto an orthogonal subspace. Songs with highly similar underlying mathematical characteristics closely aggregate on the PCA Plot.
+
+### Steps Executed:
+
+1. **[Dimensionality Reduction]** Fitted a 2-component PCA model utilizing `scikit-learn` to transform the 12 scaled sonic features into geographic values.
+2. **[Addition]** Appended 2 columns to record PCA Plot coordinates:
+    a. `pca_x` (Principal Component 1)
+    b. `pca_y` (Principal Component 2)
+3. **[Serialization and Export]** Transformed the final data matrix from CSV format into a JSON array of objects.
