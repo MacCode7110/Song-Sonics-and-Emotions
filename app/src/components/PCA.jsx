@@ -3,98 +3,163 @@ import * as d3 from 'd3'
 import pcaData from '../data/json_files/pca_matrix.json'
 
 const PCA = () => {
-  const svgRef = useRef(null)
-  const tooltipRef = useRef(null)
+     const svgRef = useRef(null)
+     const tooltipRef = useRef(null)
 
-  useEffect(() => {
-    if (!pcaData || pcaData.length === 0) return
+     useEffect(() => {
+          if (!pcaData || pcaData.length === 0) return
 
-    /* Implementation Details
-      To mathematically center the PCA on the White-Bis Box, opposite margins need to be set equal.
-      Total White-Bis Box Area = 960px * 500px
-      Horizontal Center Point = 480
-      Vertical Center Point = 250
-    */
-    
-    const margin = { top: 65, right: 65, bottom: 65, left: 65 }
-    const width = 960 - margin.left - margin.right
-    const height = 500 - margin.top - margin.bottom
+          /* Implementation Details
+            To mathematically center the PCA on the White-Bis Box, opposite margins need to be set equal.
+            Total White-Bis Box Area = 960px * 500px
+            Horizontal Center Point = 480
+            Vertical Center Point = 250
+          */
 
-    const svgElement = d3.select(svgRef.current)
-    svgElement.selectAll('*').remove()
+          const margin = { top: 65, right: 65, bottom: 65, left: 65 }
+          const width = 960 - margin.left - margin.right
+          const height = 500 - margin.top - margin.bottom
 
-    const svg = svgElement
-      .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
-      .append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`)
+          const svgElement = d3.select(svgRef.current)
+          svgElement.selectAll('*').remove()
 
-    const xMax = d3.max(pcaData, d => Math.abs(d.pca_x)) * 1.25 || 5
-    const yMax = d3.max(pcaData, d => Math.abs(d.pca_y)) * 1.25 || 5
+          const svg = svgElement
+               .attr(
+                    'viewBox',
+                    `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`
+               )
+               .append('g')
+               .attr(
+                    'transform',
+                    `translate(${margin.left},${margin.top})`
+               )
 
-    const xScale = d3.scaleLinear().domain([-xMax, xMax]).range([0, width])
-    const yScale = d3.scaleLinear().domain([-yMax, yMax]).range([height, 0])
+          const xMax =
+               d3.max(pcaData, (d) => Math.abs(d.pca_x)) * 1.25 || 5
+          const yMax =
+               d3.max(pcaData, (d) => Math.abs(d.pca_y)) * 1.25 || 5
 
-    const xAxis = d3.axisBottom(xScale).ticks(6)
-    const yAxis = d3.axisLeft(yScale).ticks(6)
+          const xScale = d3
+               .scaleLinear()
+               .domain([-xMax, xMax])
+               .range([0, width])
+          const yScale = d3
+               .scaleLinear()
+               .domain([-yMax, yMax])
+               .range([height, 0])
 
-    const gridLines = svg.append('g').attr('class', 'grid-lines')
-    gridLines.append('line')
-      .attr('x1', xScale(0)).attr('x2', xScale(0)).attr('y1', 0).attr('y2', height)
-      .attr('stroke', '#dddddd').attr('stroke-width', 1)
-    gridLines.append('line')
-      .attr('x1', 0).attr('x2', width).attr('y1', yScale(0)).attr('y2', yScale(0))
-      .attr('stroke', '#dddddd').attr('stroke-width', 1)
+          const xAxis = d3.axisBottom(xScale).ticks(6)
+          const yAxis = d3.axisLeft(yScale).ticks(6)
 
-    svg.append('g').attr('transform', `translate(0,${height})`).call(xAxis)
-    svg.append('g').call(yAxis)
+          const gridLines = svg.append('g').attr('class', 'grid-lines')
 
-    svg.append('text')
-      .attr('x', width / 2).attr('y', height + 45)
-      .attr('text-anchor', 'middle')
-      .attr('class', 'has-text-black is-family-monospace is-size-7')
-      .text('Principal Component 1 (PC1)')
+          const coreAffectBins = [
+               'Quadrant 1', // High Arousal, Positive Valence
+               'Quadrant 2', // High Arousal, Negative Valence
+               'Quadrant 3', // Low Arousal, Negative Valence
+               'Quadrant 4', // Low Arousal, Positive Valence
+          ]
 
-    svg.append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('x', -height / 2).attr('y', -45)
-      .attr('text-anchor', 'middle')
-      .attr('class', 'has-text-black is-family-code is-size-7')
-      .text('Principal Component 2 (PC2)')
+          const colors = [
+               'rgb(255,255,0)',
+               'rgb(255,0,0)',
+               'rgb(0,0,255)',
+               'rgb(0,255,0)',
+          ]
 
-    svg.append("text")
-    .attr("x", width / 2).attr("y", -25)
-    .attr("text-anchor", "middle")
-    .attr("class", "has-text-black is-family-code is-size-6")               
-    .text("Exploratory PCA: Musical and Emotional Qualities of Songs")
+          const colorScale = d3
+               .scaleOrdinal()
+               .domain(coreAffectBins)
+               .range(colors)
 
-    const tooltip = d3.select(tooltipRef.current)
+          const dotRadius = 8, dotOpacity = 0.8, dotStroke = '#fff', dotStrokeWid = 2,
+           gridLineStroke = '#dddddd', gridLineStrokeWid = 1, tooltipDisplayTime = 100
 
-    const dots = svg.append('g')
-      .selectAll('circle')
-      .data(pcaData)
-      .enter()
-      .append('circle')
-      .attr('cx', d => xScale(d.pca_x))
-      .attr('cy', d => yScale(d.pca_y))
-      .attr('r', 8)
-      .attr('fill', '#ff0000')
-      .attr('opacity', 0.8)
-      .attr('stroke', '#fff')
-      .attr('stroke-width', 2)
-      .style('cursor', 'pointer')
+          const dots = svg
+               .append('g')
+               .selectAll('circle')
+               .data(pcaData)
+               .enter()
+               .append('circle')
+               .attr('cx', (d) => xScale(d.pca_x))
+               .attr('cy', (d) => yScale(d.pca_y))
+               .attr('r', dotRadius)
+               .attr('fill', (d) => colorScale(d.core_affect_quadrant))
+               .attr('opacity', dotOpacity)
+               .attr('stroke', dotStroke)
+               .attr('stroke-width', dotStrokeWid)
+               .style('cursor', 'pointer')
 
-    dots
-      .on('mouseover', function (event, d) {
-        d3.select(this).transition().duration(100).attr('r', 9).attr('fill', '#000000')
-        
-        const songName = d.song_name || 'Unknown Track'
-        const artistName = d.artist_name || 'Unknown Artist'
-        const pc1 = typeof d.pca_x === 'number' ? d.pca_x.toFixed(4) : 'N/A'
-        const pc2 = typeof d.pca_y === 'number' ? d.pca_y.toFixed(4) : 'N/A'
+          const tooltip = d3.select(tooltipRef.current)
 
-        tooltip
-          .style('opacity', 1)
-          .html(`
+          gridLines
+               .append('line')
+               .attr('x1', xScale(0))
+               .attr('x2', xScale(0))
+               .attr('y1', 0)
+               .attr('y2', height)
+               .attr('stroke', gridLineStroke)
+               .attr('stroke-width', gridLineStrokeWid)
+          gridLines
+               .append('line')
+               .attr('x1', 0)
+               .attr('x2', width)
+               .attr('y1', yScale(0))
+               .attr('y2', yScale(0))
+               .attr('stroke', gridLineStroke)
+               .attr('stroke-width', gridLineStrokeWid)
+
+          svg.append('g')
+               .attr('transform', `translate(0,${height})`)
+               .call(xAxis)
+          svg.append('g').call(yAxis)
+
+          svg.append('text')
+               .attr('x', width / 2)
+               .attr('y', height + 45)
+               .attr('text-anchor', 'middle')
+               .attr(
+                    'class',
+                    'has-text-black is-family-monospace is-size-7'
+               )
+               .text('Principal Component 1 (PC1)')
+
+          svg.append('text')
+               .attr('transform', 'rotate(-90)')
+               .attr('x', -height / 2)
+               .attr('y', -45)
+               .attr('text-anchor', 'middle')
+               .attr('class', 'has-text-black is-family-code is-size-7')
+               .text('Principal Component 2 (PC2)')
+
+          svg.append('text')
+               .attr('x', width / 2)
+               .attr('y', -25)
+               .attr('text-anchor', 'middle')
+               .attr('class', 'has-text-black is-family-code is-size-6')
+               .text(
+                    'Exploratory PCA: Musical and Emotional Qualities of Songs'
+               )
+
+          dots.on('mouseover', function (event, d) {
+               d3.select(this)
+                    .transition()
+                    .duration(tooltipDisplayTime)
+                    .attr('r', dotRadius)
+                    .attr('fill', '#000000')
+
+               const songName = d.song_name || 'Unknown Track'
+               const artistName = d.artist_name || 'Unknown Artist'
+               const pc1 =
+                    typeof d.pca_x === 'number'
+                         ? d.pca_x.toFixed(4)
+                         : 'N/A'
+               const pc2 =
+                    typeof d.pca_y === 'number'
+                         ? d.pca_y.toFixed(4)
+                         : 'N/A'
+
+               tooltip.style('opacity', 1).html(`
             <div class="p-4" style="min-width: 320px; max-width: 400px; font-family: sans-serif;">
               <div class="mb-3">
                 <p class="title is-size-5 has-text-white mb-1" style="line-height: 1.2;">
@@ -134,38 +199,58 @@ const PCA = () => {
               </div>
             </div>
           `)
-      })
-      .on('mousemove', function (event) {
-        tooltip
-          .style('left', (event.layerX + 15) + 'px')
-          .style('top', (event.layerY - 20) + 'px')
-      })
-      .on('mouseleave', function () {
-        d3.select(this).transition().duration(100).attr('r', 6).attr('fill', '#ff0000')
-        tooltip.style('opacity', 0)
-      })
+          })
+               .on('mousemove', function (event) {
+                    tooltip
+                         .style('left', event.layerX + 15 + 'px')
+                         .style('top', event.layerY - 15 + 'px')
+               })
+               .on('mouseleave', function () {
+                    d3.select(this)
+                         .transition()
+                         .duration(tooltipDisplayTime)
+                         .attr('r', dotRadius)
+                         .attr('fill', (d) =>
+                              colorScale(d.core_affect_quadrant)
+                         )
+                    tooltip.style('opacity', 0)
+               })
+     }, [])
 
-  }, [])
-
-  return (
-    <div className="has-background-white-bis" style={{ position: 'relative', width: '100%', margin: '0 auto', padding: '1.25rem' }}>
-      <svg ref={svgRef} style={{ width: '100%', height: 'auto', display: 'block' }}></svg>
-      <div
-        ref={tooltipRef}
-        className="box p-0 has-background-black-ter"
-        style={{
-          position: 'absolute',
-          pointerEvents: 'none',
-          opacity: 0,
-          transition: 'opacity 0.15s ease',
-          zIndex: 100,
-          borderRadius: '6px',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.35)',
-          border: '1px solid #4a4a4a'
-        }}
-      />
-    </div>
-  )
+     return (
+          <div
+               className="has-background-white-bis"
+               style={{
+                    position: 'relative',
+                    width: '100%',
+                    margin: '0 auto',
+                    padding: '1.25rem',
+               }}
+          >
+               <svg
+                    ref={svgRef}
+                    style={{
+                         width: '100%',
+                         height: 'auto',
+                         display: 'block',
+                    }}
+               ></svg>
+               <div
+                    ref={tooltipRef}
+                    className="box p-0 has-background-black-ter"
+                    style={{
+                         position: 'absolute',
+                         pointerEvents: 'none',
+                         opacity: 0,
+                         transition: 'opacity 0.15s ease',
+                         zIndex: 100,
+                         borderRadius: '6px',
+                         boxShadow: '0 8px 24px rgba(0,0,0,0.35)',
+                         border: '1px solid #4a4a4a',
+                    }}
+               />
+          </div>
+     )
 }
 
 export default PCA
