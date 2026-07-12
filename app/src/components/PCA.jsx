@@ -58,8 +58,14 @@ const PCA = () => {
       .attr('transform', 'rotate(-90)')
       .attr('x', -height / 2).attr('y', -45)
       .attr('text-anchor', 'middle')
-      .attr('class', 'has-text-black is-family-monospace is-size-7')
+      .attr('class', 'has-text-black is-family-code is-size-7')
       .text('Principal Component 2 (PC2)')
+
+    svg.append("text")
+    .attr("x", width / 2).attr("y", -25)
+    .attr("text-anchor", "middle")
+    .attr("class", "has-text-black is-family-code is-size-6")               
+    .text("Exploratory PCA: Musical and Emotional Qualities of Songs")
 
     const tooltip = d3.select(tooltipRef.current)
 
