@@ -30,9 +30,6 @@ const ExploratoryPCAPage = () => {
                               data points and their corresponding song
                               attributes.
                          </Content>
-                         <Content size={5} className="p-5">
-                              
-                         </Content>
                     </header>
                     <main className="box has-background-white-bis p-5 mb-3">
                          <div className="is-flex is-justify-content-center is-align-items-center">
