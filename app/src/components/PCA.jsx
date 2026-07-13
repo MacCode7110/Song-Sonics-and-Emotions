@@ -146,6 +146,46 @@ const PCA = () => {
                     'Exploratory PCA: Musical Qualities and Construction of Feelings'
                )
 
+          const coreAffectPlotLabels = [
+               {
+                    x: pcaWidth * 0.75,
+                    y: pcaHeight * 0.25,
+                    description: 'Quadrant 1 (High Arousal + Positive Valence)',
+                    color: 'rgb(200, 180, 0)',
+               },
+               {
+                    x: pcaWidth * 0.25,
+                    y: pcaHeight * 0.25,
+                    description: 'Quadrant 2 (High Arousal + Negative Valence)',
+                    color: 'rgb(255, 0, 0)',
+               },
+               {
+                    x: pcaWidth * 0.25,
+                    y: pcaHeight * 0.75,
+                    description: 'Quadrant 3 (Low Arousal + Negative Valence)',
+                    color: 'rgb(0, 0, 255)',
+               },
+               {
+                    x: pcaWidth * 0.75,
+                    y: pcaHeight * 0.75,
+                    description: 'Quadrant 4 (Low Arousal + Positive Valence)',
+                    color: 'rgb(0, 180, 0)',
+               },
+          ]
+
+          coreAffectPlotLabels.forEach((q) => {
+               svg.append('text')
+                    .attr('x', q.x)
+                    .attr('y', q.y)
+                    .attr('opacity', 0.4)
+                    .attr('text-anchor', 'middle')
+                    .style('font-family', 'Segoe UI')
+                    .style('font-size', '12px')
+                    .style('fill', q.color)
+                    .style('pointer-events', 'none')
+                    .text(q.description)
+          })
+
           dots.on('mouseover', function (event, d) {
                d3.select(this)
                     .transition()
@@ -211,9 +251,7 @@ const PCA = () => {
                               borderRadius: '5px',
                          }}
                     >
-                         <p
-                              className="is-family-secondary has-text-grey-dark has-text-weight-bold is-size-5 mb-3"
-                         >
+                         <p className="is-family-secondary has-text-grey-dark has-text-weight-bold is-size-5 mb-3">
                               {tooltip.data.song_name} by{' '}
                               {tooltip.data.artist_name}
                          </p>
@@ -302,7 +340,7 @@ const PCA = () => {
                               <div className="column">
                                    <ul>
                                         {[
-                                            {
+                                             {
                                                   key: 'scaled_dynamic_complexity',
                                                   label: 'Scaled Dynamic Complexity',
                                                   isFloat: true,
