@@ -8,23 +8,19 @@ const PCA = () => {
 
      useEffect(() => {
           if (!pcaData || pcaData.length === 0) return
-
-          const yAxisLabelArea = 50 
-          const xAxisLabelArea = 40
-
-          const margin = { top: 30 + xAxisLabelArea, right: 30 + yAxisLabelArea, bottom: 30 + xAxisLabelArea, left: 30 + yAxisLabelArea }
+          const margin = { top: 70, right: 80, bottom: 70, left: 80 }
           
-          const totalWidth = 1000
-          const totalHeight = 500
+          const boxWidth = 1000
+          const boxHeight = 500
 
-          const width = totalWidth - margin.left - margin.right
-          const height = totalHeight - margin.top - margin.bottom
+          const pcaWidth = boxWidth - margin.left - margin.right
+          const pcaHeight = boxHeight - margin.top - margin.bottom
 
           const svgElement = d3.select(svgRef.current)
           svgElement.selectAll('*').remove()
 
           const svg = svgElement
-               .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
+               .attr('viewBox', `0 0 ${boxWidth} ${boxHeight}`)
                .append('g')
                .attr('transform', `translate(${margin.left},${margin.top})`)
 
@@ -34,11 +30,11 @@ const PCA = () => {
           const xScale = d3
                .scaleLinear()
                .domain([-xMax, xMax])
-               .range([0, width])
+               .range([0, pcaWidth])
           const yScale = d3
                .scaleLinear()
                .domain([-yMax, yMax])
-               .range([height, 0])
+               .range([pcaHeight, 0])
 
           const xAxis = d3.axisBottom(xScale).ticks(6)
           const yAxis = d3.axisLeft(yScale).ticks(6)
@@ -94,40 +90,40 @@ const PCA = () => {
                .attr('x1', xScale(0))
                .attr('x2', xScale(0))
                .attr('y1', 0)
-               .attr('y2', height)
+               .attr('y2', pcaHeight)
                .attr('stroke', gridLineStroke)
                .attr('stroke-width', gridLineStrokeWid)
           gridLines
                .append('line')
                .attr('x1', 0)
-               .attr('x2', width)
+               .attr('x2', pcaWidth)
                .attr('y1', yScale(0))
                .attr('y2', yScale(0))
                .attr('stroke', gridLineStroke)
                .attr('stroke-width', gridLineStrokeWid)
 
           svg.append('g')
-               .attr('transform', `translate(0,${height})`)
+               .attr('transform', `translate(0,${pcaHeight})`)
                .call(xAxis)
           svg.append('g').call(yAxis)
 
           svg.append('text')
-               .attr('x', width / 2)
-               .attr('y', height + 45)
+               .attr('x', pcaWidth / 2)
+               .attr('y', pcaHeight + 45)
                .attr('text-anchor', 'middle')
                .attr('class', 'has-text-black is-family-monospace is-size-7')
                .text('Principal Component 1 (PC1)')
 
           svg.append('text')
                .attr('transform', 'rotate(-90)')
-               .attr('x', -height / 2)
+               .attr('x', -pcaHeight / 2)
                .attr('y', -45)
                .attr('text-anchor', 'middle')
                .attr('class', 'has-text-black is-family-code is-size-7')
                .text('Principal Component 2 (PC2)')
 
           svg.append('text')
-               .attr('x', width / 2)
+               .attr('x', pcaWidth / 2)
                .attr('y', -45)
                .attr('text-anchor', 'middle')
                .attr('class', 'has-text-black is-family-code is-size-6')
