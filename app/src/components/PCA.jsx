@@ -9,7 +9,7 @@ const PCA = () => {
      useEffect(() => {
           if (!pcaData || pcaData.length === 0) return
           const margin = { top: 70, right: 80, bottom: 70, left: 80 }
-          
+
           const boxWidth = 1000
           const boxHeight = 500
 
@@ -22,10 +22,15 @@ const PCA = () => {
           const svg = svgElement
                .attr('viewBox', `0 0 ${boxWidth} ${boxHeight}`)
                .append('g')
-               .attr('transform', `translate(${margin.left},${margin.top})`)
+               .attr(
+                    'transform',
+                    `translate(${margin.left},${margin.top})`
+               )
 
-          const xMax = d3.max(pcaData, (d) => Math.abs(d.pca_x)) * 1.25 || 5
-          const yMax = d3.max(pcaData, (d) => Math.abs(d.pca_y)) * 1.25 || 5
+          const xMax =
+               d3.max(pcaData, (d) => Math.abs(d.pca_x)) * 1.25 || 5
+          const yMax =
+               d3.max(pcaData, (d) => Math.abs(d.pca_y)) * 1.25 || 5
 
           const xScale = d3
                .scaleLinear()
@@ -49,10 +54,10 @@ const PCA = () => {
           ]
 
           const colors = [
-               'rgb(255,255,0)',
-               'rgb(255,0,0)',
-               'rgb(0,0,255)',
-               'rgb(0,255,0)',
+               'rgb(200, 180, 0)',
+               'rgb(255, 0, 0)',
+               'rgb(0, 0, 255)',
+               'rgb(0, 180, 0)',
           ]
 
           const colorScale = d3
@@ -111,23 +116,31 @@ const PCA = () => {
                .attr('x', pcaWidth / 2)
                .attr('y', pcaHeight + 45)
                .attr('text-anchor', 'middle')
-               .attr('class', 'has-text-black is-family-monospace is-size-7')
-               .text('Principal Component 1 (PC1)')
+               .style('font-family', 'monospace')
+               .style('font-size', '12px')
+               .style('fill', 'rgb(0,0,0)')
+               .text('Principal Component 1 (PC1: Valence →)')
 
           svg.append('text')
                .attr('transform', 'rotate(-90)')
                .attr('x', -pcaHeight / 2)
                .attr('y', -45)
                .attr('text-anchor', 'middle')
-               .attr('class', 'has-text-black is-family-code is-size-7')
-               .text('Principal Component 2 (PC2)')
+               .style('font-family', 'monospace')
+               .style('font-size', '12px')
+               .style('fill', 'rgb(0,0,0)')
+               .text('Principal Component 2 (PC2: Arousal ↑)')
 
           svg.append('text')
                .attr('x', pcaWidth / 2)
                .attr('y', -45)
                .attr('text-anchor', 'middle')
-               .attr('class', 'has-text-black is-family-code is-size-6')
-               .text('Exploratory PCA: Musical and Emotional Qualities of Songs')
+               .style('font-family', 'monospace')
+               .style('font-size', '14px')
+               .style('fill', 'rgb(0,0,0)')
+               .text(
+                    'Exploratory PCA: Musical and Emotional Qualities of Songs'
+               )
 
           dots.on('mouseover', function (event, d) {
                d3.select(this)
@@ -138,8 +151,14 @@ const PCA = () => {
 
                const songName = d.song_name || 'Unknown Track'
                const artistName = d.artist_name || 'Unknown Artist'
-               const pc1 = typeof d.pca_x === 'number' ? d.pca_x.toFixed(4) : 'N/A'
-               const pc2 = typeof d.pca_y === 'number' ? d.pca_y.toFixed(4) : 'N/A'
+               const pc1 =
+                    typeof d.pca_x === 'number'
+                         ? d.pca_x.toFixed(4)
+                         : 'N/A'
+               const pc2 =
+                    typeof d.pca_y === 'number'
+                         ? d.pca_y.toFixed(4)
+                         : 'N/A'
 
                tooltip.style('opacity', 1).html(`
             <div class="p-4" style="min-width: 320px; max-width: 400px; font-family: sans-serif;">
@@ -192,7 +211,9 @@ const PCA = () => {
                          .transition()
                          .duration(tooltipDisplayTime)
                          .attr('r', dotRadius)
-                         .attr('fill', (d) => colorScale(d.core_affect_quadrant))
+                         .attr('fill', (d) =>
+                              colorScale(d.core_affect_quadrant)
+                         )
                     tooltip.style('opacity', 0)
                })
      }, [])
@@ -217,16 +238,16 @@ const PCA = () => {
                ></svg>
                <div
                     ref={tooltipRef}
-                    className="box p-0 has-background-black-ter"
+                    className="box p-0 has-background-black"
                     style={{
                          position: 'absolute',
                          pointerEvents: 'none',
                          opacity: 0,
                          transition: 'opacity 0.15s ease',
                          zIndex: 100,
-                         borderRadius: '6px',
-                         boxShadow: '0 8px 24px rgba(0,0,0,0.35)',
-                         border: '1px solid #4a4a4a',
+                         borderRadius: '5px',
+                         boxShadow: '0 5px 25px rgb(0, 0, 0)',
+                         border: '1px solid rgb(0,0,0)',
                     }}
                />
           </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const NavBar = () => {
      return (
           <nav
-               className="navbar has-background-danger-light"
+               className="navbar has-background-success-light"
                role="navigation"
                aria-label="main navigation"
           >
@@ -11,13 +11,13 @@ const NavBar = () => {
                     <div className="navbar-start">
                          <Link
                               to="/exploratory-pca"
-                              className="navbar-item"
+                              className="navbar-item has-text-black"
                          >
                               Exploratory PCA
                          </Link>
                          <Link
                               to="/data-methodology"
-                              className="navbar-item"
+                              className="navbar-item has-text-black"
                          >
                               Data Methodology
                          </Link>
