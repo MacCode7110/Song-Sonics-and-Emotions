@@ -9,35 +9,27 @@ const PCA = () => {
      useEffect(() => {
           if (!pcaData || pcaData.length === 0) return
 
-          /* Implementation Details
-            To mathematically center the PCA on the White-Bis Box, opposite margins need to be set equal.
-            Total White-Bis Box Area = 960px * 500px
-            Horizontal Center Point = 480
-            Vertical Center Point = 250
-          */
+          const yAxisLabelArea = 50 
+          const xAxisLabelArea = 40
 
-          const margin = { top: 65, right: 65, bottom: 65, left: 65 }
-          const width = 960 - margin.left - margin.right
-          const height = 500 - margin.top - margin.bottom
+          const margin = { top: 30 + xAxisLabelArea, right: 30 + yAxisLabelArea, bottom: 30 + xAxisLabelArea, left: 30 + yAxisLabelArea }
+          
+          const totalWidth = 1000
+          const totalHeight = 500
+
+          const width = totalWidth - margin.left - margin.right
+          const height = totalHeight - margin.top - margin.bottom
 
           const svgElement = d3.select(svgRef.current)
           svgElement.selectAll('*').remove()
 
           const svg = svgElement
-               .attr(
-                    'viewBox',
-                    `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`
-               )
+               .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
                .append('g')
-               .attr(
-                    'transform',
-                    `translate(${margin.left},${margin.top})`
-               )
+               .attr('transform', `translate(${margin.left},${margin.top})`)
 
-          const xMax =
-               d3.max(pcaData, (d) => Math.abs(d.pca_x)) * 1.25 || 5
-          const yMax =
-               d3.max(pcaData, (d) => Math.abs(d.pca_y)) * 1.25 || 5
+          const xMax = d3.max(pcaData, (d) => Math.abs(d.pca_x)) * 1.25 || 5
+          const yMax = d3.max(pcaData, (d) => Math.abs(d.pca_y)) * 1.25 || 5
 
           const xScale = d3
                .scaleLinear()
@@ -54,10 +46,10 @@ const PCA = () => {
           const gridLines = svg.append('g').attr('class', 'grid-lines')
 
           const coreAffectBins = [
-               'Quadrant 1', // High Arousal, Positive Valence
-               'Quadrant 2', // High Arousal, Negative Valence
-               'Quadrant 3', // Low Arousal, Negative Valence
-               'Quadrant 4', // Low Arousal, Positive Valence
+               'Quadrant 1',
+               'Quadrant 2',
+               'Quadrant 3',
+               'Quadrant 4',
           ]
 
           const colors = [
@@ -72,8 +64,13 @@ const PCA = () => {
                .domain(coreAffectBins)
                .range(colors)
 
-          const dotRadius = 8, dotOpacity = 0.8, dotStroke = '#fff', dotStrokeWid = 2,
-           gridLineStroke = '#dddddd', gridLineStrokeWid = 1, tooltipDisplayTime = 100
+          const dotRadius = 8,
+               dotOpacity = 0.8,
+               dotStroke = '#fff',
+               dotStrokeWid = 2,
+               gridLineStroke = '#dddddd',
+               gridLineStrokeWid = 1,
+               tooltipDisplayTime = 100
 
           const dots = svg
                .append('g')
@@ -118,10 +115,7 @@ const PCA = () => {
                .attr('x', width / 2)
                .attr('y', height + 45)
                .attr('text-anchor', 'middle')
-               .attr(
-                    'class',
-                    'has-text-black is-family-monospace is-size-7'
-               )
+               .attr('class', 'has-text-black is-family-monospace is-size-7')
                .text('Principal Component 1 (PC1)')
 
           svg.append('text')
@@ -134,12 +128,10 @@ const PCA = () => {
 
           svg.append('text')
                .attr('x', width / 2)
-               .attr('y', -25)
+               .attr('y', -45)
                .attr('text-anchor', 'middle')
                .attr('class', 'has-text-black is-family-code is-size-6')
-               .text(
-                    'Exploratory PCA: Musical and Emotional Qualities of Songs'
-               )
+               .text('Exploratory PCA: Musical and Emotional Qualities of Songs')
 
           dots.on('mouseover', function (event, d) {
                d3.select(this)
@@ -150,14 +142,8 @@ const PCA = () => {
 
                const songName = d.song_name || 'Unknown Track'
                const artistName = d.artist_name || 'Unknown Artist'
-               const pc1 =
-                    typeof d.pca_x === 'number'
-                         ? d.pca_x.toFixed(4)
-                         : 'N/A'
-               const pc2 =
-                    typeof d.pca_y === 'number'
-                         ? d.pca_y.toFixed(4)
-                         : 'N/A'
+               const pc1 = typeof d.pca_x === 'number' ? d.pca_x.toFixed(4) : 'N/A'
+               const pc2 = typeof d.pca_y === 'number' ? d.pca_y.toFixed(4) : 'N/A'
 
                tooltip.style('opacity', 1).html(`
             <div class="p-4" style="min-width: 320px; max-width: 400px; font-family: sans-serif;">
@@ -210,9 +196,7 @@ const PCA = () => {
                          .transition()
                          .duration(tooltipDisplayTime)
                          .attr('r', dotRadius)
-                         .attr('fill', (d) =>
-                              colorScale(d.core_affect_quadrant)
-                         )
+                         .attr('fill', (d) => colorScale(d.core_affect_quadrant))
                     tooltip.style('opacity', 0)
                })
      }, [])
