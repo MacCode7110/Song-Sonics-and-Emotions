@@ -1,4 +1,4 @@
-export const leftLis = [
+export const leftList = [
   {
     key: 'pca_x',
     label: 'PC1',
@@ -49,7 +49,7 @@ export const leftLis = [
   },
 ]
 
-export const rightLis = [
+export const rightList = [
   {
     key: 'scaled_dynamic_complexity',
     label: 'Scaled Dynamic Complexity',

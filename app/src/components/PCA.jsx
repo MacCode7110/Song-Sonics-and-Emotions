@@ -1,8 +1,45 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, forwardRef, useState } from 'react'
 import * as d3 from 'd3'
 import pcaData from '../data/json_files/pca_matrix.json'
-import { leftLis, rightLis } from '../configurations/dataConfiguration.js'
+import { leftList, rightList } from '../configurations/dataConfiguration.js'
 import Heading from '../components/Heading.jsx'
+
+const ContainerArea = ({ children }) => {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        margin: '0 auto',
+        padding: '1.25rem',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const SVGArea = forwardRef((props, ref) => {
+  return (
+    <svg
+      ref={ref}
+      style={{
+        width: '100%',
+        height: 'auto',
+        display: 'block',
+      }}
+    ></svg>
+  )
+})
+
+const StructuredListItem = ({ listItem, structuredVal }) => {
+  return (
+    <li key={listItem.key} className="mb-1">
+      <span className="has-text-grey-dark">{listItem.label}:</span>{' '}
+      <strong className="has-text-black">{structuredVal}</strong>
+    </li>
+  )
+}
 
 const PCA = () => {
   const svgRef = useRef(null)
@@ -212,37 +249,16 @@ const PCA = () => {
       })
   }, [])
 
-  const getStructuredData = (lisItem) => {
-    const rawVal = tooltip.data[lisItem.key]
-    return lisItem.isFloat && typeof rawVal === 'number' ? rawVal.toFixed(lisItem.digCount) : rawVal
-  }
-
-  const StructuredListItem = ({ lisItem, structuredVal }) => {
-    return (
-      <li key={lisItem.key} className="mb-1">
-        <span className="has-text-grey-dark">{lisItem.label}:</span>{' '}
-        <strong className="has-text-black">{structuredVal}</strong>
-      </li>
-    )
+  const getStructuredData = (listItem) => {
+    const rawVal = tooltip.data[listItem.key]
+    return listItem.isFloat && typeof rawVal === 'number'
+      ? rawVal.toFixed(listItem.digCount)
+      : rawVal
   }
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        margin: '0 auto',
-        padding: '1.25rem',
-      }}
-    >
-      <svg
-        ref={svgRef}
-        style={{
-          width: '100%',
-          height: 'auto',
-          display: 'block',
-        }}
-      ></svg>
+    <ContainerArea>
+      <SVGArea ref={svgRef} />
       {tooltip.visible && tooltip.data && (
         <div
           className="box has-background-success-light p-5"
@@ -266,12 +282,12 @@ const PCA = () => {
           <div className="columns is-gapless is-size-7">
             <div className="column">
               <ul>
-                {leftLis.map((lisItem) => {
+                {leftList.map((listItem) => {
                   return (
                     <StructuredListItem
-                      key={lisItem.key}
-                      lisItem={lisItem}
-                      structuredVal={getStructuredData(lisItem)}
+                      key={listItem.key}
+                      listItem={listItem}
+                      structuredVal={getStructuredData(listItem)}
                     ></StructuredListItem>
                   )
                 })}
@@ -279,12 +295,12 @@ const PCA = () => {
             </div>
             <div className="column">
               <ul>
-                {rightLis.map((lisItem) => {
+                {rightList.map((listItem) => {
                   return (
                     <StructuredListItem
-                      key={lisItem.key}
-                      lisItem={lisItem}
-                      structuredVal={getStructuredData(lisItem)}
+                      key={listItem.key}
+                      listItem={listItem}
+                      structuredVal={getStructuredData(listItem)}
                     ></StructuredListItem>
                   )
                 })}
@@ -293,7 +309,7 @@ const PCA = () => {
           </div>
         </div>
       )}
-    </div>
+    </ContainerArea>
   )
 }
 
