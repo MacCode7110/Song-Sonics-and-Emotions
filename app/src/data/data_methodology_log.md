@@ -8,7 +8,7 @@ Web Developer, Data Researcher, Scratch DJ, Rapper: Matthew McAlarney
 
 The _Music Preferences and Feelings Survey_ was administered to a targeted 250 full-time employees in the United States through SurveyMonkey from May 28th, 2026 to June 5th, 2026. A total of 275 survey responses from full-time employees were collected and stored in `survey_data_master_raw.csv`.
 
-Since `survey_data_master_raw.csv` is a small dataset and contains open-response survey data that represents human thought and writing, steps are manually executed and executed through _Python_ programs to build the succeeding CSV files:
+Since `survey_data_master_raw.csv` is a small dataset and contains open-response survey data that represents human thought and writing, steps are manually executed and executed through *Python* programs to build the succeeding *CSV* files:
 
 1. V1: [Initial Quality Sweep, Manual Context Review, Establish structural base] -> `survey_data_master_structural_base.csv`
 
@@ -16,11 +16,11 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 3. V3: [Complete Quality Sweep and Song URL Insertion, Manual Context Review, Remove invalid data and systematically correct information] -> `survey_data_master_corrected.csv`
 
-4. V4: [Primary Feeling Mapping, _Python_ Program Execution, Map each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in _Russell's Core Affect Framework_] -> `survey_data_master_primary_feelings_mapped.csv`
+4. V4: [Primary Feeling Mapping, *Python* Program Execution, Map each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in *Russell's Core Affect Framework*] -> `survey_data_master_primary_feelings_mapped.csv`
 
-5. V5 [Song Downloading and _WAV_ Conversion, _Python_ Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to _WAV_] -> `survey_data_master_song_download.csv`
+5. V5 [Song Downloading and *WAV* Conversion, *Python* Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to *WAV*] -> `survey_data_master_song_download.csv`
 
-6. V6 [_Essentia_ Sonic Feature Extraction, _Python_ Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the _WAV_ file referenced in the [wav_filename] column] -> `survey_data_master_sonic_feature_calculations.csv`
+6. V6 [*Essentia* Sonic Feature Extraction, *Python* Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the *WAV* file referenced in the [wav_filename] column] -> `survey_data_master_sonic_feature_calculations.csv`
 
 7. V7 [Sonic Feature Scalar Standardization, *Python* Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows] -> `survey_data_master_sonic_feature_standardization.csv`
 
@@ -102,7 +102,7 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 3.  A standard recording EP release is the official version of an Extended Play.
 
-4.  An official release of a song is an Audio Object in _YouTube Music_, which is different from a Music Video Object in _YouTube Music_. A song is officially released through any one of the release format groups detailed in Item 1. A song is not officially released as a music video.
+4.  An official release of a song is an Audio Object in *YouTube Music*, which is different from a Music Video Object in *YouTube Music*. A song is officially released through any one of the release format groups detailed in Item 1. A song is not officially released as a music video.
 
 5.  There is some probability that the release of a song in one particular format contains different engineering output and musical qualities compared to the release of a song in a different particular format.
 
@@ -150,7 +150,7 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 1. Through what release format was the song officially and originally released?
 
-2. Is the current release format (rendered in _YouTube Music_) the official and original release of the song?
+2. Is the current release format (rendered in *YouTube Music*) the official and original release of the song?
 
 3. For Questions 4-6, reference the succeeding definitions:
 
@@ -160,79 +160,79 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 4. If the song was officially and originally released through a standard recording LP, then ->
 
-   a. Is the standard recording LP containing the official song accessible in _YouTube Music_? If so, is the standard recording LP containing the official song structurally correct?
+   a. Is the standard recording LP containing the official song accessible in *YouTube Music*? If so, is the standard recording LP containing the official song structurally correct?
 
-   b. If the song was also officially released within a standard recording EP, is the standard recording EP containing the official song accessible in _YouTube Music_? If so, is the standard recording EP containing the official song structurally correct?
+   b. If the song was also officially released within a standard recording EP, is the standard recording EP containing the official song accessible in *YouTube Music*? If so, is the standard recording EP containing the official song structurally correct?
 
-   c. If the song was also officially released within a single, is the single accessible in _YouTube Music_? If so, is the single containing the official song structurally correct?
+   c. If the song was also officially released within a single, is the single accessible in *YouTube Music*? If so, is the single containing the official song structurally correct?
 
 5. If the song was officially and originally released through a standard recording EP, then ->
 
-   a. Is the standard recording EP containing the official song accessible in _YouTube Music_? If so, is the standard recording EP containing the official song structurally correct?
+   a. Is the standard recording EP containing the official song accessible in *YouTube Music*? If so, is the standard recording EP containing the official song structurally correct?
 
-   b. If the song was also officially released within a standard recording LP, is the standard recording LP containing the official song accessible in _YouTube Music_? If so, is the standard recording LP containing the official song structurally correct?
+   b. If the song was also officially released within a standard recording LP, is the standard recording LP containing the official song accessible in *YouTube Music*? If so, is the standard recording LP containing the official song structurally correct?
 
-   c. If the song was also officially released within a single, is the single accessible in _YouTube Music_? If so, is the single containing the official song structurally correct?
+   c. If the song was also officially released within a single, is the single accessible in *YouTube Music*? If so, is the single containing the official song structurally correct?
 
 6. If the song was officially and originally released through a single, then ->
 
-   a. Is the single accessible in _YouTube Music_? If so, is the single containing the official song structurally correct?
+   a. Is the single accessible in *YouTube Music*? If so, is the single containing the official song structurally correct?
 
-   b. If the song was also officially released within a standard recording EP, is the standard recording EP containing the official song accessible in _YouTube Music_? If so, is the standard recording EP containing the official song structurally correct?
+   b. If the song was also officially released within a standard recording EP, is the standard recording EP containing the official song accessible in *YouTube Music*? If so, is the standard recording EP containing the official song structurally correct?
 
-   c. If the song was also officially released within a standard recording LP, is the standard recording LP containing the official song accessible in _YouTube Music_? If so, is the standard recording LP containing the official song structurally correct?
+   c. If the song was also officially released within a standard recording LP, is the standard recording LP containing the official song accessible in *YouTube Music*? If so, is the standard recording LP containing the official song structurally correct?
 
 ## Data Evaluation Measures
 
-1. Sufficient data in _YouTube Music_ achieves at least one of the succeeding findings:
+1. Sufficient data in *YouTube Music* achieves at least one of the succeeding findings:
 
-   a. The song was officially and originally released within a standard recording LP, and the official, structurally correct standard recording LP release containing the official song is accessible in _YouTube Music_.
+   a. The song was officially and originally released within a standard recording LP, and the official, structurally correct standard recording LP release containing the official song is accessible in *YouTube Music*.
 
-   b. The song was officially and originally released within a standard recording LP, and the official, structurally correct standard recording LP release containing the official song is not accessible in _YouTube Music_. The song was also officially released within a standard recording EP, and the official, structurally correct standard recording EP containing the official song is accessible in _YouTube Music_.
+   b. The song was officially and originally released within a standard recording LP, and the official, structurally correct standard recording LP release containing the official song is not accessible in *YouTube Music*. The song was also officially released within a standard recording EP, and the official, structurally correct standard recording EP containing the official song is accessible in *YouTube Music*.
 
-   c. The song was officially and originally released within a standard recording LP, and the official, structurally correct standard recording LP release containing the official song is not accessible in _YouTube Music_. The song was also officially released as a single, and the official, structurally correct single containing the official song is accessible in _YouTube Music_.
+   c. The song was officially and originally released within a standard recording LP, and the official, structurally correct standard recording LP release containing the official song is not accessible in *YouTube Music*. The song was also officially released as a single, and the official, structurally correct single containing the official song is accessible in *YouTube Music*.
 
-   d. The song was officially and originally released within a standard recording EP, and the official, structurally correct standard recording EP release containing the official song is accessible in _YouTube Music_.
+   d. The song was officially and originally released within a standard recording EP, and the official, structurally correct standard recording EP release containing the official song is accessible in *YouTube Music*.
 
-   e. The song was officially and originally released within a standard recording EP, and the official, structurally correct standard recording EP release containing the official song is not accessible in _YouTube Music_. The song was also officially released within a standard recording LP, and the official, structurally correct standard recording LP containing the official song is accessible in _YouTube Music_.
+   e. The song was officially and originally released within a standard recording EP, and the official, structurally correct standard recording EP release containing the official song is not accessible in *YouTube Music*. The song was also officially released within a standard recording LP, and the official, structurally correct standard recording LP containing the official song is accessible in *YouTube Music*.
 
-   f. The song was officially and originally released within a standard recording EP, and the official, structurally correct standard recording EP release containing the official song is not accessible in _YouTube Music_. The song was also officially released as a single, and the official, structurally correct single containing the official song is accessible in _YouTube Music_.
+   f. The song was officially and originally released within a standard recording EP, and the official, structurally correct standard recording EP release containing the official song is not accessible in *YouTube Music*. The song was also officially released as a single, and the official, structurally correct single containing the official song is accessible in *YouTube Music*.
 
-   g. The song was officially and originally released as a single, and the official, structurally correct single release containing the official song is accessible in _YouTube Music_.
+   g. The song was officially and originally released as a single, and the official, structurally correct single release containing the official song is accessible in *YouTube Music*.
 
-   h. The song was officially and originally released as a single, and the official, structurally correct single release containing the official song is not accessible in _YouTube Music_. The song was also officially released within a standard recording EP, and the official, structurally correct standard recording EP containing the official song is accessible in _YouTube Music_.
+   h. The song was officially and originally released as a single, and the official, structurally correct single release containing the official song is not accessible in *YouTube Music*. The song was also officially released within a standard recording EP, and the official, structurally correct standard recording EP containing the official song is accessible in *YouTube Music*.
 
-   i. The song was officially and originally released as a single, and the official, structurally correct single release containing the official song is not accessible in _YouTube Music_. The song was also officially released within a standard recording LP, and the official, structurally correct standard recording LP containing the official song is accessible in _YouTube Music_.
+   i. The song was officially and originally released as a single, and the official, structurally correct single release containing the official song is not accessible in *YouTube Music*. The song was also officially released within a standard recording LP, and the official, structurally correct standard recording LP containing the official song is accessible in *YouTube Music*.
 
-2. Insufficient data in _YouTube Music_ achieves at least one of the succeeding findings:
+2. Insufficient data in *YouTube Music* achieves at least one of the succeeding findings:
 
-   a. The song was officially and originally released within a standard recording LP, and the official, structurally correct standard recording LP release containing the official song is not accessible in _YouTube Music_. There is no official, structurally correct standard recording EP release containing the official song accessible in _YouTube Music_, and there is no official, structurally correct single release containing the official song accessible in _YouTube Music_.
+   a. The song was officially and originally released within a standard recording LP, and the official, structurally correct standard recording LP release containing the official song is not accessible in *YouTube Music*. There is no official, structurally correct standard recording EP release containing the official song accessible in *YouTube Music*, and there is no official, structurally correct single release containing the official song accessible in *YouTube Music*.
 
-   b. The song was officially and originally released within a standard recording EP, and the official, structurally correct standard recording EP release containing the official song is not accessible in _YouTube Music_. There is no official, structurally correct standard recording LP release containing the official song accessible in _YouTube Music_, and there is no official, structurally correct single release containing the official song accessible in _YouTube Music_.
+   b. The song was officially and originally released within a standard recording EP, and the official, structurally correct standard recording EP release containing the official song is not accessible in *YouTube Music*. There is no official, structurally correct standard recording LP release containing the official song accessible in *YouTube Music*, and there is no official, structurally correct single release containing the official song accessible in *YouTube Music*.
 
-   c. The song was officially and originally released within a single, and the official, structurally correct single release containing the official song is not accessible in _YouTube Music_. There is no official, structurally correct standard recording EP release containing the official song accessible in _YouTube Music_, and there is no official, structurally correct standard recording LP release containing the official song accessible in _YouTube Music_.
+   c. The song was officially and originally released within a single, and the official, structurally correct single release containing the official song is not accessible in *YouTube Music*. There is no official, structurally correct standard recording EP release containing the official song accessible in *YouTube Music*, and there is no official, structurally correct standard recording LP release containing the official song accessible in *YouTube Music*.
 
 ## Song Selection Method
 
-1. To guarantee a fair procedure for sonic feature extraction throughout all songs, only URLs for official, earliest accessible song releases through structurally correct standard recording LPs, standard recording EPs, and singles are obtained from _YouTube Music_. Standard recording LPs, standard recording EPs, and singles represent the primary initiatives where song writing, recording, and arrangement is purposeful and originally produced for a comprehensive listening experience. Conversely, release formats belonging to the specialized audio editions and re-release, specialized compilation, soundtrack, and alternative performance and recording groups represent secondary initiatives that differ from the established selection method. Restricting the pipeline to consume song releases from structurally correct standard recording LPs, standard recording EPs, and singles creates a sonic control variable. The restriction equips the _PCA_ clustering to reflect differences in musical qualities with greater accuracy rather than differences in release formats and engineering output. The _PCA_ presents reasonably accurate sonic representations of each selected song.
+1. To guarantee a fair procedure for sonic feature extraction throughout all songs, only URLs for official, earliest accessible song releases through structurally correct standard recording LPs, standard recording EPs, and singles are obtained from *YouTube Music*. Standard recording LPs, standard recording EPs, and singles represent the primary initiatives where song writing, recording, and arrangement is purposeful and originally produced for a comprehensive listening experience. Conversely, release formats belonging to the specialized audio editions and re-release, specialized compilation, soundtrack, and alternative performance and recording groups represent secondary initiatives that differ from the established selection method. Restricting the pipeline to consume song releases from structurally correct standard recording LPs, standard recording EPs, and singles creates a sonic control variable. The restriction equips the *PCA* clustering to reflect differences in musical qualities with greater accuracy rather than differences in release formats and engineering output. The *PCA* presents reasonably accurate sonic representations of each selected song.
 
 ## Pipeline Limitations
 
-1. The survey population is completely bounded to full-time employees in the United States. This constraint creates a sampling selection bias, which structurally omits demographics with different music preferences such as full-time students, part-time students, part-time employees, and retired individuals. Consequently, all data points rendered in the _PCA_ reflect the music preferences of a subset of the full-time employee demographic in the United States rather than a general demographic in the United States.
+1. The survey population is completely bounded to full-time employees in the United States. This constraint creates a sampling selection bias, which structurally omits demographics with different music preferences such as full-time students, part-time students, part-time employees, and retired individuals. Consequently, all data points rendered in the *PCA* reflect the music preferences of a subset of the full-time employee demographic in the United States rather than a general demographic in the United States.
 
-2. The _yt-dlp_ _Python_ library is utilized to download and extract compressed audio from _YouTube Music_. Subsequently, _yt-dlp_ uses _FFmpeg_ to transform the compressed audio into an uncompressed _WAV_ file. There is some probability that the subset of selected songs are associated with _WAV_ files containing different levels of distortion. When distortion is present in an uncompressed _WAV_ file, there is also some probability that high-frequency overtones (harmonic distortion), Harmonic-to-Noise Ratio (HNR), and compression of dynamic range manipulate the digital audio signal. As a result, data clustering in the _PCA_ may partially reflect manipulated musical qualities that do not accurately represent the authentic musical qualities of some songs.
+2. The *yt-dlp* *Python* library is utilized to download and extract compressed audio from *YouTube Music*. Subsequently, *yt-dlp* uses *FFmpeg* to transform the compressed audio into an uncompressed *WAV* file. There is some probability that the subset of selected songs are associated with *WAV* files containing different levels of distortion. When distortion is present in an uncompressed *WAV* file, there is also some probability that high-frequency overtones (harmonic distortion), Harmonic-to-Noise Ratio (HNR), and compression of dynamic range manipulate the digital audio signal. As a result, data clustering in the *PCA* may partially reflect manipulated musical qualities that do not accurately represent the authentic musical qualities of some songs.
 
-3. By utilizing untampered _WAV_ files through standard recording LPs, standard recording EPs, and singles, the _Essentia_ sonic feature extraction process introduces a systematic production bias. Since standard recording LPs, standard recording EPs, and singles frequently experience differing mastering procedures and structural modifications, the resulting _Essentia_ sonic features represent differences in release format and engineering output as well as the musical qualities of the songs. Consequently, data clustering in the _PCA_ may partially group songs based on release format and engineering output rather than similar musical qualities.
+3. By utilizing untampered *WAV* files through standard recording LPs, standard recording EPs, and singles, the *Essentia* sonic feature extraction process introduces a systematic production bias. Since standard recording LPs, standard recording EPs, and singles frequently experience differing mastering procedures and structural modifications, the resulting *Essentia* sonic features represent differences in release format and engineering output as well as the musical qualities of the songs. Consequently, data clustering in the *PCA* may partially group songs based on release format and engineering output rather than similar musical qualities.
 
-4. There is some probability that a subset of the selected songs from the full-time employee respondent pool are not accessible in _YouTube Music_ as a result of regional licensing restrictions. Although _YouTube Music_ functions globally, distribution contracts function regionally, which means that the extent of official release accessibility relies on the location of the user. Consequently, data clustering in the _PCA_ may not present songs that are only accessible in _YouTube Music_ to a subset of regions.
+4. There is some probability that a subset of the selected songs from the full-time employee respondent pool are not accessible in *YouTube Music* as a result of regional licensing restrictions. Although *YouTube Music* functions globally, distribution contracts function regionally, which means that the extent of official release accessibility relies on the location of the user. Consequently, data clustering in the *PCA* may not present songs that are only accessible in *YouTube Music* to a subset of regions.
 
-5. When _YouTube Music_ offers certain standard recording LPs, standard recording EPs, and singles containing songs that also have been altered for secondary initiatives, there is some probability that the audio streamed through this particular subset of standard recording LPs, standard recording EPs, and singles is sourced from altered modifications of the songs. The acquisition of songs from standard recording LPs, standard recording EPs, and singles in _YouTube Music_ also creates a systematic production bias. Consequently, data clustering in the _PCA_ may partially group songs based on engineering output rather than similar musical qualities.
+5. When *YouTube Music* offers certain standard recording LPs, standard recording EPs, and singles containing songs that also have been altered for secondary initiatives, there is some probability that the audio streamed through this particular subset of standard recording LPs, standard recording EPs, and singles is sourced from altered modifications of the songs. The acquisition of songs from standard recording LPs, standard recording EPs, and singles in *YouTube Music* also creates a systematic production bias. Consequently, data clustering in the *PCA* may partially group songs based on engineering output rather than similar musical qualities.
 
-6. When _YouTube Music_ offers certain standard recording LPs, standard recording EPs, and singles, there is some probability that duplicates of these official releases are also accessible. _YouTube Music_ provides duplicates of standard recording LPs, standard recording EPs, and singles when the distributor resends the official release with updated information. There is also some probability that at least one of the duplicates is structurally incorrect and contains songs altered for secondary initiatives. Consequently, data clustering in the _PCA_ may partially group songs based on engineering output rather than similar musical qualities.
+6. When *YouTube Music* offers certain standard recording LPs, standard recording EPs, and singles, there is some probability that duplicates of these official releases are also accessible. *YouTube Music* provides duplicates of standard recording LPs, standard recording EPs, and singles when the distributor resends the official release with updated information. There is also some probability that at least one of the duplicates is structurally incorrect and contains songs altered for secondary initiatives. Consequently, data clustering in the *PCA* may partially group songs based on engineering output rather than similar musical qualities.
 
-## Applying _Russell's Core Affect Framework_
+## Applying *Russell's Core Affect Framework*
 
-1. To provide a method for understanding the creation of feelings in comparison to sonic features extracted from _Essentia_, each corrected primary feeling in the resulting set of usable data rows is mapped to one of the four quadrants in _Russell's Core Effect Framework_. Functioning as a reliable system for describing the creation of feelings, _Russell's Core Effect Framework_ communicates that all human emotions are almagamations of valence and arousal, which are essential neurophysiological dimensions. Valence measures the extent of pleasure and displeasure, and arousal measures the extent of activation and deactivation. Valence maps to the x-axis where values range from highly unpleasant to highly pleasant, and arousal maps to the y-axis where values range from highly enervated to highly energized. Moving through the valence and arousal neurophysiological dimensions builds a circular space mapping different feelings to the succeeding quadrants:
+1. To provide a method for understanding the creation of feelings in comparison to sonic features extracted from *Essentia*, each corrected primary feeling in the resulting set of usable data rows is mapped to one of the four quadrants in *Russell's Core Effect Framework*. Functioning as a reliable system for describing the creation of feelings, *Russell's Core Effect Framework* communicates that all human emotions are almagamations of valence and arousal, which are essential neurophysiological dimensions. Valence measures the extent of pleasure and displeasure, and arousal measures the extent of activation and deactivation. Valence maps to the x-axis where values range from highly unpleasant to highly pleasant, and arousal maps to the y-axis where values range from highly enervated to highly energized. Moving through the valence and arousal neurophysiological dimensions builds a circular space mapping different feelings to the succeeding quadrants:
 
    a. Quadrant 1 (Top-Right): High Arousal + Positive Valence
 
@@ -242,26 +242,26 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
    d. Quadrant 4 (Bottom-Right): Low Arousal + Positive Valence
 
-## Applying _yt-dlp_
+## Applying *yt-dlp*
 
-1. To build a standardized audio collection for sonic feature extraction from _Essentia_, executing _yt-dlp_ accesses the _YouTube Music_ song URLs in the [youtube_music_url] column to obtain the highest quality audio streams offered from _YouTube Music_. _yt-dlp_ utilizes the _FFmpeg_ processing framework to transcode compressed audio streams into uncompressed _WAV_ files.
+1. To build a standardized audio collection for sonic feature extraction from *Essentia*, executing *yt-dlp* accesses the *YouTube Music* song URLs in the [youtube_music_url] column to obtain the highest quality audio streams offered from *YouTube Music*. *yt-dlp* utilizes the *FFmpeg* processing framework to transcode compressed audio streams into uncompressed *WAV* files.
 
-## Applying _Essentia_ and Standardization
+## Applying *Essentia* and Standardization
 
-1. To build a multi-dimensional matrix of sonic features for the _PCA_, executing _Essentia_'s `MusicExtractor` program processes each uncompressed _WAV_ file. The extractor obtains 12 native, low-level mathematical scalars spanning four structural bins (Rhythm, Dynamics, Spectral/Tonal, and Texture/Timbre). The extractor also computes scalar averages (`.mean`) for thousands of frame-by-frame time-series measurements.
+1. To build a multi-dimensional matrix of sonic features for the *PCA*, executing *Essentia*'s `MusicExtractor` program processes each uncompressed *WAV* file. The extractor obtains 12 native, low-level mathematical scalars spanning four structural bins (Rhythm, Dynamics, Spectral/Tonal, and Texture/Timbre). The extractor also computes scalar averages (`.mean`) for thousands of frame-by-frame time-series measurements.
 
-2. To prepare the sonic features for accurate geometric representation in the _PCA_, executing a sklearn's `StandardScalar` program applies z-score normalization to each sonic scalar value. This standardization operation unifies the different units of measurement. For instance, high-magnitude average loudness and low-magnitude spectral energy are converted to assume a uniform mean of 0 and a standard deviation of 1. As a result, large numeric values do not unfairly conquer geometric relationships in the _PCA_.
+2. To prepare the sonic features for accurate geometric representation in the *PCA*, executing a *sklearn's* `StandardScalar` program applies z-score normalization to each sonic scalar value. This standardization operation unifies the different units of measurement. For instance, high-magnitude average loudness and low-magnitude spectral energy are converted to assume a uniform mean of 0 and a standard deviation of 1. As a result, large numeric values do not unfairly conquer geometric relationships in the *PCA*.
 
-## Applying _PCA_ Dimensionality Reduction
+## Applying *PCA* Dimensionality Reduction
 
-1. To build a coordinate matrix representing the sonic features extracted from _Essentia_, executing sklearn's `*PCA*` `fit_transform` method fits the 12 standardized sonic features to a 2-component _PCA_ model. For each corrected song, components `pca_x` and `pca_y` correspond to geographic positions on the _PCA_. Songs with highly similar underlying mathematical characteristics closely aggregate on the _PCA_.
+1. To build a coordinate matrix representing the sonic features extracted from *Essentia*, executing *sklearn's* `*PCA*` `fit_transform` method fits the 12 standardized sonic features to a 2-component *PCA* model. For each corrected song, components `pca_x` and `pca_y` correspond to geographic positions on the *PCA*. Songs with highly similar underlying mathematical characteristics closely aggregate on the *PCA*.
 
 ---
 
 ## [2026-7-8 - V1] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `survey_data_master_raw.csv` -> `survey_data_master_structural_base.csv`
-- **Data Shape Change:** 277 rows (2 header rows + 275 data rows) _ 19 columns -> 276 (1 header row + 275 data rows) rows _ 3 columns
+- **Data Shape Change:** 277 rows (2 header rows + 275 data rows) * 19 columns -> 276 (1 header row + 275 data rows) rows * 3 columns
 - **Purpose:** [Initial Quality Sweep, Manual Context Review, Establish structural base]
 - **Initial Raw Submissions:** 275 total survey responses
 
@@ -279,9 +279,9 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 ## [2026-7-8 - V2] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `survey_data_master_structural_base.csv` -> `survey_data_master_sampled.csv`
-- **Data Shape Change:** 276 (1 header row + 275 data rows) rows _ 3 columns -> 86 (1 header row + 85 data rows) rows _ 3 columns
+- **Data Shape Change:** 276 (1 header row + 275 data rows) rows * 3 columns -> 86 (1 header row + 85 data rows) rows * 3 columns
 - **Purpose:** [Dataset Truncation (Simple Random Sampling), **Python** Program Execution, Select representative subset of dataset]
-- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the full-time employee respondent pool, a simple random sampling method was applied. Executing `simple_random_sampling.py` with a constant random seed (random*state=75) to enforce reproducibility, 85 unique survey responses were randomly selected from the 275 data rows following the \_Initial Quality Sweep* in V1. The sample size represents approximately 30.9% of the full-time employee respondent pool, which asserts a 95% confidence level and a margin of error less than 9%. All non-selected responses were omitted from this phase of analysis.
+- **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the full-time employee respondent pool, a simple random sampling method was applied. Executing `simple_random_sampling.py` with a constant random seed (random*state=75) to enforce reproducibility, 85 unique survey responses were randomly selected from the 275 data rows following the *Initial Quality Sweep* in V1. The sample size represents approximately 30.9% of the full-time employee respondent pool, which asserts a 95% confidence level and a margin of error less than 9%. All non-selected responses were omitted from this phase of analysis.
 - **Resulting Batch Size:** 85 data rows
 
 ### Steps Executed:
@@ -293,13 +293,13 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 ## [2026-7-8 - V3] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `survey_data_master_sampled.csv` -> `survey_data_master_corrected.csv`
-- **Data Shape Change:** 86 (1 header row + 85 data rows) rows _ 3 columns -> 46 (1 header row + 45 data rows) rows _ 4 columns
+- **Data Shape Change:** 86 (1 header row + 85 data rows) rows * 3 columns -> 46 (1 header row + 45 data rows) rows * 4 columns
 - **Purpose:** [Complete Quality Sweep and Song URL Insertion, Manual Context Review, Remove invalid data and systematically correct information]
-- **Statistical Acknowledgement**: While the 85 data rows sampled during the _Dataset Truncation (Simple Random Sampling)_ in V2 established a 95% confidence level and margin of error less than 9% for the full-time employee pool, the domain constraints enforced in V3 decreased the usable data rows to 45. The resulting _PCA_ operates as an exploratory subset of the 85 sampled data rows.
+- **Statistical Acknowledgement**: While the 85 data rows sampled during the *Dataset Truncation (Simple Random Sampling)* in V2 established a 95% confidence level and margin of error less than 9% for the full-time employee pool, the domain constraints enforced in V3 decreased the usable data rows to 45. The resulting *PCA* operates as an exploratory subset of the 85 sampled data rows.
 
 ### Steps Executed:
 
-1. **[Addition]** Appended 1 new column, [youtube_music_url], to record the _YouTube Music_ song URLs for all remaining valid [song_name], [artist_name], and [primary_feeling] row groupings to establish a process control variable for downloading corresponding _WAV_ files from _YouTube Music_.
+1. **[Addition]** Appended 1 new column, [youtube_music_url], to record the *YouTube Music* song URLs for all remaining valid [song_name], [artist_name], and [primary_feeling] row groupings to establish a process control variable for downloading corresponding *WAV* files from *YouTube Music*.
 2. **[Complete Quality Sweep]** Processed remaining 85 rows to remove invalid data and systematically correct information:
 
    a. [Removal] 1 row deleted because the song, artist, and primary feeling contained exclusively NA values.
@@ -318,28 +318,28 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
    III. Single
 
-   d. [Removal] 9 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a standard recording LP, standard recording EP, or as a single, the song and artist grouping is connected to insufficient data in _YouTube Music_ as presented in _Data Research Questions_ and _Data Evaluation Measures_.
+   d. [Removal] 9 rows deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a standard recording LP, standard recording EP, or as a single, the song and artist grouping is connected to insufficient data in *YouTube Music* as presented in _Data Research Questions_ and _Data Evaluation Measures_.
 
-   e. [Removal] 1 row deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a standard recording LP, standard recording EP, or as a single, and the song and artist grouping is connected to sufficient data in _YouTube Music_ as presented in _Data Research Questions_ and _Data Evaluation Measures_, the song and artist grouping is a duplication of a song and artist grouping corrected prior in the _Complete Quality Sweep_.
+   e. [Removal] 1 row deleted because although there was sufficient written context to verify that the artist officially and originally released the song within a standard recording LP, standard recording EP, or as a single, and the song and artist grouping is connected to sufficient data in *YouTube Music* as presented in _Data Research Questions_ and _Data Evaluation Measures_, the song and artist grouping is a duplication of a song and artist grouping corrected prior in the _Complete Quality Sweep_.
 
    f. [Correction] Corrected information in [song_name], [artist_name] and [primary_feeling] columns for 45 remaining rows in the sequence.
 
-   g. [Addition] Added the _YouTube Music_ song URL in the [youtube_music_url] column for 45 remaining rows in the sequence.
+   g. [Addition] Added the *YouTube Music* song URL in the [youtube_music_url] column for 45 remaining rows in the sequence.
 
 ---
 
 ## [2026-7-8 - V4] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `survey_data_master_corrected.csv` -> `survey_data_master_primary_feelings_mapped.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 4 columns -> 46 (1 header row + 45 data rows) rows _ 5 columns
-- **Purpose:** [Primary Feeling Mapping, **Python** Program Execution, Map each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in _Russell's Core Affect Framework_]
-- **Methodology:** To provide a method for understanding the creation of feelings in comparison to sonic features extracted from _Essentia_, executing `primary_feeling_quadrant_mapping.py` maps each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in _Russell's Core Affect Framework_ as described in _Applying Russell's Core Affect Framework_. Valence maps to the x-axis. Arousal maps to the y-axis. Through examining the coordinates of valence and arousal, emotional qualities are categorically represented within the spatial geometry of the _PCA_.
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 4 columns -> 46 (1 header row + 45 data rows) rows * 5 columns
+- **Purpose:** [Primary Feeling Mapping, **Python** Program Execution, Map each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in *Russell's Core Affect Framework*]
+- **Methodology:** To provide a method for understanding the creation of feelings in comparison to sonic features extracted from *Essentia*, executing `primary_feeling_quadrant_mapping.py` maps each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in *Russell's Core Affect Framework* as described in _Applying Russell's Core Affect Framework_. Valence maps to the x-axis. Arousal maps to the y-axis. Through examining the coordinates of valence and arousal, emotional qualities are categorically represented within the spatial geometry of the *PCA*.
 
 ### Steps Executed:
 
 1. **[Addition]** Appended 1 new column, [core_affect_quadrant], to represent the categorical coordinate mapping for each corresponding primary feeling.
 
-2. **[Mapping Execution]** Executed `primary_feeling_quadrant_mapping.py` to assign each of the 45 remaining primary feelings in the [primary_feeling] column to one of the four quadrants in _Russell's Core Affect Framework_:
+2. **[Mapping Execution]** Executed `primary_feeling_quadrant_mapping.py` to assign each of the 45 remaining primary feelings in the [primary_feeling] column to one of the four quadrants in *Russell's Core Affect Framework*:
 
    a. Quadrant 1 (Top-Right): High Arousal + Positive Valence
 
@@ -349,50 +349,50 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
    d. Quadrant 4 (Bottom-Right): Low Arousal + Positive Valence
 
-3. **[Integrity Verification]** Verified that complex primary feelings (such as the corrected "Awestruck", and "Melancholic") are evaluated through specific research as a means of preventing skewed categorical representation in the _PCA_.
+3. **[Integrity Verification]** Verified that complex primary feelings (such as the corrected "Awestruck", and "Melancholic") are evaluated through specific research as a means of preventing skewed categorical representation in the *PCA*.
 
 ---
 
 ## [2026-7-8 - V5] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `survey_data_master_primary_feelings_mapped.csv` -> `survey_data_master_song_download.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 5 columns -> 46 (1 header row + 45 data rows) rows _ 7 columns
-- **Purpose:** [Song Downloading and _WAV_ Conversion, **Python** Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to _WAV_]
-- **Methodology:** To build a standardized audio collection for sonic feature extraction from _Essentia_, executing `wav_file_creation.py` utilizes _yt-dlp_ to loop through the 45 remaining data rows and obtain compressed audio streams through the verified song URLs in the [youtube_music_url] column. To enforce consistent file input for sonic feature extraction from _Essentia_, _yt-dlp_ dictates the underlying _FFmpeg_ processing framework to post-process and transcode the compressed audio streams into uncompressed _WAV_ files.
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 5 columns -> 46 (1 header row + 45 data rows) rows * 7 columns
+- **Purpose:** [Song Downloading and *WAV* Conversion, **Python** Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to *WAV*]
+- **Methodology:** To build a standardized audio collection for sonic feature extraction from *Essentia*, executing `wav_file_creation.py` utilizes *yt-dlp* to loop through the 45 remaining data rows and obtain compressed audio streams through the verified song URLs in the [youtube_music_url] column. To enforce consistent file input for sonic feature extraction from *Essentia*, *yt-dlp* dictates the underlying *FFmpeg* processing framework to post-process and transcode the compressed audio streams into uncompressed *WAV* files.
 
 ### Steps Executed:
 
-1. **[Addition]** Appended 2 columns to record download metadata and _WAV_ filenames:
+1. **[Addition]** Appended 2 columns to record download metadata and *WAV* filenames:
    a. [song_download_status]
    b. [wav_filename]
-2. **[Download Execution]** Executed `wav_file_creation.py` to download the compressed audio stream for each of the 45 remaining data rows from _YouTube Music_ and convert to uncompressed _WAV_ files.
+2. **[Download Execution]** Executed `wav_file_creation.py` to download the compressed audio stream for each of the 45 remaining data rows from *YouTube Music* and convert to uncompressed *WAV* files.
 
 ---
 
 ## [2026-7-8 - V6] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `survey_data_master_song_download.csv` -> `survey_data_master_sonic_feature_calculations.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 7 columns -> 46 (1 header row + 45 data rows) rows _ 19 columns
-- **Purpose:** [_Essentia_ Sonic Feature Extraction, **Python** Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the _WAV_ file referenced in the [wav_filename] column]
-- **Methodology:** To build a collection of sonic features extracted from _Essentia_, executing `sonic_feature_extraction.py` obtains 12 native, low-level mathematical parameters. During the process, data transformation reduces thousands of frame-by-frame time-series measurements into scalar averages (`.mean`). The sonic features needed to create a consistent data matrix are recorded to `survey_data_master_sonic_feature_calculations.csv`.
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 7 columns -> 46 (1 header row + 45 data rows) rows * 19 columns
+- **Purpose:** [*Essentia* Sonic Feature Extraction, **Python** Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the *WAV* file referenced in the [wav_filename] column]
+- **Methodology:** To build a collection of sonic features extracted from *Essentia*, executing `sonic_feature_extraction.py` obtains 12 native, low-level mathematical parameters. During the process, data transformation reduces thousands of frame-by-frame time-series measurements into scalar averages (`.mean`). The sonic features needed to create a consistent data matrix are recorded to `survey_data_master_sonic_feature_calculations.csv`.
 
 ### Steps Executed:
 
-1. **[Addition]** Appended 12 columns to record sonic features extracted from _Essentia_:
+1. **[Addition]** Appended 12 columns to record sonic features extracted from *Essentia*:
    a. **Rhythm:** `bpm`, `danceability`, `onset_rate`
    b. **Dynamics:** `average_loudness`, `dynamic_complexity`
    c. **Spectral & Tonal:** `spectral_energy`, `chords_changes_rate`, `pitch_salience`, `spectral_complexity`
    d. **Texture & Timbre:** `spectral_centroid`, `barkbands_flatness_db`, `zerocrossingrate`
-2. **[Sonic Feature Extraction]** Executed `sonic_feature_extraction.py` to loop through the 45 remaining data rows and process the 12 native, mathematical parameters.`sonic_feature_extraction.py` verified the `song_download_status` and loaded uncompressed _WAV_ files from the `wav_downloads` directory. `sonic_feature_extraction.py` also managed file system exceptions by recording NA values for failed checks.
+2. **[Sonic Feature Extraction]** Executed `sonic_feature_extraction.py` to loop through the 45 remaining data rows and process the 12 native, mathematical parameters.`sonic_feature_extraction.py` verified the `song_download_status` and loaded uncompressed *WAV* files from the `wav_downloads` directory. `sonic_feature_extraction.py` also managed file system exceptions by recording NA values for failed checks.
 
 ---
 
 ## [2026-7-8 - V7] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:** `survey_data_master_sonic_feature_calculations.csv` -> `survey_data_master_sonic_feature_standardization.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 19 columns -> 46 (1 header row + 45 data rows) rows _ 31 columns
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 19 columns -> 46 (1 header row + 45 data rows) rows * 31 columns
 - **Purpose:** [Sonic Feature Scalar Standardization, **Python** Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows]
-- **Methodology:** To prepare the 12 sonic scalar values for correct rendering on the _PCA_, executing `sonic_feature_standardization.py` loops through the 45 remaining data rows and applies a standardization operation to each of the sonic scalar values. The operation utilizes a z-score normalization to transform each of the 12 sonic scalar values assigning a `mean` of 0 and a `standard deviation` of 1. Since the _PCA_ calculates variance according to magnitude, the geometric relationships between points are accurately presented.
+- **Methodology:** To prepare the 12 sonic scalar values for correct rendering on the *PCA*, executing `sonic_feature_standardization.py` loops through the 45 remaining data rows and applies a standardization operation to each of the sonic scalar values. The operation utilizes a z-score normalization to transform each of the 12 sonic scalar values assigning a `mean` of 0 and a `standard deviation` of 1. Since the *PCA* calculates variance according to magnitude, the geometric relationships between points are accurately presented.
 
 ### Steps Executed:
 
@@ -409,14 +409,14 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 ## [2026-7-8 - V8] - [Matthew McAlarney - Web Developer, Data Researcher]
 
 - **Target File:**`survey_data_master_sonic_feature_standardization.csv` -> `pca_matrix.json`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 31 columns -> JSON Array containing 45 Objects _ 33 Key-Value Properties
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 31 columns -> JSON Array containing 45 Objects * 33 Key-Value Properties
 - **Purpose:** [*PCA* Dimensionality Reduction, **Python** Program Execution, Compress 12 multi-dimensional standardized sonic features into 2 static spatial dimensions (`pca_x` and `pca_y`) for *PCA* rendering]
-- **Methodology:** To map multi-dimensional standardized sonic features onto a 2D scatter plot area, executing `calculate_pca_coordinates.py` applies a linear dimensionality reduction. The reduction projects the 12 standardized sonic features recorded in `survey_data_master_sonic_feature_standardization.csv` onto an orthogonal subspace. Songs with highly similar underlying mathematical characteristics closely aggregate on the _PCA_.
+- **Methodology:** To map multi-dimensional standardized sonic features onto a 2D scatter plot area, executing `calculate_pca_coordinates.py` applies a linear dimensionality reduction. The reduction projects the 12 standardized sonic features recorded in `survey_data_master_sonic_feature_standardization.csv` onto an orthogonal subspace. Songs with highly similar underlying mathematical characteristics closely aggregate on the *PCA*.
 
 ### Steps Executed:
 
-1. **[Dimensionality Reduction]** Fitted a 2-component _PCA_ model utilizing `scikit-learn` to transform the 12 scaled sonic features into geographic values.
-2. **[Addition]** Appended 2 columns to record _PCA_ coordinates:
+1. **[Dimensionality Reduction]** Fitted a 2-component *PCA* model utilizing `scikit-learn` to transform the 12 scaled sonic features into geographic values.
+2. **[Addition]** Appended 2 columns to record *PCA* coordinates:
    a. `pca_x` (Principal Component 1)
    b. `pca_y` (Principal Component 2)
-3. **[Serialization and Export]** Transformed the final data matrix from CSV format into a JSON array of objects.
+3. **[Serialization and Export]** Transformed the final data matrix from *CSV* format into a JSON array of objects.
