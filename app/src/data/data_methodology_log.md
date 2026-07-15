@@ -280,7 +280,7 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 - **Target File:** `survey_data_master_structural_base.csv` -> `survey_data_master_sampled.csv`
 - **Data Shape Change:** 276 (1 header row + 275 data rows) rows * 3 columns -> 86 (1 header row + 85 data rows) rows * 3 columns
-- **Purpose:** [Dataset Truncation (Simple Random Sampling), **Python** Program Execution, Select representative subset of dataset]
+- **Purpose:** [Dataset Truncation (Simple Random Sampling), *Python* Program Execution, Select representative subset of dataset]
 - **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the full-time employee respondent pool, a simple random sampling method was applied. Executing `simple_random_sampling.py` with a constant random seed (random*state=75) to enforce reproducibility, 85 unique survey responses were randomly selected from the 275 data rows following the *Initial Quality Sweep* in V1. The sample size represents approximately 30.9% of the full-time employee respondent pool, which asserts a 95% confidence level and a margin of error less than 9%. All non-selected responses were omitted from this phase of analysis.
 - **Resulting Batch Size:** 85 data rows
 
@@ -332,7 +332,7 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 - **Target File:** `survey_data_master_corrected.csv` -> `survey_data_master_primary_feelings_mapped.csv`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 4 columns -> 46 (1 header row + 45 data rows) rows * 5 columns
-- **Purpose:** [Primary Feeling Mapping, **Python** Program Execution, Map each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in *Russell's Core Affect Framework*]
+- **Purpose:** [Primary Feeling Mapping, *Python* Program Execution, Map each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in *Russell's Core Affect Framework*]
 - **Methodology:** To provide a method for understanding the creation of feelings in comparison to sonic features extracted from *Essentia*, executing `primary_feeling_quadrant_mapping.py` maps each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in *Russell's Core Affect Framework* as described in _Applying Russell's Core Affect Framework_. Valence maps to the x-axis. Arousal maps to the y-axis. Through examining the coordinates of valence and arousal, emotional qualities are categorically represented within the spatial geometry of the *PCA*.
 
 ### Steps Executed:
@@ -357,7 +357,7 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 - **Target File:** `survey_data_master_primary_feelings_mapped.csv` -> `survey_data_master_song_download.csv`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 5 columns -> 46 (1 header row + 45 data rows) rows * 7 columns
-- **Purpose:** [Song Downloading and *WAV* Conversion, **Python** Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to *WAV*]
+- **Purpose:** [Song Downloading and *WAV* Conversion, *Python* Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to *WAV*]
 - **Methodology:** To build a standardized audio collection for sonic feature extraction from *Essentia*, executing `wav_file_creation.py` utilizes *yt-dlp* to loop through the 45 remaining data rows and obtain compressed audio streams through the verified song URLs in the [youtube_music_url] column. To enforce consistent file input for sonic feature extraction from *Essentia*, *yt-dlp* dictates the underlying *FFmpeg* processing framework to post-process and transcode the compressed audio streams into uncompressed *WAV* files.
 
 ### Steps Executed:
@@ -373,7 +373,7 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 - **Target File:** `survey_data_master_song_download.csv` -> `survey_data_master_sonic_feature_calculations.csv`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 7 columns -> 46 (1 header row + 45 data rows) rows * 19 columns
-- **Purpose:** [*Essentia* Sonic Feature Extraction, **Python** Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the *WAV* file referenced in the [wav_filename] column]
+- **Purpose:** [*Essentia* Sonic Feature Extraction, *Python* Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the *WAV* file referenced in the [wav_filename] column]
 - **Methodology:** To build a collection of sonic features extracted from *Essentia*, executing `sonic_feature_extraction.py` obtains 12 native, low-level mathematical parameters. During the process, data transformation reduces thousands of frame-by-frame time-series measurements into scalar averages (`.mean`). The sonic features needed to create a consistent data matrix are recorded to `survey_data_master_sonic_feature_calculations.csv`.
 
 ### Steps Executed:
@@ -391,7 +391,7 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 - **Target File:** `survey_data_master_sonic_feature_calculations.csv` -> `survey_data_master_sonic_feature_standardization.csv`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 19 columns -> 46 (1 header row + 45 data rows) rows * 31 columns
-- **Purpose:** [Sonic Feature Scalar Standardization, **Python** Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows]
+- **Purpose:** [Sonic Feature Scalar Standardization, *Python* Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows]
 - **Methodology:** To prepare the 12 sonic scalar values for correct rendering on the *PCA*, executing `sonic_feature_standardization.py` loops through the 45 remaining data rows and applies a standardization operation to each of the sonic scalar values. The operation utilizes a z-score normalization to transform each of the 12 sonic scalar values assigning a `mean` of 0 and a `standard deviation` of 1. Since the *PCA* calculates variance according to magnitude, the geometric relationships between points are accurately presented.
 
 ### Steps Executed:
@@ -410,7 +410,7 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 - **Target File:**`survey_data_master_sonic_feature_standardization.csv` -> `pca_matrix.json`
 - **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 31 columns -> JSON Array containing 45 Objects * 33 Key-Value Properties
-- **Purpose:** [*PCA* Dimensionality Reduction, **Python** Program Execution, Compress 12 multi-dimensional standardized sonic features into 2 static spatial dimensions (`pca_x` and `pca_y`) for *PCA* rendering]
+- **Purpose:** [*PCA* Dimensionality Reduction, *Python* Program Execution, Compress 12 multi-dimensional standardized sonic features into 2 static spatial dimensions (`pca_x` and `pca_y`) for *PCA* rendering]
 - **Methodology:** To map multi-dimensional standardized sonic features onto a 2D scatter plot area, executing `calculate_pca_coordinates.py` applies a linear dimensionality reduction. The reduction projects the 12 standardized sonic features recorded in `survey_data_master_sonic_feature_standardization.csv` onto an orthogonal subspace. Songs with highly similar underlying mathematical characteristics closely aggregate on the *PCA*.
 
 ### Steps Executed:
