@@ -12,16 +12,18 @@ const ExploratoryPCAPage = () => {
           </Heading>
           <Content size={5} className="is-family-secondary has-text-black p-5">
             Examine the relationship between music preferences and the construction of feelings
-            through Principle Component Analysis (PCA). The Exploratory PCA Plot visualizes how
-            different songs cluster according to similar scaled sonic and emotional characteristics.
-            12 unique scaled sonic values are processed to build the PCA coordinates for each song.
-            Additionally, Russell's Core Affect Framework is leveraged to understand how different
-            types and extents of valence and arousal contribute to the formation of feelings in
-            response to listening to each song. The Exploratory PCA Plot offers dynamic interaction
-            such as a comprehensive tooltip to explore all data points and their corresponding song
-            attributes. Russell's Core Affect Framework maps each primary feeling into one of four
-            neurophysiological quadrants depending on the particular manifestation of valence and
-            arousal. Each quadrant is color-coded as{' '}
+            through <span className="is-italic">Principle Component Analysis (PCA)</span>. The{' '}
+            <span className="is-italic">Exploratory PCA Plot</span> visualizes how different songs
+            cluster according to similar scaled sonic and emotional characteristics. 12 unique
+            scaled sonic values are processed to build the PCA coordinates for each song.
+            Additionally, <span className="is-italic">Russell's Core Affect Framework</span> is
+            leveraged to understand how different types and extents of valence and arousal
+            contribute to the formation of feelings in response to listening to each song. The
+            Exploratory PCA Plot offers dynamic interaction such as a comprehensive tooltip to
+            explore all data points and their corresponding song attributes.{' '}
+            <span className="is-italic">Russell's Core Affect Framework</span> maps each primary
+            feeling into one of four neurophysiological quadrants depending on the particular
+            manifestation of valence and arousal. Each quadrant is color-coded as{' '}
             <span
               style={{
                 color: 'rgb(200, 180, 0)',
