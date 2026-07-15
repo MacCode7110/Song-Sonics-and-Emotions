@@ -4,7 +4,7 @@ import pcaData from '../data/json_files/pca_matrix.json'
 import { leftList, rightList } from '../configurations/dataConfiguration.js'
 import Heading from '../components/Heading.jsx'
 
-const ContainerArea = ({ children }) => {
+const Container = ({ children }) => {
   return (
     <div
       style={{
@@ -19,7 +19,27 @@ const ContainerArea = ({ children }) => {
   )
 }
 
-const SVGArea = forwardRef((props, ref) => {
+const TooltipBox = ({ children, t }) => {
+  return (
+    <div
+      className="box has-background-success-light p-5"
+      style={{
+        position: 'absolute',
+        left: `${t.x}px`,
+        top: `${t.y}px`,
+        pointerEvents: 'none',
+        zIndex: 100,
+        minWidth: '250px',
+        maxWidth: '500px',
+        borderRadius: '5px',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+const SVG = forwardRef((props, ref) => {
   return (
     <svg
       ref={ref}
@@ -32,11 +52,15 @@ const SVGArea = forwardRef((props, ref) => {
   )
 })
 
+const getStructuredData = (listItem, data) => {
+  const rawVal = data[listItem.key]
+  return listItem.isFloat && typeof rawVal === 'number' ? rawVal.toFixed(listItem.digCount) : rawVal
+}
+
 const StructuredListItem = ({ listItem, structuredVal }) => {
   return (
     <li key={listItem.key} className="mb-1">
-      <span className="has-text-grey-dark">{listItem.label}:</span>{' '}
-      <strong className="has-text-black">{structuredVal}</strong>
+      <span className="has-text-grey-dark">{listItem.label}:</span> <strong className="has-text-black">{structuredVal}</strong>
     </li>
   )
 }
@@ -53,9 +77,9 @@ const PCA = () => {
   useEffect(() => {
     if (!pcaData || pcaData.length === 0) return
     const margin = {
-      top: 70,
+      top: 60,
       right: 80,
-      bottom: 70,
+      bottom: 60,
       left: 80,
     }
 
@@ -66,16 +90,12 @@ const PCA = () => {
     const pcaHei = boxHei - margin.top - margin.bottom
 
     const dotRad = 8,
-      primaryCol = 'rgb(11, 12, 15)',
-      secondaryCol = 'rgb(64, 70, 84)'
+      primaryCol = 'rgb(64, 70, 84)'
 
     const svgElem = d3.select(svgRef.current)
     svgElem.selectAll('*').remove()
 
-    const svg = svgElem
-      .attr('viewBox', `0 0 ${boxWid} ${boxHei}`)
-      .append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`)
+    const svg = svgElem.attr('viewBox', `0 0 ${boxWid} ${boxHei}`).append('g').attr('transform', `translate(${margin.left},${margin.top})`)
 
     const xMax = d3.max(pcaData, (d) => Math.abs(d.pca_x)) * 1.25 || 5
     const yMax = d3.max(pcaData, (d) => Math.abs(d.pca_y)) * 1.25 || 5
@@ -130,9 +150,10 @@ const PCA = () => {
       .attr('text-anchor', 'middle')
       .style('font-family', 'Segoe UI')
       .style('font-size', '12px')
+      .style('font-style', 'italic')
       .style('fill', primaryCol)
-      .style('font-weight', 'bold')
-      .text('Principal Component 1 (PC1: Valence →)')
+      .style('font-weight', 400)
+      .text('Principal Component 1 (PC1, Valence →)')
 
     svg
       .append('text')
@@ -142,39 +163,13 @@ const PCA = () => {
       .attr('text-anchor', 'middle')
       .style('font-family', 'Segoe UI')
       .style('font-size', '12px')
+      .style('font-style', 'italic')
       .style('fill', primaryCol)
-      .style('font-weight', 'bold')
-      .text('Principal Component 2 (PC2: Arousal →)')
+      .style('font-weight', 400)
+      .text('Principal Component 2 (PC2, Arousal →)')
 
-    svg
-      .append('text')
-      .attr('x', pcaWid / 2)
-      .attr('y', -45)
-      .attr('text-anchor', 'middle')
-      .style('font-family', 'Segoe UI')
-      .style('font-size', '14px')
-      .style('fill', primaryCol)
-      .style('font-weight', 'bold')
-      .text('Exploratory PCA: Musical Qualities and Construction of Feelings')
-
-    gridLines
-      .append('line')
-      .attr('x1', xScale(0))
-      .attr('x2', xScale(0))
-      .attr('y1', 0)
-      .attr('y2', pcaHei)
-      .attr('opacity', 0.4)
-      .attr('stroke', secondaryCol)
-      .attr('stroke-width', 1)
-    gridLines
-      .append('line')
-      .attr('x1', 0)
-      .attr('x2', pcaWid)
-      .attr('y1', yScale(0))
-      .attr('y2', yScale(0))
-      .attr('opacity', 0.4)
-      .attr('stroke', secondaryCol)
-      .attr('stroke-width', 1)
+    gridLines.append('line').attr('x1', xScale(0)).attr('x2', xScale(0)).attr('y1', 0).attr('y2', pcaHei).attr('opacity', 0.4).attr('stroke', primaryCol).attr('stroke-width', 1)
+    gridLines.append('line').attr('x1', 0).attr('x2', pcaWid).attr('y1', yScale(0)).attr('y2', yScale(0)).attr('opacity', 0.4).attr('stroke', primaryCol).attr('stroke-width', 1)
 
     const coreAffectAreas = [
       {
@@ -210,8 +205,9 @@ const PCA = () => {
         .attr('y', q.y)
         .attr('text-anchor', 'middle')
         .style('font-family', 'Segoe UI')
-        .style('font-size', '12px')
-        .attr('opacity', 0.4)
+        .style('font-size', '8px')
+        .style('font-style', 'italic')
+        .attr('opacity', 0.2)
         .style('fill', q.color)
         .style('pointer-events', 'none')
         .text(q.descrip)
@@ -249,67 +245,36 @@ const PCA = () => {
       })
   }, [])
 
-  const getStructuredData = (listItem) => {
-    const rawVal = tooltip.data[listItem.key]
-    return listItem.isFloat && typeof rawVal === 'number'
-      ? rawVal.toFixed(listItem.digCount)
-      : rawVal
-  }
-
   return (
-    <ContainerArea>
-      <SVGArea ref={svgRef} />
+    <Container>
+      <Heading size={3} className="is-family-secondary has-text-weight-normal is-italic has-text-centered mb-3">
+        Exploratory PCA: Musical Qualities and Construction of Feelings
+      </Heading>
+      <SVG ref={svgRef} />
       {tooltip.visible && tooltip.data && (
-        <div
-          className="box has-background-success-light p-5"
-          style={{
-            position: 'absolute',
-            left: `${tooltip.x}px`,
-            top: `${tooltip.y}px`,
-            pointerEvents: 'none',
-            zIndex: 100,
-            minWidth: '250px',
-            maxWidth: '500px',
-            borderRadius: '5px',
-          }}
-        >
-          <Heading
-            size={5}
-            className="is-family-secondary has-text-grey-dark has-text-weight-bold mb-3"
-          >
+        <TooltipBox t={tooltip}>
+          <Heading size={5} className="is-family-secondary is-italic has-text-grey-dark has-text-weight-bold mb-3">
             {tooltip.data.song_name} by {tooltip.data.artist_name}
           </Heading>
           <div className="columns is-gapless is-size-7">
             <div className="column">
               <ul>
                 {leftList.map((listItem) => {
-                  return (
-                    <StructuredListItem
-                      key={listItem.key}
-                      listItem={listItem}
-                      structuredVal={getStructuredData(listItem)}
-                    ></StructuredListItem>
-                  )
+                  return <StructuredListItem key={listItem.key} listItem={listItem} structuredVal={getStructuredData(listItem, tooltip.data)}></StructuredListItem>
                 })}
               </ul>
             </div>
             <div className="column">
               <ul>
                 {rightList.map((listItem) => {
-                  return (
-                    <StructuredListItem
-                      key={listItem.key}
-                      listItem={listItem}
-                      structuredVal={getStructuredData(listItem)}
-                    ></StructuredListItem>
-                  )
+                  return <StructuredListItem key={listItem.key} listItem={listItem} structuredVal={getStructuredData(listItem, tooltip.data)}></StructuredListItem>
                 })}
               </ul>
             </div>
           </div>
-        </div>
+        </TooltipBox>
       )}
-    </ContainerArea>
+    </Container>
   )
 }
 
