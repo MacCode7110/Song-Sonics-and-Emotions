@@ -12,7 +12,7 @@ const ExploratoryPCAPage = () => {
           </Heading>
           <Content size={5} className="is-family-secondary has-text-black p-5">
             Examine the relationship between musical qualities and the mapping of feelings through <span className="is-italic">Principal Component Analysis (PCA)</span>. The{' '}
-            <span className="is-italic">Exploratory PCA</span> visualizes how different songs cluster according to linear combinations of similar scaled sonic values. 12 unique scaled sonic values are
+            <span className="is-italic">Exploratory PCA</span> visualizes how different songs cluster according to linear combinations of similar scaled sonic values. Twelve unique scaled sonic values are
             processed to build the <span className="is-italic">PCA</span> coordinates for each song. Additionally, <span className="is-italic">Russell's Core Affect Framework</span> is implemented to
             understand how different types and extents of valence and arousal align with <span className="is-italic">PCA</span> coordinates. The{' '}
             <span className="is-italic">Exploratory PCA</span> offers a comprehensive tooltip to explore all data points and their corresponding song attributes.{' '}
@@ -51,7 +51,7 @@ const ExploratoryPCAPage = () => {
             </span>
             . Observe that a subset of songs is associated with a <span className="is-italic">Primary Feeling</span> mapping to a <span className="is-italic">Core Affect Quadrant</span> that differs
             from the surrounding spatial quadrant in the <span className="is-italic">Exploratory PCA</span>. Although <span className="is-italic">My Sacrifice</span> by{' '}
-            <span className="is-italic">Creed</span> is associated with a <span className="is-italic">Core Affect Quadrant</span> equal to Quadrant 1, the scatter point is spatially located in
+            <span className="is-italic">Creed</span> is associated with <span className="is-italic">Core Affect Quadrant 1</span>, the scatter point is spatially located in
             Quadrant 3 in the <span className="is-italic">Exploratory PCA</span>. This occurrence presents an opportunity to (1) consider why some songs are associated with a particular{' '}
             <span className="is-italic">Core Affect Quadrant</span> but mathematically cluster to a different spatial quadrant in the <span className="is-italic">Exploratory PCA</span>, and (2)
             consider why some respondents experience a particular <span className="is-italic">Primary Feeling</span> when listening to a song.
