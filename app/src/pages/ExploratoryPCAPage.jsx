@@ -13,7 +13,13 @@ const ExploratoryPCAPage = () => {
           <Content size={5} className="is-family-secondary has-text-black p-5">
             Examine the relationship between musical qualities and the mapping of feelings through <span className="is-italic">Principal Component Analysis (PCA)</span>. The{' '}
             <span className="is-italic">Exploratory PCA</span> visualizes how different songs cluster according to linear combinations of similar scaled sonic values. Twelve unique scaled sonic values
-            are processed to build the <span className="is-italic">PCA</span> coordinates for each song. Additionally, <span className="is-italic">Russell's Core Affect Framework</span> is implemented
+            are processed to build the <span className="is-italic">PCA</span> coordinates for each song. The twelve scaled sonic features represented in the <span className="is-italic">PCA</span> are{' '}
+            <span className="is-italic">scaled_bpm</span>, <span className="is-italic">scaled_danceability</span>, <span className="is-italic">scaled_onset_rate</span>,{' '}
+            <span className="is-italic">scaled_average_loudness</span>, <span className="is-italic">scaled_dynamic_complexity</span>,{' '}
+            <span className="is-italic">scaled_spectral_energy</span>, <span className="is-italic">scaled_chords_changes_rate</span>,{' '}
+            <span className="is-italic">scaled_pitch_salience</span>, <span className="is-italic">scaled_spectral_complexity</span>,{' '}
+            <span className="is-italic">scaled_spectral_centroid</span>, <span className="is-italic">scaled_barkbands_flatness_db</span>, and{' '}
+            <span className="is-italic">scaled_zerocrossingrate</span>. Additionally, <span className="is-italic">Russell's Core Affect Framework</span> is implemented
             to understand how different levels of <span className="is-italic">valence</span> and <span className="is-italic">arousal</span> align with <span className="is-italic">PCA</span>{' '}
             coordinates and influence feelings. The <span className="is-italic">Exploratory PCA</span> offers a comprehensive tooltip to explore all data points and their corresponding song
             attributes. <span className="is-italic">Russell's Core Affect Framework</span> maps each <span className="is-italic">Primary Feeling</span> into one of four neurophysiological quadrants
@@ -21,7 +27,7 @@ const ExploratoryPCAPage = () => {
             <span
               style={{
                 color: 'rgb(200, 180, 0)',
-                opacity: 0.8
+                opacity: 0.8,
               }}
             >
               ■ Quadrant 1 (High <span className="is-italic">Arousal</span> + Positive <span className="is-italic">Valence</span>)
@@ -30,7 +36,7 @@ const ExploratoryPCAPage = () => {
             <span
               style={{
                 color: 'rgb(255,0,0)',
-                opacity: 0.8
+                opacity: 0.8,
               }}
             >
               ■ Quadrant 2 (High <span className="is-italic">Arousal</span> + Negative <span className="is-italic">Valence</span>)
@@ -39,7 +45,7 @@ const ExploratoryPCAPage = () => {
             <span
               style={{
                 color: 'rgb(0,0,255)',
-                opacity: 0.8
+                opacity: 0.8,
               }}
             >
               ■ Quadrant 3 (Low <span className="is-italic">Arousal</span> + Negative <span className="is-italic">Valence</span>)
@@ -48,7 +54,7 @@ const ExploratoryPCAPage = () => {
             <span
               style={{
                 color: 'rgb(0, 180, 0)',
-                opacity: 0.8
+                opacity: 0.8,
               }}
             >
               ■ Quadrant 4 (Low <span className="is-italic">Arousal</span> + Positive <span className="is-italic">Valence</span>)

@@ -17,11 +17,10 @@ const DataMethodologyPage = () => {
             <span className="is-italic">survey_data_master_raw.csv</span>. <span className="is-italic">JavaScript</span>, <span className="is-italic">React</span>,{' '}
             <span className="is-italic">D3</span>, <span className="is-italic">Python</span>, <span className="is-italic">Pandas</span>, <span className="is-italic">yt-dlp</span>,{' '}
             <span className="is-italic">FFmpeg</span>, <span className="is-italic">WAV</span>, <span className="is-italic">Essentia Audio Analysis</span>,{' '}
-            <span className="is-italic">PCA (Principal Component Analysis)</span>, and{' '}
-            <span className="is-italic">Russell's Core Affect Framework</span> were utilized to build <span className="is-italic">Exploratory PCA: Mapping Song Sonics and Feelings</span>. The 275 survey responses stored in{' '}
-            <span className="is-italic">survey_data_master_raw.csv</span> proceeded through 8 unique cleaning and processing phases to build the output file{' '}
-            <span className="is-italic">pca_matrix.json</span>. The corrected survey writing, PCA coordinates, and scaled sonic values stored in <span className="is-italic">pca_matrix.json</span> are
-            presented through <span className="is-italic">Exploratory PCA: Mapping Song Sonics and Feelings</span>.
+            <span className="is-italic">PCA (Principal Component Analysis)</span>, and <span className="is-italic">Russell's Core Affect Framework</span> were utilized to build{' '}
+            <span className="is-italic">Exploratory PCA: Mapping Song Sonics and Feelings</span>. The 275 survey responses stored in <span className="is-italic">survey_data_master_raw.csv</span>{' '}
+            proceeded through 8 unique cleaning and processing phases to build the output file <span className="is-italic">pca_matrix.json</span>. The corrected survey writing, PCA coordinates, and
+            scaled sonic values stored in <span className="is-italic">pca_matrix.json</span> are presented through <span className="is-italic">Exploratory PCA: Mapping Song Sonics and Feelings</span>.
           </Content>
         </header>
         <main className="block mb-1">
@@ -58,9 +57,10 @@ const DataMethodologyPage = () => {
             : To provide a method for understanding the creation of feelings in comparison to sonic features extracted from <span className="is-italic">Essentia</span>, executing{' '}
             <span className="is-italic">primary_feeling_quadrant_mapping.py</span> on <span className="is-italic">survey_data_master_corrected.csv</span> mapped each remaining primary feeling in the{' '}
             <span className="is-italic">[primary_feeling]</span> column to one of the four quadrants established in <span className="is-italic">Russell's Core Affect Framework</span> as detailed in
-            section <span className="is-italic">Applying Russell's Core Affect Framework</span> in <span className="is-italic">data_methodology_log.md</span>. <span className="is-italic">Valence</span> maps to the x-axis. <span className="is-italic">Arousal</span> maps to the y-axis.
-            Through examining the coordinates of <span className="is-italic">valence</span> and <span className="is-italic">arousal</span>, emotional qualities are categorically represented within the
-            spatial geometry of the <span className="is-italic">PCA</span>. The results were recorded to <span className="is-italic">survey_data_master_primary_feelings_mapped.csv</span>.
+            section <span className="is-italic">Applying Russell's Core Affect Framework</span> in <span className="is-italic">data_methodology_log.md</span>.{' '}
+            <span className="is-italic">Valence</span> maps to the x-axis. <span className="is-italic">Arousal</span> maps to the y-axis. Through examining the coordinates of{' '}
+            <span className="is-italic">valence</span> and <span className="is-italic">arousal</span>, emotional qualities are categorically represented within the spatial geometry of the{' '}
+            <span className="is-italic">PCA</span>. The results were recorded to <span className="is-italic">survey_data_master_primary_feelings_mapped.csv</span>.
           </Content>
           <Content size={5} className="is-family-secondary has-text-black p-5 mb-1">
             <span className="has-text-weight-semibold">
