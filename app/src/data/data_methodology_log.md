@@ -172,7 +172,7 @@ Conversely, release formats belonging to the specialized audio editions and re-r
 
 ## Applying Russell's Core Affect Framework
 
-To provide a method for understanding the creation of feelings in comparison to sonic features extracted from Essentia, each corrected primary feeling in the resulting set of usable data rows is mapped to one of the four quadrants in Russell's Core Effect Framework. Functioning as a reliable system for describing the creation of feelings, Russell's Core Effect Framework communicates that all human emotions are almagamations of valence and arousal, which are essential neurophysiological dimensions. 
+To provide a method for understanding the creation of feelings in comparison to sonic features extracted from Essentia, each corrected primary feeling in the resulting set of usable data rows is mapped to one of the four quadrants in Russell's Core Affect Framework. Functioning as a reliable system for describing the creation of feelings, Russell's Core Affect Framework communicates that all human emotions are amalgamations of valence and arousal, which are essential neurophysiological dimensions. 
 
 Valence measures the extent of pleasure and displeasure, and arousal measures the extent of activation and deactivation. Valence maps to the x-axis where values range from highly unpleasant to highly pleasant, and arousal maps to the y-axis where values range from highly enervated to highly energized. Moving through the valence and arousal neurophysiological dimensions builds a circular space mapping different feelings to the succeeding quadrants:
 
@@ -193,7 +193,7 @@ To build a standardized audio collection for sonic feature extraction from Essen
 
 To build a multi-dimensional matrix of sonic features for the PCA, executing Essentia's `MusicExtractor` program processes each uncompressed WAV file. The extractor obtains 12 native, low-level mathematical scalars spanning four structural bins (Rhythm, Dynamics, Spectral/Tonal, and Texture/Timbre). The extractor also computes scalar averages (`.mean`) for thousands of frame-by-frame time-series measurements.
 
-To prepare the sonic features for accurate geometric representation in the PCA, executing a sklearn's `StandardScalar` program applies z-score normalization to each sonic scalar value. This standardization operation unifies the different units of measurement. For instance, high-magnitude average loudness and low-magnitude spectral energy are converted to assume a uniform mean of 0 and a standard deviation of 1. As a result, large numeric values do not unfairly conquer geometric relationships in the PCA.
+To prepare the sonic features for accurate geometric representation in the PCA, executing a sklearn's `StandardScaler` program applies z-score normalization to each sonic scalar value. This standardization operation unifies the different units of measurement. For instance, high-magnitude average loudness and low-magnitude spectral energy are converted to assume a uniform mean of 0 and a standard deviation of 1. As a result, large numeric values do not unfairly conquer geometric relationships in the PCA.
 
 ---
 
@@ -225,7 +225,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 *   **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the full-time employee respondent pool, a simple random sampling method was applied. Executing `simple_random_sampling.py` with a constant random seed (`random_state=75`) to enforce reproducibility, 85 unique survey responses were randomly selected from the 275 data rows following the Initial Quality Sweep in V1. The sample size represents approximately 30.9% of the full-time employee respondent pool, which asserts a 95% confidence level and a margin of error less than 9%. All non-selected responses were omitted from this phase of analysis.
 *   **Resulting Batch Size:** 85 data rows
 *   **Steps Executed:**
-    *   `[Removal]` Executed `simple_random_sample.py` to randomly select 85 unique survey responses from the 275 data rows, omitting 190 remaining data rows.
+    *   `[Removal]` Executed `simple_random_sampling.py` to randomly select 85 unique survey responses from the 275 data rows, omitting 190 remaining data rows.
 
 ### `[2026-7-8 - V3]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 *   **Target File:** `survey_data_master_sampled.csv` $\rightarrow$ `survey_data_master_corrected.csv`
