@@ -64,7 +64,7 @@ const ExploratoryPCAPage = () => {
             low-energy feeling at the bottom to high-energy feeling at the top). Observe that a subset of songs is associated with a <span className="is-italic">Primary Feeling</span> mapping to a{' '}
             <span className="is-italic">Core Affect Quadrant</span> that differs from the surrounding spatial quadrant in the <span className="is-italic">Exploratory PCA</span>. Although{' '}
             <span className="is-italic">My Sacrifice</span> by <span className="is-italic">Creed</span> is associated with <span className="is-italic">Core Affect Quadrant 1</span>, the scatter point
-            is spatially located in Quadrant 3 in the <span className="is-italic">Exploratory PCA</span>. This occurrence presents an opportunity to (1) consider why some songs are associated with a
+            mathematically clusters to <span className="is-italic">Quadrant 3</span> in the <span className="is-italic">Exploratory PCA</span>. This occurrence presents an opportunity to (1) consider why some songs are associated with a
             particular <span className="is-italic">Core Affect Quadrant</span> but mathematically cluster to a different spatial quadrant in the <span className="is-italic">Exploratory PCA</span>, and
             (2) consider why some respondents experience a particular <span className="is-italic">Primary Feeling</span> when listening to a song.
           </Content>
