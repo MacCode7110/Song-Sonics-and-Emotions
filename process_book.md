@@ -4,6 +4,8 @@
 
 **Technologies:** Python, Pandas, yt-dlp, FFmpeg, WAV, Essentia Audio Analysis, PCA (Principal Component Analysis), Russell's Core Affect Framework
 
+**Web Application Link:** https://song-sonics-and-feelings.vercel.app/exploratory-pca
+
 ---
 
 ## Overview and Motivation
