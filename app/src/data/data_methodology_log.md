@@ -220,7 +220,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 ### `[2026-7-8 - V1]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 
 - **Target File:** `survey_data_master_raw.csv` $\rightarrow$ `survey_data_master_structural_base.csv`
-- **Data Shape Change:** 277 rows (2 header rows + 275 data rows) _ 19 columns $\rightarrow$ 276 (1 header row + 275 data rows) rows _ 3 columns
+- **Data Shape Change:** 277 rows (2 header rows + 275 data rows) * 19 columns $\rightarrow$ 276 (1 header row + 275 data rows) rows * 3 columns
 - **Purpose:** `[Initial Quality Sweep, Manual Context Review, Establish structural base]`
 - **Initial Raw Submissions:** 275 total survey responses
 - **Steps Executed:**
@@ -234,7 +234,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 ### `[2026-7-8 - V2]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 
 - **Target File:** `survey_data_master_structural_base.csv` $\rightarrow$ `survey_data_master_sampled.csv`
-- **Data Shape Change:** 276 (1 header row + 275 data rows) rows _ 3 columns $\rightarrow$ 86 (1 header row + 85 data rows) rows _ 3 columns
+- **Data Shape Change:** 276 (1 header row + 275 data rows) rows * 3 columns $\rightarrow$ 86 (1 header row + 85 data rows) rows * 3 columns
 - **Purpose:** `[Dataset Truncation (Simple Random Sampling), Python Program Execution, Select representative subset of dataset]`
 - **Methodology:** To maintain an efficient data cleaning workflow and provide an unbiased, representative subset of the full-time employee respondent pool, a simple random sampling method was applied. Executing `simple_random_sampling.py` with a constant random seed (`random_state=75`) to enforce reproducibility, 85 unique survey responses were randomly selected from the 275 data rows following the Initial Quality Sweep in V1. The sample size represents approximately 30.9% of the full-time employee respondent pool, which asserts a 95% confidence level and a margin of error less than 9%. All non-selected responses were omitted from this phase of analysis.
 - **Resulting Batch Size:** 85 data rows
@@ -244,7 +244,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 ### `[2026-7-8 - V3]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 
 - **Target File:** `survey_data_master_sampled.csv` $\rightarrow$ `survey_data_master_corrected.csv`
-- **Data Shape Change:** 86 (1 header row + 85 data rows) rows _ 3 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows _ 4 columns
+- **Data Shape Change:** 86 (1 header row + 85 data rows) rows * 3 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows * 4 columns
 - **Purpose:** `[Complete Quality Sweep and Song URL Insertion, Manual Context Review, Remove invalid data and systematically correct information]`
 - **Statistical Acknowledgement:** While the 85 data rows sampled during the Dataset Truncation (Simple Random Sampling) in V2 established a 95% confidence level and margin of error less than 9% for the full-time employee pool, the domain constraints enforced in V3 decreased the usable data rows to 45. The resulting PCA operates as an exploratory subset of the 85 sampled data rows.
 - **Steps Executed:**
@@ -266,7 +266,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 ### `[2026-7-8 - V4]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 
 - **Target File:** `survey_data_master_corrected.csv` $\rightarrow$ `survey_data_master_primary_feelings_mapped.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 4 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows _ 5 columns
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 4 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows * 5 columns
 - **Purpose:** `[Primary Feeling Mapping, Python Program Execution, Map each remaining primary feeling in the [primary_feeling] column to one of the four quadrants established in Russell's Core Affect Framework]`
 - **Methodology:** To provide a method for understanding the creation of feelings in comparison to sonic features extracted from Essentia, executing `primary_feeling_quadrant_mapping.py` maps each remaining primary feeling in the `[primary_feeling]` column to one of the four quadrants established in Russell's Core Affect Framework as described in Applying Russell's Core Affect Framework. Valence maps to the x-axis. Arousal maps to the y-axis. Through examining the coordinates of valence and arousal, emotional qualities are categorically represented within the spatial geometry of the PCA.
 - **Steps Executed:**
@@ -281,7 +281,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 ### `[2026-7-8 - V5]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 
 - **Target File:** `survey_data_master_primary_feelings_mapped.csv` $\rightarrow$ `survey_data_master_song_download.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 5 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows _ 7 columns
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 5 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows * 7 columns
 - **Purpose:** `[Song Downloading and WAV Conversion, Python Program Execution, Download each song in the [song_name] column through the corresponding URL in the [youtube_music_url] column and convert to WAV]`
 - **Methodology:** To build a standardized audio collection for sonic feature extraction from Essentia, executing `wav_file_creation.py` utilizes `yt-dlp` to loop through the 45 remaining data rows and obtain compressed audio streams through the verified song URLs in the `[youtube_music_url]` column. To enforce consistent file input for sonic feature extraction from Essentia, `yt-dlp` dictates the underlying FFmpeg processing framework to post-process and transcode the compressed audio streams into uncompressed WAV files.
 - **Steps Executed:**
@@ -293,7 +293,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 ### `[2026-7-8 - V6]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 
 - **Target File:** `survey_data_master_song_download.csv` $\rightarrow$ `survey_data_master_sonic_feature_calculations.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 7 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows _ 19 columns
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 7 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows * 19 columns
 - **Purpose:** `[Essentia Sonic Feature Extraction, Python Program Execution, Calculate and record 12 sonic scalar values for each of the 45 remaining data rows through accessing the WAV file referenced in the [wav_filename] column]`
 - **Methodology:** To build a collection of sonic features extracted from Essentia, executing `sonic_feature_extraction.py` obtains 12 native, low-level mathematical parameters. During the process, data transformation reduces thousands of frame-by-frame time-series measurements into scalar averages (`.mean`). The sonic features needed to create a consistent data matrix are recorded to `survey_data_master_sonic_feature_calculations.csv`.
 - **Steps Executed:**
@@ -307,7 +307,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 ### `[2026-7-8 - V7]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 
 - **Target File:** `survey_data_master_sonic_feature_calculations.csv` $\rightarrow$ `survey_data_master_sonic_feature_standardization.csv`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 19 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows _ 31 columns
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 19 columns $\rightarrow$ 46 (1 header row + 45 data rows) rows * 31 columns
 - **Purpose:** `[Sonic Feature Scalar Standardization, Python Program Execution, Standardize the 12 sonic scalar values for each of the 45 remaining data rows]`
 - **Methodology:** To prepare the 12 sonic scalar values for correct rendering on the PCA, executing `sonic_feature_standardization.py` loops through the 45 remaining data rows and applies a standardization operation to each of the sonic scalar values. The operation utilizes a z-score normalization to transform each of the 12 sonic scalar values assigning a mean of 0 and a standard deviation of 1. Since the PCA calculates variance according to magnitude, the geometric relationships between points are accurately presented.
 - **Steps Executed:**
@@ -322,7 +322,7 @@ To build a coordinate matrix representing the sonic features extracted from Esse
 ### `[2026-7-8 - V8]` - `[Matthew McAlarney - Web Developer, Data Researcher]`
 
 - **Target File:** `survey_data_master_sonic_feature_standardization.csv` $\rightarrow$ `pca_matrix.json`
-- **Data Shape Change:** 46 (1 header row + 45 data rows) rows _ 31 columns $\rightarrow$ JSON Array containing 45 Objects _ 33 Key-Value Properties
+- **Data Shape Change:** 46 (1 header row + 45 data rows) rows * 31 columns $\rightarrow$ JSON Array containing 45 Objects * 33 Key-Value Properties
 - **Purpose:** `[PCA Dimensionality Reduction, Python Program Execution, Compress 12 multi-dimensional standardized sonic features into 2 static spatial dimensions (pca_x and pca_y) for PCA rendering]`
 - **Methodology:** To map multi-dimensional standardized sonic features onto a 2D scatter plot area, executing `calculate_pca_coordinates.py` applies a linear dimensionality reduction. The reduction projects the 12 standardized sonic features recorded in `survey_data_master_sonic_feature_standardization.csv` onto an orthogonal subspace. Songs with highly similar underlying mathematical characteristics closely aggregate on the PCA.
 - **Steps Executed:**

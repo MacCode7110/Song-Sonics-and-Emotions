@@ -48,20 +48,56 @@ Since `survey_data_master_raw.csv` is a small dataset and contains open-response
 
 ---
 
-## Design Evolution //
+## PCA Design Decisions
 
-* To 
+* **Intended Audience**
 
+  The intended group to access the selected visualization is a general audience of developers. The underlying motivation is that many different types of developers will be able to accurately read and interpret the displayed data.
 
-* **Color-Coding:** Data points are color-coded into four distinct quadrants based on Russell’s Core Affect Framework:
-  * 🟨 **Quadrant 1:** High Arousal + Positive Valence
-  * 🟥 **Quadrant 2:** High Arousal + Negative Valence
-  * 🟦 **Quadrant 3:** Low Arousal + Negative Valence
-  * 🟩 **Quadrant 4:** Low Arousal + Positive Valence
+* **Visualization Selection**
+
+  To discover how linear combinations of sonic scalar values of a song connect to the *Primary Feeling* of a respondent, **Principal Component Analysis (PCA)** was selected to illustrate the connection rendered through a 2D scatter plot. Additionally, presenting a 2D scatter plot reasonably verifies that a general audience of developers are capable of understanding the mechanics of the visualization. Implementation of a highly sophisticated visualization may inhibit the ability of a general audience of developers to accurately read and interpret the displayed data.
+  
+* **Mathematical Challenge**
+    
+    Songs are characterized by a highly complex, multi-dimensional set of 12 unique scaled sonic features extracted from *Essentia*:
+    - a. Rhythm: `bpm`, `danceability`, `onset_rate`,
+    - b. Dynamics: `average_loudness`, `dynamic_complexity`,
+    - c. Spectral & Tonal: `spectral_energy`, `chords_changes_rate`, `pitch_salience`, `spectral_complexity`
+    - d. Texture & Timbre: `spectral_centroid`, `barkbands_flatness_db`, `zerocrossingrate`
+
+* **Solution**
+
+    Some high-dimensional visualization techniques such as *Parallel Coordinates* would not easily illustrate intuitive clustering of songs to quadrants in *Russell's Core Affect Framework*.*PCA* mathematically compresses the twelve dimensions into two principal components and directly maps them onto a 2D plane. By aligning *Principal Component 1 (PC1)* horizontally to represent *valence* and *Principal Component 2 (PC2)* vertically to represent *arousal*, abstract sonic data is translated into an intuitive spatial representation of *Russell's Core Affect Framework*.
+
+* **PCA Aesthetic Design Decisions**
+
+    Aesthetic design decisions were implemented to unify mathematical accuracy and precision with intuitive reading and interpretation.
+
+  * **Italicized Text:** The *PCA* heading, tooltip heading, and axes labels are italicized to subtly move the primary focus of the *PCA* to the data points.
+  
+  * **Grid Quadrants:** A four-quadrant coordinate system with a central origin $(0,0)$ was selected to represent *Russell's Core Affect Framework*. Gridlines, tick marks, and axes labels are colored with a dark gray variant (rgb(64, 70, 84)) and altered with an opacity ranging from 0.4 to 0.8. As a result, the primary focus of the *PCA* significantly moves to the data points.
+  * **Color-Coded Data Points by *Core Affect Quadrant*:** Each  data point (song) is color-coded as a function of mapping the associated *Primary Feeling* to one of four *Core Affect Quadrants*:
+    * *Quadrant 1 (High Arousal + Positive Valence)*
+    * *Quadrant 2 (High Arousal + Negative Valence)*
+    * *Quadrant 3 (Low Arousal + Negative Valence)*
+    * *Quadrant 4 (Low Arousal + Positive Valence)*
+  * **Color-Coded Quadrant Labels:** Each quadrant in *Russell's Core Affect Framework* is presented in the *PCA* through a corresponding label. Each label is color-coded according to the represented quadrant and is altered with an opacity of 0.2. The primary focus of the *PCA* is maintained because the low-opacity labels do not obscure the high-opacity data points.
+  * **Emphasizing Cognitive Dissonance:** The presence of color-coded data points and quadrants immediately reveals anomalies. For instance, *My Sacrifice* by *Creed* is associated with a *Primary Feeling* mapping to Quadrant 1 (rgb(200, 180, 0)), but the data point is located in Quadrant 3 (rgb(0, 0, 255)). This occurrence draws attention and consideration for why some respondents experience a particular *Primary Feeling* when listening to a song.
+
+* **PCA Tooltip Design:**
+
+  Since *PCA* abstracts 12 unique sonic features into *PC1* and *PC2*, the 2D scatter plot cannot completely communicate why a song mathematically clustered to a particular quadrant in *Russell's Core Affect Framework*. The interactive tooltip offers the data required to form a complete understanding of song location.
+  
+  * **Offered Data:** Hovering over any data point reveals a comprehensive tooltip listing *song_name*, *artist_name*, *primary_feeling*, *scaled_bpm*, *scaled_danceability*, *scaled_onset_rate*,*scaled_average_loudness*, *scaled_dynamic_complexity*, *scaled_spectral_energy*, *scaled_chords_changes_rate*,*scaled_pitch_salience*, *scaled_spectral_complexity*, *scaled_spectral_centroid*, *scaled_barkbands_flatness_db*, and *scaled_zerocrossingrate*. The scaled sonic features provide the values processed into *PC1* and *PC2* to form a complete understanding of song location.
+
+  * **Text Coloring:** The fields are colored a dark gray variant (rgb(64, 70, 84)) while the corresponding values are colored black (rgb(10, 10, 10)). This color contrast distinguishes and immediately improves the readability of the values.
+
+  * **Box Coloring:** The tooltip box is colored with a light green variant (rgb(239, 250, 243)) to compliment and emphasize the fields and corresponding values.
 
 ---
 
-## Implementation Details //
+## Implementation Details
 
 The application is built as a highly interactive, responsive web experience deployed on Vercel. 
 * **Frontend:** Interactive scatter plot utilizing modern web standards.
