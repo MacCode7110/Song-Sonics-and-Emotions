@@ -27,7 +27,7 @@ const ExploratoryPCAPage = () => {
             <span
               style={{
                 color: 'rgb(200, 180, 0)',
-                opacity: 0.8,
+                opacity: 0.7,
               }}
             >
               ■ Quadrant 1 (High <span className="is-italic">Arousal</span> + Positive <span className="is-italic">Valence</span>)
@@ -36,7 +36,7 @@ const ExploratoryPCAPage = () => {
             <span
               style={{
                 color: 'rgb(255,0,0)',
-                opacity: 0.8,
+                opacity: 0.7,
               }}
             >
               ■ Quadrant 2 (High <span className="is-italic">Arousal</span> + Negative <span className="is-italic">Valence</span>)
@@ -45,7 +45,7 @@ const ExploratoryPCAPage = () => {
             <span
               style={{
                 color: 'rgb(0,0,255)',
-                opacity: 0.8,
+                opacity: 0.7,
               }}
             >
               ■ Quadrant 3 (Low <span className="is-italic">Arousal</span> + Negative <span className="is-italic">Valence</span>)
@@ -54,7 +54,7 @@ const ExploratoryPCAPage = () => {
             <span
               style={{
                 color: 'rgb(0, 180, 0)',
-                opacity: 0.8,
+                opacity: 0.7,
               }}
             >
               ■ Quadrant 4 (Low <span className="is-italic">Arousal</span> + Positive <span className="is-italic">Valence</span>)
