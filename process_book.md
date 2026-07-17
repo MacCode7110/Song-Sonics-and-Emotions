@@ -13,8 +13,8 @@ The motivation to develop **Song Sonics & Feelings** was to understand the conne
 ## Related Work
 
 1. **Music Information Retrieval (MIR):** Implementing computational analysis to extract meaningful features from audio signals such as tempo, loudness, and spectral complexity.
-2. **Russell's Core Affect Framework (1980):** A highly influential framework that maps feelings to one of four quadrants along two neurophysiological dimensions:
-   * **Valence:** The horizontal axis representing the level of positivity (pleasantness) or negativity (unpleasantness).
+2. **Russell's Core Affect Framework (2003):** A highly influential framework that maps feelings to one of four quadrants along two neurophysiological dimensions:
+   * **Valence:** The horizontal axis representing the physiological level of positivity (pleasantness) or negativity (unpleasantness).
    * **Arousal:** The vertical axis representing the physiological level of energy, which ranges from low (sleepy/deactivated) to high (excited/activated).
 
 ## Research Questions
